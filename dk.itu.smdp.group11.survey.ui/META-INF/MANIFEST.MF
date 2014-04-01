@@ -8,6 +8,19 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: dk.itu.smdp.group11.survey;visibility:=reexport,
  org.eclipse.xtext.ui,
  org.eclipse.ui.editors;bundle-version="3.5.0",
- org.eclipse.ui.ide;bundle-version="3.5.0"
-Import-Package: org.apache.log4j
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.eclipse.xtext.builder,
+ org.antlr.runtime,
+ org.eclipse.xtext.common.types.ui,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.compare
+Import-Package: org.apache.log4j,
+ org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Export-Package: dk.itu.smdp.group11.ui.quickfix,
+ dk.itu.smdp.group11.ui.contentassist,
+ dk.itu.smdp.group11.ui.contentassist.antlr,
+ dk.itu.smdp.group11.ui.internal
+Bundle-Activator: dk.itu.smdp.group11.ui.internal.SurveyActivator

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+	<bundle bundleID="1018" class="dk.itu.smdp.group11.ui.internal.SurveyActivator" localization="OSGI-INF/l10n/bundle" name="dk.itu.smdp.group11.survey.ui" project="dk.itu.smdp.group11.survey.ui" provider="My Company"/>
+	<bundle bundleID="1009" localization="plugin" name="%pluginName" project="dk.itu.smdp.group11" provider="%providerName">
+		<library name="."/>
+	</bundle>
+	<bundle bundleID="1016" localization="OSGI-INF/l10n/bundle" name="dk.itu.smdp.group11.survey" project="dk.itu.smdp.group11.survey" provider="My Company"/>
+	<bundle bundleID="1017" localization="OSGI-INF/l10n/bundle" name="dk.itu.smdp.group11.survey.tests" project="dk.itu.smdp.group11.survey.tests" provider="My Company"/>
+</map>

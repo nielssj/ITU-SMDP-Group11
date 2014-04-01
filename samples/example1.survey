@@ -1,0 +1,59 @@
+Survey {
+	intro {
+		Text {
+			Body: "Welcome to Group 11's awesome survey! Yay!
+		}
+	}
+	outro {
+		Text {
+			Body: "Thank you for answering the survey :) See ya"
+		}	
+	}
+	questions [
+		Question {
+			content {
+				Text {
+					body "What does the fox say?"
+				}
+			}
+			answers [
+				Answer {
+					content {
+						Text {
+							body "Oooooo-ooo-ooo!"	
+						}
+					}
+					followup 
+						Question {
+							name "areyousure"
+							content {
+								Text {
+									body "Are you sure?"
+								}
+							}
+							answers [
+								Answer {
+									Text {
+										body "Yes"
+									}
+								},
+								Answer {
+									Text {
+										body "No"
+									}
+								}
+							]
+						}
+				},
+				Answer {
+					content {
+						Text {
+							body "Hatii-Hatii-Hoo!"	
+						}
+					}
+				}
+			]
+		}
+	]
+	
+}

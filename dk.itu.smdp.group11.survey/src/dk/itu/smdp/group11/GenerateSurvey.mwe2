@@ -14,8 +14,8 @@ Workflow {
 	bean = StandaloneSetup {
 		scanClassPath  = true
 		platformUri = "${runtimeProject}/.."
-		registerGeneratedEPackage = "dk.itu.smdp.group11.model/metamodel1.model.group11survey.Group11surveyPackage"
-		registerGenModelFile = "platform:/resource/dk.itu.smdp.group11/survey.genmodel"
+		registerGeneratedEPackage = "group11survey.Group11surveyPackage"
+		registerGenModelFile = "platform:/resource/dk.itu.smdp.group11/model/metamodel1.genmodel"
 	}
 
 	component = DirectoryCleaner {
