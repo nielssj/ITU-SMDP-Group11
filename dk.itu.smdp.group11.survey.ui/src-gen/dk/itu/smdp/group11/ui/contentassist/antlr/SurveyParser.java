@@ -37,30 +37,29 @@ public class SurveyParser extends AbstractContentAssistParser {
 			nameMappings = new HashMap<AbstractElement, String>() {
 				private static final long serialVersionUID = 1L;
 				{
+					put(grammarAccess.getSurveyAccess().getAlternatives_1(), "rule__Survey__Alternatives_1");
+					put(grammarAccess.getSurveyAccess().getAlternatives_5(), "rule__Survey__Alternatives_5");
 					put(grammarAccess.getEBooleanAccess().getAlternatives(), "rule__EBoolean__Alternatives");
 					put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
 					put(grammarAccess.getSurveyAccess().getGroup(), "rule__Survey__Group__0");
-					put(grammarAccess.getSurveyAccess().getGroup_9(), "rule__Survey__Group_9__0");
 					put(grammarAccess.getQuestionAccess().getGroup(), "rule__Question__Group__0");
-					put(grammarAccess.getQuestionAccess().getGroup_7(), "rule__Question__Group_7__0");
 					put(grammarAccess.getContentAccess().getGroup(), "rule__Content__Group__0");
-					put(grammarAccess.getContentAccess().getGroup_3(), "rule__Content__Group_3__0");
 					put(grammarAccess.getAnswerAccess().getGroup(), "rule__Answer__Group__0");
-					put(grammarAccess.getAnswerAccess().getGroup_2(), "rule__Answer__Group_2__0");
-					put(grammarAccess.getAnswerAccess().getGroup_5(), "rule__Answer__Group_5__0");
-					put(grammarAccess.getSurveyAccess().getIntroAssignment_3(), "rule__Survey__IntroAssignment_3");
-					put(grammarAccess.getSurveyAccess().getOutroAssignment_5(), "rule__Survey__OutroAssignment_5");
-					put(grammarAccess.getSurveyAccess().getQuestionsAssignment_8(), "rule__Survey__QuestionsAssignment_8");
-					put(grammarAccess.getSurveyAccess().getQuestionsAssignment_9_1(), "rule__Survey__QuestionsAssignment_9_1");
-					put(grammarAccess.getQuestionAccess().getIsExclusiveAssignment_0(), "rule__Question__IsExclusiveAssignment_0");
-					put(grammarAccess.getQuestionAccess().getIsOptionalAssignment_1(), "rule__Question__IsOptionalAssignment_1");
+					put(grammarAccess.getAnswerAccess().getGroup_1(), "rule__Answer__Group_1__0");
+					put(grammarAccess.getAnswerAccess().getGroup_3(), "rule__Answer__Group_3__0");
+					put(grammarAccess.getSurveyAccess().getIntroAssignment_2(), "rule__Survey__IntroAssignment_2");
+					put(grammarAccess.getSurveyAccess().getQuestionsAssignment_3(), "rule__Survey__QuestionsAssignment_3");
+					put(grammarAccess.getSurveyAccess().getQuestionsAssignment_4(), "rule__Survey__QuestionsAssignment_4");
+					put(grammarAccess.getSurveyAccess().getOutroAssignment_6(), "rule__Survey__OutroAssignment_6");
+					put(grammarAccess.getQuestionAccess().getIsExclusiveAssignment_1(), "rule__Question__IsExclusiveAssignment_1");
+					put(grammarAccess.getQuestionAccess().getIsOptionalAssignment_2(), "rule__Question__IsOptionalAssignment_2");
+					put(grammarAccess.getQuestionAccess().getContentAssignment_3(), "rule__Question__ContentAssignment_3");
+					put(grammarAccess.getQuestionAccess().getAnswersAssignment_5(), "rule__Question__AnswersAssignment_5");
 					put(grammarAccess.getQuestionAccess().getAnswersAssignment_6(), "rule__Question__AnswersAssignment_6");
-					put(grammarAccess.getQuestionAccess().getAnswersAssignment_7_1(), "rule__Question__AnswersAssignment_7_1");
-					put(grammarAccess.getQuestionAccess().getContentAssignment_10(), "rule__Question__ContentAssignment_10");
-					put(grammarAccess.getContentAccess().getBodyAssignment_3_1(), "rule__Content__BodyAssignment_3_1");
-					put(grammarAccess.getAnswerAccess().getIsFreeTextAssignment_2_1(), "rule__Answer__IsFreeTextAssignment_2_1");
-					put(grammarAccess.getAnswerAccess().getContentAssignment_4(), "rule__Answer__ContentAssignment_4");
-					put(grammarAccess.getAnswerAccess().getFollowupAssignment_5_1(), "rule__Answer__FollowupAssignment_5_1");
+					put(grammarAccess.getContentAccess().getBodyAssignment_1(), "rule__Content__BodyAssignment_1");
+					put(grammarAccess.getAnswerAccess().getIsFreeTextAssignment_1_1(), "rule__Answer__IsFreeTextAssignment_1_1");
+					put(grammarAccess.getAnswerAccess().getContentAssignment_2(), "rule__Answer__ContentAssignment_2");
+					put(grammarAccess.getAnswerAccess().getFollowupAssignment_3_1(), "rule__Answer__FollowupAssignment_3_1");
 				}
 			};
 		}

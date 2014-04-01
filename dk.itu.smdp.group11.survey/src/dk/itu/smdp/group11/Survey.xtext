@@ -5,39 +5,30 @@ import "platform:/resource/dk.itu.smdp.group11/model/metamodel1.ecore"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 Survey returns Survey:
-	'Survey'
-	'{'
-		'intro' intro=Content
-		'outro' outro=Content
-		'questions' '{' questions+=Question ( "," questions+=Question)* '}' 
-	'}';
+	'Survey' /* "<name>" */
+	('Intro') intro=Content
+	questions+=Question ( questions+=Question)*
+	('Outro') outro=Content;
 
 
-
+terminal WS:
+	(' '|'\t'|'\r'|'\n')+;
 
 Question returns Question:
-	(isExclusive?='isExclusive')?
-	(isOptional?='isOptional')?
-	'Question'
-	'{'
-		'answers' '{' answers+=Answer ( "," answers+=Answer)* '}' 
-		'content' content=Content
-	'}';
+	'Question' (isExclusive?='ex')? (isOptional?='opt')? content=Content
+	'('
+		answers+=Answer ( answers+=Answer)* 
+	')';
 
 Content returns Content:
 	{Content}
-	'Content'
-	'{'
-		('body' body=EString)?
-	'}';
+		(body=EString)?;
 
 Answer returns Answer:
-	'Answer'
-	'{'
-		('isFreeText' isFreeText=EString)?
-		'content' content=Content
-		('followup' followup=Question)?
-	'}';
+	'Answer' ('isFreeText' isFreeText=EString)? content=Content
+	('('
+		followup=Question
+	')')?;
 
 EBoolean returns ecore::EBoolean:
 	'true' | 'false';
