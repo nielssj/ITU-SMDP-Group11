@@ -21,6 +21,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Survey/questions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Survey/intro"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Survey/outro"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Survey/name"/>
     </genClasses>
     <genClasses ecoreClass="metamodel1.ecore#//Content">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Content/body"/>

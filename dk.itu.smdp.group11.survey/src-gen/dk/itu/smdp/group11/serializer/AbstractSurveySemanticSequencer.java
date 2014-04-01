@@ -55,7 +55,7 @@ public abstract class AbstractSurveySemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (isFreeText=EString? content=Content followup=Question?)
+	 *     (isFreeText?='free'? content=Content (followup+=Question followup+=Question*)?)
 	 */
 	protected void sequence_Answer(EObject context, Answer semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -82,7 +82,7 @@ public abstract class AbstractSurveySemanticSequencer extends AbstractDelegating
 	
 	/**
 	 * Constraint:
-	 *     (intro=Content questions+=Question questions+=Question* outro=Content)
+	 *     (name=EString intro=Content questions+=Question questions+=Question* outro=Content)
 	 */
 	protected void sequence_Survey(EObject context, Survey semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -140,7 +140,7 @@ public interface Group11surveyPackage extends EPackage {
 	int ANSWER__CONTENT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Followup</b></em>' containment reference.
+	 * The feature id for the '<em><b>Followup</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -213,13 +213,22 @@ public interface Group11surveyPackage extends EPackage {
 	int SURVEY__OUTRO = 2;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SURVEY__NAME = 3;
+
+	/**
 	 * The number of structural features of the '<em>Survey</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SURVEY_FEATURE_COUNT = 3;
+	int SURVEY_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Survey</em>' class.
@@ -344,10 +353,10 @@ public interface Group11surveyPackage extends EPackage {
 	EReference getAnswer_Content();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link group11survey.Answer#getFollowup <em>Followup</em>}'.
+	 * Returns the meta object for the containment reference list '{@link group11survey.Answer#getFollowup <em>Followup</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Followup</em>'.
+	 * @return the meta object for the containment reference list '<em>Followup</em>'.
 	 * @see group11survey.Answer#getFollowup()
 	 * @see #getAnswer()
 	 * @generated
@@ -355,11 +364,11 @@ public interface Group11surveyPackage extends EPackage {
 	EReference getAnswer_Followup();
 
 	/**
-	 * Returns the meta object for the attribute '{@link group11survey.Answer#getIsFreeText <em>Is Free Text</em>}'.
+	 * Returns the meta object for the attribute '{@link group11survey.Answer#isIsFreeText <em>Is Free Text</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Is Free Text</em>'.
-	 * @see group11survey.Answer#getIsFreeText()
+	 * @see group11survey.Answer#isIsFreeText()
 	 * @see #getAnswer()
 	 * @generated
 	 */
@@ -407,6 +416,17 @@ public interface Group11surveyPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSurvey_Outro();
+
+	/**
+	 * Returns the meta object for the attribute '{@link group11survey.Survey#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see group11survey.Survey#getName()
+	 * @see #getSurvey()
+	 * @generated
+	 */
+	EAttribute getSurvey_Name();
 
 	/**
 	 * Returns the meta object for class '{@link group11survey.Content <em>Content</em>}'.
@@ -513,7 +533,7 @@ public interface Group11surveyPackage extends EPackage {
 		EReference ANSWER__CONTENT = eINSTANCE.getAnswer_Content();
 
 		/**
-		 * The meta object literal for the '<em><b>Followup</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Followup</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -561,6 +581,14 @@ public interface Group11surveyPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SURVEY__OUTRO = eINSTANCE.getSurvey_Outro();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SURVEY__NAME = eINSTANCE.getSurvey_Name();
 
 		/**
 		 * The meta object literal for the '{@link group11survey.impl.ContentImpl <em>Content</em>}' class.

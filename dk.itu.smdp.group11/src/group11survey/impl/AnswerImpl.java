@@ -7,14 +7,18 @@ import group11survey.Content;
 import group11survey.Group11surveyPackage;
 import group11survey.Question;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,7 +29,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * <ul>
  *   <li>{@link group11survey.impl.AnswerImpl#getContent <em>Content</em>}</li>
  *   <li>{@link group11survey.impl.AnswerImpl#getFollowup <em>Followup</em>}</li>
- *   <li>{@link group11survey.impl.AnswerImpl#getIsFreeText <em>Is Free Text</em>}</li>
+ *   <li>{@link group11survey.impl.AnswerImpl#isIsFreeText <em>Is Free Text</em>}</li>
  * </ul>
  * </p>
  *
@@ -43,34 +47,34 @@ public class AnswerImpl extends MinimalEObjectImpl.Container implements Answer {
 	protected Content content;
 
 	/**
-	 * The cached value of the '{@link #getFollowup() <em>Followup</em>}' containment reference.
+	 * The cached value of the '{@link #getFollowup() <em>Followup</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getFollowup()
 	 * @generated
 	 * @ordered
 	 */
-	protected Question followup;
+	protected EList<Question> followup;
 
 	/**
-	 * The default value of the '{@link #getIsFreeText() <em>Is Free Text</em>}' attribute.
+	 * The default value of the '{@link #isIsFreeText() <em>Is Free Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIsFreeText()
+	 * @see #isIsFreeText()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String IS_FREE_TEXT_EDEFAULT = null;
+	protected static final boolean IS_FREE_TEXT_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #getIsFreeText() <em>Is Free Text</em>}' attribute.
+	 * The cached value of the '{@link #isIsFreeText() <em>Is Free Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getIsFreeText()
+	 * @see #isIsFreeText()
 	 * @generated
 	 * @ordered
 	 */
-	protected String isFreeText = IS_FREE_TEXT_EDEFAULT;
+	protected boolean isFreeText = IS_FREE_TEXT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -139,7 +143,10 @@ public class AnswerImpl extends MinimalEObjectImpl.Container implements Answer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Question getFollowup() {
+	public EList<Question> getFollowup() {
+		if (followup == null) {
+			followup = new EObjectContainmentEList<Question>(Question.class, this, Group11surveyPackage.ANSWER__FOLLOWUP);
+		}
 		return followup;
 	}
 
@@ -148,41 +155,7 @@ public class AnswerImpl extends MinimalEObjectImpl.Container implements Answer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetFollowup(Question newFollowup, NotificationChain msgs) {
-		Question oldFollowup = followup;
-		followup = newFollowup;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Group11surveyPackage.ANSWER__FOLLOWUP, oldFollowup, newFollowup);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setFollowup(Question newFollowup) {
-		if (newFollowup != followup) {
-			NotificationChain msgs = null;
-			if (followup != null)
-				msgs = ((InternalEObject)followup).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Group11surveyPackage.ANSWER__FOLLOWUP, null, msgs);
-			if (newFollowup != null)
-				msgs = ((InternalEObject)newFollowup).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - Group11surveyPackage.ANSWER__FOLLOWUP, null, msgs);
-			msgs = basicSetFollowup(newFollowup, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.ANSWER__FOLLOWUP, newFollowup, newFollowup));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getIsFreeText() {
+	public boolean isIsFreeText() {
 		return isFreeText;
 	}
 
@@ -191,8 +164,8 @@ public class AnswerImpl extends MinimalEObjectImpl.Container implements Answer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIsFreeText(String newIsFreeText) {
-		String oldIsFreeText = isFreeText;
+	public void setIsFreeText(boolean newIsFreeText) {
+		boolean oldIsFreeText = isFreeText;
 		isFreeText = newIsFreeText;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.ANSWER__IS_FREE_TEXT, oldIsFreeText, isFreeText));
@@ -209,7 +182,7 @@ public class AnswerImpl extends MinimalEObjectImpl.Container implements Answer {
 			case Group11surveyPackage.ANSWER__CONTENT:
 				return basicSetContent(null, msgs);
 			case Group11surveyPackage.ANSWER__FOLLOWUP:
-				return basicSetFollowup(null, msgs);
+				return ((InternalEList<?>)getFollowup()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -227,7 +200,7 @@ public class AnswerImpl extends MinimalEObjectImpl.Container implements Answer {
 			case Group11surveyPackage.ANSWER__FOLLOWUP:
 				return getFollowup();
 			case Group11surveyPackage.ANSWER__IS_FREE_TEXT:
-				return getIsFreeText();
+				return isIsFreeText();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -237,6 +210,7 @@ public class AnswerImpl extends MinimalEObjectImpl.Container implements Answer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -244,10 +218,11 @@ public class AnswerImpl extends MinimalEObjectImpl.Container implements Answer {
 				setContent((Content)newValue);
 				return;
 			case Group11surveyPackage.ANSWER__FOLLOWUP:
-				setFollowup((Question)newValue);
+				getFollowup().clear();
+				getFollowup().addAll((Collection<? extends Question>)newValue);
 				return;
 			case Group11surveyPackage.ANSWER__IS_FREE_TEXT:
-				setIsFreeText((String)newValue);
+				setIsFreeText((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -265,7 +240,7 @@ public class AnswerImpl extends MinimalEObjectImpl.Container implements Answer {
 				setContent((Content)null);
 				return;
 			case Group11surveyPackage.ANSWER__FOLLOWUP:
-				setFollowup((Question)null);
+				getFollowup().clear();
 				return;
 			case Group11surveyPackage.ANSWER__IS_FREE_TEXT:
 				setIsFreeText(IS_FREE_TEXT_EDEFAULT);
@@ -285,9 +260,9 @@ public class AnswerImpl extends MinimalEObjectImpl.Container implements Answer {
 			case Group11surveyPackage.ANSWER__CONTENT:
 				return content != null;
 			case Group11surveyPackage.ANSWER__FOLLOWUP:
-				return followup != null;
+				return followup != null && !followup.isEmpty();
 			case Group11surveyPackage.ANSWER__IS_FREE_TEXT:
-				return IS_FREE_TEXT_EDEFAULT == null ? isFreeText != null : !IS_FREE_TEXT_EDEFAULT.equals(isFreeText);
+				return isFreeText != IS_FREE_TEXT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

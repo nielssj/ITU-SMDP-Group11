@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/dk.itu.smdp.group11/src" modelPluginID="dk.itu.smdp.group11"
+    modelName="Metamodel1" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>metamodel1.ecore</foreignModel>
+  <genPackages prefix="Group11survey" disposableProviderFactory="true" ecorePackage="metamodel1.ecore#/">
+    <genClasses ecoreClass="metamodel1.ecore#//Question">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Question/answers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Question/content"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Question/isExclusive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Question/isOptional"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel1.ecore#//Answer">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Answer/content"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Answer/followup"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Answer/isFreeText"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel1.ecore#//Survey">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Survey/questions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Survey/intro"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Survey/outro"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel1.ecore#//Content">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Content/body"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

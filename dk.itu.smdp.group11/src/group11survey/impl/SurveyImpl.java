@@ -33,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link group11survey.impl.SurveyImpl#getQuestions <em>Questions</em>}</li>
  *   <li>{@link group11survey.impl.SurveyImpl#getIntro <em>Intro</em>}</li>
  *   <li>{@link group11survey.impl.SurveyImpl#getOutro <em>Outro</em>}</li>
+ *   <li>{@link group11survey.impl.SurveyImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -68,6 +69,26 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 	 * @ordered
 	 */
 	protected Content outro;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -191,6 +212,27 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.SURVEY__NAME, oldName, name));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -218,6 +260,8 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 				return getIntro();
 			case Group11surveyPackage.SURVEY__OUTRO:
 				return getOutro();
+			case Group11surveyPackage.SURVEY__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -241,6 +285,9 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 			case Group11surveyPackage.SURVEY__OUTRO:
 				setOutro((Content)newValue);
 				return;
+			case Group11surveyPackage.SURVEY__NAME:
+				setName((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -262,6 +309,9 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 			case Group11surveyPackage.SURVEY__OUTRO:
 				setOutro((Content)null);
 				return;
+			case Group11surveyPackage.SURVEY__NAME:
+				setName(NAME_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -280,8 +330,26 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 				return intro != null;
 			case Group11surveyPackage.SURVEY__OUTRO:
 				return outro != null;
+			case Group11surveyPackage.SURVEY__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
 	}
 
 } //SurveyImpl

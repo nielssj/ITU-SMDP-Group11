@@ -22,73 +22,64 @@ public class SurveyGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Survey");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cSurveyKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
-		private final Keyword cIntroKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
-		private final Keyword cIntroKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
-		private final Assignment cIntroAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cIntroContentParserRuleCall_2_0 = (RuleCall)cIntroAssignment_2.eContents().get(0);
-		private final Assignment cQuestionsAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cQuestionsQuestionParserRuleCall_3_0 = (RuleCall)cQuestionsAssignment_3.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameEStringParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Keyword cIntroKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cIntroAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cIntroContentParserRuleCall_3_0 = (RuleCall)cIntroAssignment_3.eContents().get(0);
 		private final Assignment cQuestionsAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cQuestionsQuestionParserRuleCall_4_0 = (RuleCall)cQuestionsAssignment_4.eContents().get(0);
-		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
-		private final Keyword cOutroKeyword_5_0 = (Keyword)cAlternatives_5.eContents().get(0);
-		private final Keyword cOutroKeyword_5_1 = (Keyword)cAlternatives_5.eContents().get(1);
-		private final Assignment cOutroAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cOutroContentParserRuleCall_6_0 = (RuleCall)cOutroAssignment_6.eContents().get(0);
+		private final Assignment cQuestionsAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cQuestionsQuestionParserRuleCall_5_0 = (RuleCall)cQuestionsAssignment_5.eContents().get(0);
+		private final Keyword cOutroKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cOutroAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cOutroContentParserRuleCall_7_0 = (RuleCall)cOutroAssignment_7.eContents().get(0);
 		
-		//Survey: / * "<name>" * / "Survey" ("Intro" | "intro") intro=Content questions+=Question questions+=Question* ("Outro" |
-		//	"outro") outro=Content;
+		//Survey:
+		//	"Survey" name=EString "Intro" intro=Content questions+=Question questions+=Question* "Outro" outro=Content;
 		public ParserRule getRule() { return rule; }
 
-		/// * "<name>" * / "Survey" ("Intro" | "intro") intro=Content questions+=Question questions+=Question* ("Outro" | "outro")
-		//outro=Content
+		//"Survey" name=EString "Intro" intro=Content questions+=Question questions+=Question* "Outro" outro=Content
 		public Group getGroup() { return cGroup; }
 
-		/// * "<name>" * / "Survey"
+		//"Survey"
 		public Keyword getSurveyKeyword_0() { return cSurveyKeyword_0; }
 
-		//"Intro" | "intro"
-		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		//name=EString
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+
+		//EString
+		public RuleCall getNameEStringParserRuleCall_1_0() { return cNameEStringParserRuleCall_1_0; }
 
 		//"Intro"
-		public Keyword getIntroKeyword_1_0() { return cIntroKeyword_1_0; }
-
-		//"intro"
-		public Keyword getIntroKeyword_1_1() { return cIntroKeyword_1_1; }
+		public Keyword getIntroKeyword_2() { return cIntroKeyword_2; }
 
 		//intro=Content
-		public Assignment getIntroAssignment_2() { return cIntroAssignment_2; }
+		public Assignment getIntroAssignment_3() { return cIntroAssignment_3; }
 
 		//Content
-		public RuleCall getIntroContentParserRuleCall_2_0() { return cIntroContentParserRuleCall_2_0; }
+		public RuleCall getIntroContentParserRuleCall_3_0() { return cIntroContentParserRuleCall_3_0; }
 
 		//questions+=Question
-		public Assignment getQuestionsAssignment_3() { return cQuestionsAssignment_3; }
-
-		//Question
-		public RuleCall getQuestionsQuestionParserRuleCall_3_0() { return cQuestionsQuestionParserRuleCall_3_0; }
-
-		//questions+=Question*
 		public Assignment getQuestionsAssignment_4() { return cQuestionsAssignment_4; }
 
 		//Question
 		public RuleCall getQuestionsQuestionParserRuleCall_4_0() { return cQuestionsQuestionParserRuleCall_4_0; }
 
-		//"Outro" | "outro"
-		public Alternatives getAlternatives_5() { return cAlternatives_5; }
+		//questions+=Question*
+		public Assignment getQuestionsAssignment_5() { return cQuestionsAssignment_5; }
+
+		//Question
+		public RuleCall getQuestionsQuestionParserRuleCall_5_0() { return cQuestionsQuestionParserRuleCall_5_0; }
 
 		//"Outro"
-		public Keyword getOutroKeyword_5_0() { return cOutroKeyword_5_0; }
-
-		//"outro"
-		public Keyword getOutroKeyword_5_1() { return cOutroKeyword_5_1; }
+		public Keyword getOutroKeyword_6() { return cOutroKeyword_6; }
 
 		//outro=Content
-		public Assignment getOutroAssignment_6() { return cOutroAssignment_6; }
+		public Assignment getOutroAssignment_7() { return cOutroAssignment_7; }
 
 		//Content
-		public RuleCall getOutroContentParserRuleCall_6_0() { return cOutroContentParserRuleCall_6_0; }
+		public RuleCall getOutroContentParserRuleCall_7_0() { return cOutroContentParserRuleCall_7_0; }
 	}
 
 	public class QuestionElements extends AbstractParserRuleElementFinder {
@@ -183,39 +174,33 @@ public class SurveyGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Answer");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cAnswerKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
-		private final Keyword cIsFreeTextKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
-		private final Assignment cIsFreeTextAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
-		private final RuleCall cIsFreeTextEStringParserRuleCall_1_1_0 = (RuleCall)cIsFreeTextAssignment_1_1.eContents().get(0);
+		private final Assignment cIsFreeTextAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cIsFreeTextFreeKeyword_1_0 = (Keyword)cIsFreeTextAssignment_1.eContents().get(0);
 		private final Assignment cContentAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cContentContentParserRuleCall_2_0 = (RuleCall)cContentAssignment_2.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cLeftParenthesisKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cFollowupAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
 		private final RuleCall cFollowupQuestionParserRuleCall_3_1_0 = (RuleCall)cFollowupAssignment_3_1.eContents().get(0);
-		private final Keyword cRightParenthesisKeyword_3_2 = (Keyword)cGroup_3.eContents().get(2);
+		private final Assignment cFollowupAssignment_3_2 = (Assignment)cGroup_3.eContents().get(2);
+		private final RuleCall cFollowupQuestionParserRuleCall_3_2_0 = (RuleCall)cFollowupAssignment_3_2.eContents().get(0);
+		private final Keyword cRightParenthesisKeyword_3_3 = (Keyword)cGroup_3.eContents().get(3);
 		
 		//Answer:
-		//	"Answer" ("isFreeText" isFreeText=EString)? content=Content ("(" followup=Question ")")?;
+		//	"Answer" isFreeText?="free"? content=Content ("(" followup+=Question followup+=Question* ")")?;
 		public ParserRule getRule() { return rule; }
 
-		//"Answer" ("isFreeText" isFreeText=EString)? content=Content ("(" followup=Question ")")?
+		//"Answer" isFreeText?="free"? content=Content ("(" followup+=Question followup+=Question* ")")?
 		public Group getGroup() { return cGroup; }
 
 		//"Answer"
 		public Keyword getAnswerKeyword_0() { return cAnswerKeyword_0; }
 
-		//("isFreeText" isFreeText=EString)?
-		public Group getGroup_1() { return cGroup_1; }
+		//isFreeText?="free"?
+		public Assignment getIsFreeTextAssignment_1() { return cIsFreeTextAssignment_1; }
 
-		//"isFreeText"
-		public Keyword getIsFreeTextKeyword_1_0() { return cIsFreeTextKeyword_1_0; }
-
-		//isFreeText=EString
-		public Assignment getIsFreeTextAssignment_1_1() { return cIsFreeTextAssignment_1_1; }
-
-		//EString
-		public RuleCall getIsFreeTextEStringParserRuleCall_1_1_0() { return cIsFreeTextEStringParserRuleCall_1_1_0; }
+		//"free"
+		public Keyword getIsFreeTextFreeKeyword_1_0() { return cIsFreeTextFreeKeyword_1_0; }
 
 		//content=Content
 		public Assignment getContentAssignment_2() { return cContentAssignment_2; }
@@ -223,40 +208,26 @@ public class SurveyGrammarAccess extends AbstractGrammarElementFinder {
 		//Content
 		public RuleCall getContentContentParserRuleCall_2_0() { return cContentContentParserRuleCall_2_0; }
 
-		//("(" followup=Question ")")?
+		//("(" followup+=Question followup+=Question* ")")?
 		public Group getGroup_3() { return cGroup_3; }
 
 		//"("
 		public Keyword getLeftParenthesisKeyword_3_0() { return cLeftParenthesisKeyword_3_0; }
 
-		//followup=Question
+		//followup+=Question
 		public Assignment getFollowupAssignment_3_1() { return cFollowupAssignment_3_1; }
 
 		//Question
 		public RuleCall getFollowupQuestionParserRuleCall_3_1_0() { return cFollowupQuestionParserRuleCall_3_1_0; }
 
+		//followup+=Question*
+		public Assignment getFollowupAssignment_3_2() { return cFollowupAssignment_3_2; }
+
+		//Question
+		public RuleCall getFollowupQuestionParserRuleCall_3_2_0() { return cFollowupQuestionParserRuleCall_3_2_0; }
+
 		//")"
-		public Keyword getRightParenthesisKeyword_3_2() { return cRightParenthesisKeyword_3_2; }
-	}
-
-	public class EBooleanElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EBoolean");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cTrueKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cFalseKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		
-		//EBoolean returns ecore::EBoolean:
-		//	"true" | "false";
-		public ParserRule getRule() { return rule; }
-
-		//"true" | "false"
-		public Alternatives getAlternatives() { return cAlternatives; }
-
-		//"true"
-		public Keyword getTrueKeyword_0() { return cTrueKeyword_0; }
-
-		//"false"
-		public Keyword getFalseKeyword_1() { return cFalseKeyword_1; }
+		public Keyword getRightParenthesisKeyword_3_3() { return cRightParenthesisKeyword_3_3; }
 	}
 
 	public class EStringElements extends AbstractParserRuleElementFinder {
@@ -281,11 +252,9 @@ public class SurveyGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	private SurveyElements pSurvey;
-	private TerminalRule tWS;
 	private QuestionElements pQuestion;
 	private ContentElements pContent;
 	private AnswerElements pAnswer;
-	private EBooleanElements pEBoolean;
 	private EStringElements pEString;
 	
 	private final Grammar grammar;
@@ -326,8 +295,8 @@ public class SurveyGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//Survey: / * "<name>" * / "Survey" ("Intro" | "intro") intro=Content questions+=Question questions+=Question* ("Outro" |
-	//	"outro") outro=Content;
+	//Survey:
+	//	"Survey" name=EString "Intro" intro=Content questions+=Question questions+=Question* "Outro" outro=Content;
 	public SurveyElements getSurveyAccess() {
 		return (pSurvey != null) ? pSurvey : (pSurvey = new SurveyElements());
 	}
@@ -335,12 +304,6 @@ public class SurveyGrammarAccess extends AbstractGrammarElementFinder {
 	public ParserRule getSurveyRule() {
 		return getSurveyAccess().getRule();
 	}
-
-	//terminal WS:
-	//	(" " | "\t" | "\r" | "\n")+;
-	public TerminalRule getWSRule() {
-		return (tWS != null) ? tWS : (tWS = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "WS"));
-	} 
 
 	//Question:
 	//	"Question" isExclusive?="ex"? isOptional?="opt"? content=Content "(" answers+=Answer answers+=Answer* ")";
@@ -363,23 +326,13 @@ public class SurveyGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//Answer:
-	//	"Answer" ("isFreeText" isFreeText=EString)? content=Content ("(" followup=Question ")")?;
+	//	"Answer" isFreeText?="free"? content=Content ("(" followup+=Question followup+=Question* ")")?;
 	public AnswerElements getAnswerAccess() {
 		return (pAnswer != null) ? pAnswer : (pAnswer = new AnswerElements());
 	}
 	
 	public ParserRule getAnswerRule() {
 		return getAnswerAccess().getRule();
-	}
-
-	//EBoolean returns ecore::EBoolean:
-	//	"true" | "false";
-	public EBooleanElements getEBooleanAccess() {
-		return (pEBoolean != null) ? pEBoolean : (pEBoolean = new EBooleanElements());
-	}
-	
-	public ParserRule getEBooleanRule() {
-		return getEBooleanAccess().getRule();
 	}
 
 	//EString returns ecore::EString:
@@ -421,6 +374,12 @@ public class SurveyGrammarAccess extends AbstractGrammarElementFinder {
 	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
 	public TerminalRule getSL_COMMENTRule() {
 		return gaTerminals.getSL_COMMENTRule();
+	} 
+
+	//terminal WS:
+	//	(" " | "\t" | "\r" | "\n")+;
+	public TerminalRule getWSRule() {
+		return gaTerminals.getWSRule();
 	} 
 
 	//terminal ANY_OTHER:
