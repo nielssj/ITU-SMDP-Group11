@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map>
+	<bundle bundleID="1012" localization="OSGI-INF/l10n/bundle" name="dk.itu.smdp.group11.survey.ui" project="dk.itu.smdp.group11.survey.ui" provider="My Company"/>
+	<bundle bundleID="1009" localization="OSGI-INF/l10n/bundle" name="dk.itu.smdp.group11" project="dk.itu.smdp.group11"/>
+	<bundle bundleID="1010" localization="OSGI-INF/l10n/bundle" name="dk.itu.smdp.group11.survey" project="dk.itu.smdp.group11.survey" provider="My Company"/>
+	<bundle bundleID="1011" localization="OSGI-INF/l10n/bundle" name="dk.itu.smdp.group11.survey.tests" project="dk.itu.smdp.group11.survey.tests" provider="My Company"/>
+</map>
