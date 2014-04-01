@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ASCII"?>
+<dk.itu.smdp.group11.survey:Survey
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:dk.itu.smdp.group11.survey="http://itu.dk"
+    xsi:schemaLocation="http://itu.dk metamodel1.ecore">
+  <questions>
+    <answers
+        followup="//@questions.1"
+        isFreeText="">
+      <content
+          xsi:type="dk.itu.smdp.group11.survey:Text"
+          body="Oooooo-ooo-ooo!"/>
+    </answers>
+    <answers>
+      <content
+          xsi:type="dk.itu.smdp.group11.survey:Text"
+          body="Hatii-Hatii-Hoo!"/>
+    </answers>
+    <content
+        xsi:type="dk.itu.smdp.group11.survey:Text"
+        body="What does the fox say?"/>
+  </questions>
+  <questions
+      isExclusive="true"
+      isHidden="true">
+    <answers
+        isFreeText="">
+      <content
+          xsi:type="dk.itu.smdp.group11.survey:Text"
+          body="Yes"/>
+    </answers>
+    <answers>
+      <content
+          xsi:type="dk.itu.smdp.group11.survey:Text"
+          body="No"/>
+    </answers>
+    <content
+        xsi:type="dk.itu.smdp.group11.survey:Text"
+        body="Are you sure?">
+      <nested
+          xsi:type="dk.itu.smdp.group11.survey:Image"
+          url="http://url.to.sceptical.dude.com"/>
+    </content>
+  </questions>
+  <intro xsi:type="dk.itu.smdp.group11.survey:Text"
+      body="Welcome to Group 11's aweomse survey! Yay!"/>
+  <outro xsi:type="dk.itu.smdp.group11.survey:Text"
+      body="Thank you for answering the survey :) See ya"/>
+</dk.itu.smdp.group11.survey:Survey>
