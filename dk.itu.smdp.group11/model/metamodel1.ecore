@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="group11survey" nsURI="http://itu.dk" nsPrefix="dk.itu.smdp.group11.survey">
-  <eClassifiers xsi:type="ecore:EClass" name="Question">
+  <eClassifiers xsi:type="ecore:EClass" name="Question" eSuperTypes="#//Content">
     <eStructuralFeatures xsi:type="ecore:EReference" name="answers" lowerBound="1"
         upperBound="-1" eType="#//Answer" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="content" lowerBound="1"
-        eType="#//Content" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isExclusive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="isOptional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         unsettable="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isExclusive" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Answer">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="content" lowerBound="1"
-        eType="#//Content" containment="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Answer" eSuperTypes="#//Content">
     <eStructuralFeatures xsi:type="ecore:EReference" name="followup" upperBound="-1"
-        eType="#//Question" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isFreeText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+        eType="#//Question"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Survey">
     <eStructuralFeatures xsi:type="ecore:EReference" name="questions" lowerBound="1"
         upperBound="-1" eType="#//Question" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="intro" lowerBound="1" eType="#//Content"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outro" lowerBound="1" eType="#//Content"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="intro" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="outro" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Content">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isFreeText" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Item" eSuperTypes="#//Content"/>
+  <eClassifiers xsi:type="ecore:EClass" name="TableQuestion" eSuperTypes="#//Question">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" lowerBound="1" upperBound="-1"
+        eType="#//Item" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
