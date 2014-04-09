@@ -9,6 +9,7 @@ INDEX VERSION 1.126+/home/niels/git/ITU-SMDP-Group11/.metadata/.plugins/org.ecli
 289056324.index
 3492931617.index
 3422984410.index
+3730423411.index
 4187567176.index
 1088193677.index
 4013720813.index
@@ -19,6 +20,7 @@ INDEX VERSION 1.126+/home/niels/git/ITU-SMDP-Group11/.metadata/.plugins/org.ecli
 4140760316.index
 1571641449.index
 696614861.index
+1650047446.index
 2339684947.index
 1731331261.index
 3554191298.index
@@ -27,6 +29,7 @@ INDEX VERSION 1.126+/home/niels/git/ITU-SMDP-Group11/.metadata/.plugins/org.ecli
 3429905684.index
 614250431.index
 3599920251.index
+1113708818.index
 1031280772.index
 2160898606.index
 3741328686.index
