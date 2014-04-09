@@ -4,8 +4,6 @@ package group11survey;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Question</b></em>'.
@@ -15,9 +13,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link group11survey.Question#getAnswers <em>Answers</em>}</li>
- *   <li>{@link group11survey.Question#getContent <em>Content</em>}</li>
- *   <li>{@link group11survey.Question#isIsExclusive <em>Is Exclusive</em>}</li>
  *   <li>{@link group11survey.Question#isIsOptional <em>Is Optional</em>}</li>
+ *   <li>{@link group11survey.Question#isIsExclusive <em>Is Exclusive</em>}</li>
+ *   <li>{@link group11survey.Question#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -25,7 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Question extends EObject {
+public interface Question extends Content {
 	/**
 	 * Returns the value of the '<em><b>Answers</b></em>' containment reference list.
 	 * The list contents are of type {@link group11survey.Answer}.
@@ -41,32 +39,6 @@ public interface Question extends EObject {
 	 * @generated
 	 */
 	EList<Answer> getAnswers();
-
-	/**
-	 * Returns the value of the '<em><b>Content</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Content</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Content</em>' containment reference.
-	 * @see #setContent(Content)
-	 * @see group11survey.Group11surveyPackage#getQuestion_Content()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
-	Content getContent();
-
-	/**
-	 * Sets the value of the '{@link group11survey.Question#getContent <em>Content</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Content</em>' containment reference.
-	 * @see #getContent()
-	 * @generated
-	 */
-	void setContent(Content value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Exclusive</b></em>' attribute.
@@ -93,6 +65,32 @@ public interface Question extends EObject {
 	 * @generated
 	 */
 	void setIsExclusive(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see group11survey.Group11surveyPackage#getQuestion_Name()
+	 * @model
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link group11survey.Question#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Is Optional</b></em>' attribute.

@@ -69,12 +69,14 @@ public class Group11surveySwitch<T> extends Switch<T> {
 			case Group11surveyPackage.QUESTION: {
 				Question question = (Question)theEObject;
 				T result = caseQuestion(question);
+				if (result == null) result = caseContent(question);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case Group11surveyPackage.ANSWER: {
 				Answer answer = (Answer)theEObject;
 				T result = caseAnswer(answer);
+				if (result == null) result = caseContent(answer);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -87,6 +89,21 @@ public class Group11surveySwitch<T> extends Switch<T> {
 			case Group11surveyPackage.CONTENT: {
 				Content content = (Content)theEObject;
 				T result = caseContent(content);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Group11surveyPackage.ITEM: {
+				Item item = (Item)theEObject;
+				T result = caseItem(item);
+				if (result == null) result = caseContent(item);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case Group11surveyPackage.TABLE_QUESTION: {
+				TableQuestion tableQuestion = (TableQuestion)theEObject;
+				T result = caseTableQuestion(tableQuestion);
+				if (result == null) result = caseQuestion(tableQuestion);
+				if (result == null) result = caseContent(tableQuestion);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -151,6 +168,36 @@ public class Group11surveySwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseContent(Content object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Item</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Item</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseItem(Item object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Table Question</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Table Question</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTableQuestion(TableQuestion object) {
 		return null;
 	}
 

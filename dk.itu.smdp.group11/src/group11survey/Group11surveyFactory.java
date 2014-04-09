@@ -58,6 +58,24 @@ public interface Group11surveyFactory extends EFactory {
 	Content createContent();
 
 	/**
+	 * Returns a new object of class '<em>Item</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Item</em>'.
+	 * @generated
+	 */
+	Item createItem();
+
+	/**
+	 * Returns a new object of class '<em>Table Question</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Table Question</em>'.
+	 * @generated
+	 */
+	TableQuestion createTableQuestion();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

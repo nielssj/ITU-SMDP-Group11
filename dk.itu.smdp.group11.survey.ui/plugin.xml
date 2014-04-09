@@ -6,48 +6,48 @@
     <extension
             point="org.eclipse.ui.editors">
         <editor
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
             contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
             default="true"
             extensions="survey"
-            id="dk.itu.smdp.group11.Survey"
+            id="dk.itu.smdp.group11.survey.Survey"
             name="Survey Editor">
         </editor>
     </extension>
     <extension
         point="org.eclipse.ui.handlers">
         <handler
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
             commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
             <activeWhen>
                 <reference
-                    definitionId="dk.itu.smdp.group11.Survey.Editor.opened">
+                    definitionId="dk.itu.smdp.group11.survey.Survey.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
         <handler
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
-            commandId="dk.itu.smdp.group11.Survey.validate">
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="dk.itu.smdp.group11.survey.Survey.validate">
          <activeWhen>
             <reference
-                    definitionId="dk.itu.smdp.group11.Survey.Editor.opened">
+                    definitionId="dk.itu.smdp.group11.survey.Survey.Editor.opened">
             </reference>
          </activeWhen>
       	</handler>
       	<!-- copy qualified name -->
         <handler
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedNameHandler"
             commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName">
             <activeWhen>
-				<reference definitionId="dk.itu.smdp.group11.Survey.Editor.opened" />
+				<reference definitionId="dk.itu.smdp.group11.survey.Survey.Editor.opened" />
             </activeWhen>
         </handler>
         <handler
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedNameHandler"
             commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.OutlineCopyQualifiedName">
             <activeWhen>
             	<and>
-            		<reference definitionId="dk.itu.smdp.group11.Survey.XtextEditor.opened" />
+            		<reference definitionId="dk.itu.smdp.group11.survey.Survey.XtextEditor.opened" />
 	                <iterate>
 						<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 					</iterate>
@@ -56,22 +56,22 @@
         </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
-        <definition id="dk.itu.smdp.group11.Survey.Editor.opened">
+        <definition id="dk.itu.smdp.group11.survey.Survey.Editor.opened">
             <and>
                 <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="dk.itu.smdp.group11.Survey" 
+                        value="dk.itu.smdp.group11.survey.Survey" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
         </definition>
-        <definition id="dk.itu.smdp.group11.Survey.XtextEditor.opened">
+        <definition id="dk.itu.smdp.group11.survey.Survey.XtextEditor.opened">
             <and>
                 <reference definitionId="isXtextEditorActive"/>
                 <with variable="activeEditor">
                     <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
-                        value="dk.itu.smdp.group11.Survey" 
+                        value="dk.itu.smdp.group11.survey.Survey" 
                         forcePluginActivation="true"/>
                 </with>        
             </and>
@@ -80,33 +80,33 @@
     <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="dk.itu.smdp.group11.Survey"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="dk.itu.smdp.group11.survey.Survey"
             name="Survey">
-            <keywordReference id="dk.itu.smdp.group11.ui.keyword_Survey"/>
+            <keywordReference id="dk.itu.smdp.group11.survey.ui.keyword_Survey"/>
         </page>
         <page
-            category="dk.itu.smdp.group11.Survey"
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
-            id="dk.itu.smdp.group11.Survey.coloring"
+            category="dk.itu.smdp.group11.survey.Survey"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="dk.itu.smdp.group11.survey.Survey.coloring"
             name="Syntax Coloring">
-            <keywordReference id="dk.itu.smdp.group11.ui.keyword_Survey"/>
+            <keywordReference id="dk.itu.smdp.group11.survey.ui.keyword_Survey"/>
         </page>
         <page
-            category="dk.itu.smdp.group11.Survey"
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
-            id="dk.itu.smdp.group11.Survey.templates"
+            category="dk.itu.smdp.group11.survey.Survey"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="dk.itu.smdp.group11.survey.Survey.templates"
             name="Templates">
-            <keywordReference id="dk.itu.smdp.group11.ui.keyword_Survey"/>
+            <keywordReference id="dk.itu.smdp.group11.survey.ui.keyword_Survey"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
-            id="dk.itu.smdp.group11.Survey"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="dk.itu.smdp.group11.survey.Survey"
             name="Survey">
-            <keywordReference id="dk.itu.smdp.group11.ui.keyword_Survey"/>
+            <keywordReference id="dk.itu.smdp.group11.survey.ui.keyword_Survey"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -116,14 +116,14 @@
     <extension
         point="org.eclipse.ui.keywords">
         <keyword
-            id="dk.itu.smdp.group11.ui.keyword_Survey"
+            id="dk.itu.smdp.group11.survey.ui.keyword_Survey"
             label="Survey"/>
     </extension>
     <extension
          point="org.eclipse.ui.commands">
       <command
             description="Trigger expensive validation"
-            id="dk.itu.smdp.group11.Survey.validate"
+            id="dk.itu.smdp.group11.survey.Survey.validate"
             name="Validate">
       </command>
       <!-- copy qualified name -->
@@ -144,12 +144,12 @@
         <menuContribution
             locationURI="popup:#TextEditorContext?after=group.edit">
              <command
-                 commandId="dk.itu.smdp.group11.Survey.validate"
+                 commandId="dk.itu.smdp.group11.survey.Survey.validate"
                  style="push"
                  tooltip="Trigger expensive validation">
             <visibleWhen checkEnabled="false">
                 <reference
-                    definitionId="dk.itu.smdp.group11.Survey.Editor.opened">
+                    definitionId="dk.itu.smdp.group11.survey.Survey.Editor.opened">
                 </reference>
             </visibleWhen>
          </command>  
@@ -159,7 +159,7 @@
          	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName" 
          		style="push" tooltip="Copy Qualified Name">
             	<visibleWhen checkEnabled="false">
-                	<reference definitionId="dk.itu.smdp.group11.Survey.Editor.opened" />
+                	<reference definitionId="dk.itu.smdp.group11.survey.Survey.Editor.opened" />
             	</visibleWhen>
          	</command>  
          </menuContribution>
@@ -167,7 +167,7 @@
          	<command commandId="org.eclipse.xtext.ui.editor.copyqualifiedname.EditorCopyQualifiedName"
             	style="push" tooltip="Copy Qualified Name">
             	<visibleWhen checkEnabled="false">
-                	<reference definitionId="dk.itu.smdp.group11.Survey.Editor.opened" />
+                	<reference definitionId="dk.itu.smdp.group11.survey.Survey.Editor.opened" />
             	</visibleWhen>
          	</command>  
          </menuContribution>
@@ -176,7 +176,7 @@
 				style="push" tooltip="Copy Qualified Name">
          		<visibleWhen checkEnabled="false">
 	            	<and>
-	            		<reference definitionId="dk.itu.smdp.group11.Survey.XtextEditor.opened" />
+	            		<reference definitionId="dk.itu.smdp.group11.survey.Survey.XtextEditor.opened" />
 						<iterate>
 							<adapt type="org.eclipse.xtext.ui.editor.outline.IOutlineNode" />
 						</iterate>
@@ -189,7 +189,7 @@
 		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
 			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
 				<visibleWhen checkEnabled="false">
-                	<reference definitionId="dk.itu.smdp.group11.Survey.Editor.opened">
+                	<reference definitionId="dk.itu.smdp.group11.survey.Survey.Editor.opened">
                 	</reference>
             	</visibleWhen>
 			</command>
@@ -197,11 +197,11 @@
 	</extension>
 	<extension point="org.eclipse.ui.handlers">
 	    <handler
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
             commandId="org.eclipse.xtext.ui.editor.FindReferences">
             <activeWhen>
                 <reference
-                    definitionId="dk.itu.smdp.group11.Survey.Editor.opened">
+                    definitionId="dk.itu.smdp.group11.survey.Survey.Editor.opened">
                 </reference>
             </activeWhen>
         </handler>
@@ -212,19 +212,19 @@
 	<extension
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
-			class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
 			type="survey">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
         <resourceServiceProvider
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
             uriExtension="survey">
         </resourceServiceProvider>
     </extension>
 
 
-	<!-- marker definitions for dk.itu.smdp.group11.Survey -->
+	<!-- marker definitions for dk.itu.smdp.group11.survey.Survey -->
 	<extension
 	        id="survey.check.fast"
 	        name="Survey Problem"
@@ -250,27 +250,27 @@
    <extension
          point="org.eclipse.xtext.builder.participant">
       <participant
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant">
       </participant>
    </extension>
    <extension
             point="org.eclipse.ui.preferencePages">
         <page
-            category="dk.itu.smdp.group11.Survey"
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="dk.itu.smdp.group11.Survey.compiler.preferencePage"
+            category="dk.itu.smdp.group11.survey.Survey"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="dk.itu.smdp.group11.survey.Survey.compiler.preferencePage"
             name="Compiler">
-            <keywordReference id="dk.itu.smdp.group11.ui.keyword_Survey"/>
+            <keywordReference id="dk.itu.smdp.group11.survey.ui.keyword_Survey"/>
         </page>
     </extension>
     <extension
             point="org.eclipse.ui.propertyPages">
         <page
-            category="dk.itu.smdp.group11.Survey"
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
-            id="dk.itu.smdp.group11.Survey.compiler.propertyPage"
+            category="dk.itu.smdp.group11.survey.Survey"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.builder.preferences.BuilderPreferencePage"
+            id="dk.itu.smdp.group11.survey.Survey.compiler.propertyPage"
             name="Compiler">
-            <keywordReference id="dk.itu.smdp.group11.ui.keyword_Survey"/>
+            <keywordReference id="dk.itu.smdp.group11.survey.ui.keyword_Survey"/>
             <enabledWhen>
 	            <adapt type="org.eclipse.core.resources.IProject"/>
 			</enabledWhen>
@@ -282,11 +282,11 @@
 	<extension
 		point="org.eclipse.ui.handlers">
 		<handler 
-			class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
 			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
 			<activeWhen>
 				<reference
-					definitionId="dk.itu.smdp.group11.Survey.Editor.opened">
+					definitionId="dk.itu.smdp.group11.survey.Survey.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -306,33 +306,33 @@
 				style="push"
 				tooltip="Open Quick Outline">
 				<visibleWhen checkEnabled="false">
-					<reference definitionId="dk.itu.smdp.group11.Survey.Editor.opened"/>
+					<reference definitionId="dk.itu.smdp.group11.survey.Survey.Editor.opened"/>
 				</visibleWhen>
 			</command>
 		</menuContribution>
 	</extension>
-    <!-- quickfix marker resolution generator for dk.itu.smdp.group11.Survey -->
+    <!-- quickfix marker resolution generator for dk.itu.smdp.group11.survey.Survey -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">
         <markerResolutionGenerator
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="dk.itu.smdp.group11.ui.survey.check.fast">
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="dk.itu.smdp.group11.survey.ui.survey.check.fast">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
             </attribute>
         </markerResolutionGenerator>
         <markerResolutionGenerator
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="dk.itu.smdp.group11.ui.survey.check.normal">
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="dk.itu.smdp.group11.survey.ui.survey.check.normal">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
             </attribute>
         </markerResolutionGenerator>
         <markerResolutionGenerator
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
-            markerType="dk.itu.smdp.group11.ui.survey.check.expensive">
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="dk.itu.smdp.group11.survey.ui.survey.check.expensive">
             <attribute
                 name="FIXABLE_KEY"
                 value="true">
@@ -342,11 +342,11 @@
    	<!-- Rename Refactoring -->
 	<extension point="org.eclipse.ui.handlers">
 		<handler 
-			class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
+			class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.DefaultRenameElementHandler"
 			commandId="org.eclipse.xtext.ui.refactoring.RenameElement">
 			<activeWhen>
 				<reference
-					definitionId="dk.itu.smdp.group11.Survey.Editor.opened">
+					definitionId="dk.itu.smdp.group11.survey.Survey.Editor.opened">
 				</reference>
 			</activeWhen>
 		</handler>
@@ -358,7 +358,7 @@
                style="push">
             <visibleWhen checkEnabled="false">
                <reference
-                     definitionId="dk.itu.smdp.group11.Survey.Editor.opened">
+                     definitionId="dk.itu.smdp.group11.survey.Survey.Editor.opened">
                </reference>
             </visibleWhen>
          </command>
@@ -366,29 +366,29 @@
    </extension>
    <extension point="org.eclipse.ui.preferencePages">
 	    <page
-	        category="dk.itu.smdp.group11.Survey"
-	        class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
-	        id="dk.itu.smdp.group11.Survey.refactoring"
+	        category="dk.itu.smdp.group11.survey.Survey"
+	        class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferencePage"
+	        id="dk.itu.smdp.group11.survey.Survey.refactoring"
 	        name="Refactoring">
-	        <keywordReference id="dk.itu.smdp.group11.ui.keyword_Survey"/>
+	        <keywordReference id="dk.itu.smdp.group11.survey.ui.keyword_Survey"/>
 	    </page>
 	</extension>
 
   <extension point="org.eclipse.compare.contentViewers">
-    <viewer id="dk.itu.smdp.group11.Survey.compare.contentViewers"
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+    <viewer id="dk.itu.smdp.group11.survey.Survey.compare.contentViewers"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="survey">
     </viewer>
   </extension>
   <extension point="org.eclipse.compare.contentMergeViewers">
-    <viewer id="dk.itu.smdp.group11.Survey.compare.contentMergeViewers"
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+    <viewer id="dk.itu.smdp.group11.survey.Survey.compare.contentMergeViewers"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
             extensions="survey" label="Survey Compare">
      </viewer>
   </extension>
   <extension point="org.eclipse.ui.editors.documentProviders">
-    <provider id="dk.itu.smdp.group11.Survey.editors.documentProviders"
-            class="dk.itu.smdp.group11.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+    <provider id="dk.itu.smdp.group11.survey.Survey.editors.documentProviders"
+            class="dk.itu.smdp.group11.survey.ui.SurveyExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
             extensions="survey">
     </provider>
   </extension>

@@ -19,8 +19,8 @@ Require-Bundle: dk.itu.smdp.group11.survey;visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: dk.itu.smdp.group11.ui.quickfix,
- dk.itu.smdp.group11.ui.contentassist,
- dk.itu.smdp.group11.ui.contentassist.antlr,
- dk.itu.smdp.group11.ui.internal
-Bundle-Activator: dk.itu.smdp.group11.ui.internal.SurveyActivator
+Export-Package: dk.itu.smdp.group11.survey.ui.quickfix,
+ dk.itu.smdp.group11.survey.ui.contentassist,
+ dk.itu.smdp.group11.survey.ui.contentassist.antlr,
+ dk.itu.smdp.group11.survey.ui.internal
+Bundle-Activator: dk.itu.smdp.group11.survey.ui.internal.SurveyActivator

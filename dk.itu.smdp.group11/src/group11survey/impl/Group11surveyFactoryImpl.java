@@ -60,6 +60,8 @@ public class Group11surveyFactoryImpl extends EFactoryImpl implements Group11sur
 			case Group11surveyPackage.ANSWER: return createAnswer();
 			case Group11surveyPackage.SURVEY: return createSurvey();
 			case Group11surveyPackage.CONTENT: return createContent();
+			case Group11surveyPackage.ITEM: return createItem();
+			case Group11surveyPackage.TABLE_QUESTION: return createTableQuestion();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -103,6 +105,26 @@ public class Group11surveyFactoryImpl extends EFactoryImpl implements Group11sur
 	public Content createContent() {
 		ContentImpl content = new ContentImpl();
 		return content;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Item createItem() {
+		ItemImpl item = new ItemImpl();
+		return item;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TableQuestion createTableQuestion() {
+		TableQuestionImpl tableQuestion = new TableQuestionImpl();
+		return tableQuestion;
 	}
 
 	/**

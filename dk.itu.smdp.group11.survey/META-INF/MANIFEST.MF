@@ -19,12 +19,12 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: dk.itu.smdp.group11,
- dk.itu.smdp.group11.services,
- dk.itu.smdp.group11.serializer,
- dk.itu.smdp.group11.parser.antlr,
- dk.itu.smdp.group11.parser.antlr.internal,
- dk.itu.smdp.group11.validation,
- dk.itu.smdp.group11.scoping,
- dk.itu.smdp.group11.generator,
- dk.itu.smdp.group11.formatting
+Export-Package: dk.itu.smdp.group11.survey,
+ dk.itu.smdp.group11.survey.services,
+ dk.itu.smdp.group11.survey.serializer,
+ dk.itu.smdp.group11.survey.parser.antlr,
+ dk.itu.smdp.group11.survey.parser.antlr.internal,
+ dk.itu.smdp.group11.survey.validation,
+ dk.itu.smdp.group11.survey.scoping,
+ dk.itu.smdp.group11.survey.generator,
+ dk.itu.smdp.group11.survey.formatting

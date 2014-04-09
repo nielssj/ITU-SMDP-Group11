@@ -15,9 +15,9 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link group11survey.Survey#getQuestions <em>Questions</em>}</li>
+ *   <li>{@link group11survey.Survey#getName <em>Name</em>}</li>
  *   <li>{@link group11survey.Survey#getIntro <em>Intro</em>}</li>
  *   <li>{@link group11survey.Survey#getOutro <em>Outro</em>}</li>
- *   <li>{@link group11survey.Survey#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -43,56 +43,56 @@ public interface Survey extends EObject {
 	EList<Question> getQuestions();
 
 	/**
-	 * Returns the value of the '<em><b>Intro</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Intro</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Intro</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Intro</em>' containment reference.
-	 * @see #setIntro(Content)
+	 * @return the value of the '<em>Intro</em>' attribute.
+	 * @see #setIntro(String)
 	 * @see group11survey.Group11surveyPackage#getSurvey_Intro()
-	 * @model containment="true" required="true"
+	 * @model
 	 * @generated
 	 */
-	Content getIntro();
+	String getIntro();
 
 	/**
-	 * Sets the value of the '{@link group11survey.Survey#getIntro <em>Intro</em>}' containment reference.
+	 * Sets the value of the '{@link group11survey.Survey#getIntro <em>Intro</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Intro</em>' containment reference.
+	 * @param value the new value of the '<em>Intro</em>' attribute.
 	 * @see #getIntro()
 	 * @generated
 	 */
-	void setIntro(Content value);
+	void setIntro(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Outro</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Outro</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outro</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Outro</em>' containment reference.
-	 * @see #setOutro(Content)
+	 * @return the value of the '<em>Outro</em>' attribute.
+	 * @see #setOutro(String)
 	 * @see group11survey.Group11surveyPackage#getSurvey_Outro()
-	 * @model containment="true" required="true"
+	 * @model
 	 * @generated
 	 */
-	Content getOutro();
+	String getOutro();
 
 	/**
-	 * Sets the value of the '{@link group11survey.Survey#getOutro <em>Outro</em>}' containment reference.
+	 * Sets the value of the '{@link group11survey.Survey#getOutro <em>Outro</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Outro</em>' containment reference.
+	 * @param value the new value of the '<em>Outro</em>' attribute.
 	 * @see #getOutro()
 	 * @generated
 	 */
-	void setOutro(Content value);
+	void setOutro(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Name</b></em>' attribute.

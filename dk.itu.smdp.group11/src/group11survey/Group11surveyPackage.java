@@ -67,60 +67,6 @@ public interface Group11surveyPackage extends EPackage {
 	int QUESTION = 0;
 
 	/**
-	 * The feature id for the '<em><b>Answers</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUESTION__ANSWERS = 0;
-
-	/**
-	 * The feature id for the '<em><b>Content</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUESTION__CONTENT = 1;
-
-	/**
-	 * The feature id for the '<em><b>Is Exclusive</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUESTION__IS_EXCLUSIVE = 2;
-
-	/**
-	 * The feature id for the '<em><b>Is Optional</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUESTION__IS_OPTIONAL = 3;
-
-	/**
-	 * The number of structural features of the '<em>Question</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUESTION_FEATURE_COUNT = 4;
-
-	/**
-	 * The number of operations of the '<em>Question</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUESTION_OPERATION_COUNT = 0;
-
-	/**
 	 * The meta object id for the '{@link group11survey.impl.AnswerImpl <em>Answer</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -129,51 +75,6 @@ public interface Group11surveyPackage extends EPackage {
 	 * @generated
 	 */
 	int ANSWER = 1;
-
-	/**
-	 * The feature id for the '<em><b>Content</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANSWER__CONTENT = 0;
-
-	/**
-	 * The feature id for the '<em><b>Followup</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANSWER__FOLLOWUP = 1;
-
-	/**
-	 * The feature id for the '<em><b>Is Free Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANSWER__IS_FREE_TEXT = 2;
-
-	/**
-	 * The number of structural features of the '<em>Answer</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANSWER_FEATURE_COUNT = 3;
-
-	/**
-	 * The number of operations of the '<em>Answer</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANSWER_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link group11survey.impl.SurveyImpl <em>Survey</em>}' class.
@@ -186,58 +87,24 @@ public interface Group11surveyPackage extends EPackage {
 	int SURVEY = 2;
 
 	/**
-	 * The feature id for the '<em><b>Questions</b></em>' containment reference list.
+	 * The meta object id for the '{@link group11survey.impl.ItemImpl <em>Item</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see group11survey.impl.ItemImpl
+	 * @see group11survey.impl.Group11surveyPackageImpl#getItem()
 	 * @generated
-	 * @ordered
 	 */
-	int SURVEY__QUESTIONS = 0;
+	int ITEM = 4;
 
 	/**
-	 * The feature id for the '<em><b>Intro</b></em>' containment reference.
+	 * The meta object id for the '{@link group11survey.impl.TableQuestionImpl <em>Table Question</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see group11survey.impl.TableQuestionImpl
+	 * @see group11survey.impl.Group11surveyPackageImpl#getTableQuestion()
 	 * @generated
-	 * @ordered
 	 */
-	int SURVEY__INTRO = 1;
-
-	/**
-	 * The feature id for the '<em><b>Outro</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SURVEY__OUTRO = 2;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SURVEY__NAME = 3;
-
-	/**
-	 * The number of structural features of the '<em>Survey</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SURVEY_FEATURE_COUNT = 4;
-
-	/**
-	 * The number of operations of the '<em>Survey</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SURVEY_OPERATION_COUNT = 0;
+	int TABLE_QUESTION = 5;
 
 	/**
 	 * The meta object id for the '{@link group11survey.impl.ContentImpl <em>Content</em>}' class.
@@ -259,13 +126,22 @@ public interface Group11surveyPackage extends EPackage {
 	int CONTENT__BODY = 0;
 
 	/**
+	 * The feature id for the '<em><b>Is Free Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONTENT__IS_FREE_TEXT = 1;
+
+	/**
 	 * The number of structural features of the '<em>Content</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENT_FEATURE_COUNT = 1;
+	int CONTENT_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Content</em>' class.
@@ -275,6 +151,294 @@ public interface Group11surveyPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONTENT_OPERATION_COUNT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUESTION__BODY = CONTENT__BODY;
+
+	/**
+	 * The feature id for the '<em><b>Is Free Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUESTION__IS_FREE_TEXT = CONTENT__IS_FREE_TEXT;
+
+	/**
+	 * The feature id for the '<em><b>Answers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUESTION__ANSWERS = CONTENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Is Optional</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUESTION__IS_OPTIONAL = CONTENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Is Exclusive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUESTION__IS_EXCLUSIVE = CONTENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUESTION__NAME = CONTENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of structural features of the '<em>Question</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUESTION_FEATURE_COUNT = CONTENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of operations of the '<em>Question</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int QUESTION_OPERATION_COUNT = CONTENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANSWER__BODY = CONTENT__BODY;
+
+	/**
+	 * The feature id for the '<em><b>Is Free Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANSWER__IS_FREE_TEXT = CONTENT__IS_FREE_TEXT;
+
+	/**
+	 * The feature id for the '<em><b>Followup</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANSWER__FOLLOWUP = CONTENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Answer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANSWER_FEATURE_COUNT = CONTENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Answer</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANSWER_OPERATION_COUNT = CONTENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Questions</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SURVEY__QUESTIONS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SURVEY__NAME = 1;
+
+	/**
+	 * The feature id for the '<em><b>Intro</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SURVEY__INTRO = 2;
+
+	/**
+	 * The feature id for the '<em><b>Outro</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SURVEY__OUTRO = 3;
+
+	/**
+	 * The number of structural features of the '<em>Survey</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SURVEY_FEATURE_COUNT = 4;
+
+	/**
+	 * The number of operations of the '<em>Survey</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SURVEY_OPERATION_COUNT = 0;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM__BODY = CONTENT__BODY;
+
+	/**
+	 * The feature id for the '<em><b>Is Free Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM__IS_FREE_TEXT = CONTENT__IS_FREE_TEXT;
+
+	/**
+	 * The number of structural features of the '<em>Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM_FEATURE_COUNT = CONTENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Item</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ITEM_OPERATION_COUNT = CONTENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Body</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_QUESTION__BODY = QUESTION__BODY;
+
+	/**
+	 * The feature id for the '<em><b>Is Free Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_QUESTION__IS_FREE_TEXT = QUESTION__IS_FREE_TEXT;
+
+	/**
+	 * The feature id for the '<em><b>Answers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_QUESTION__ANSWERS = QUESTION__ANSWERS;
+
+	/**
+	 * The feature id for the '<em><b>Is Optional</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_QUESTION__IS_OPTIONAL = QUESTION__IS_OPTIONAL;
+
+	/**
+	 * The feature id for the '<em><b>Is Exclusive</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_QUESTION__IS_EXCLUSIVE = QUESTION__IS_EXCLUSIVE;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_QUESTION__NAME = QUESTION__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Items</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_QUESTION__ITEMS = QUESTION_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Table Question</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_QUESTION_FEATURE_COUNT = QUESTION_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Table Question</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TABLE_QUESTION_OPERATION_COUNT = QUESTION_OPERATION_COUNT + 0;
 
 
 	/**
@@ -299,17 +463,6 @@ public interface Group11surveyPackage extends EPackage {
 	EReference getQuestion_Answers();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link group11survey.Question#getContent <em>Content</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Content</em>'.
-	 * @see group11survey.Question#getContent()
-	 * @see #getQuestion()
-	 * @generated
-	 */
-	EReference getQuestion_Content();
-
-	/**
 	 * Returns the meta object for the attribute '{@link group11survey.Question#isIsExclusive <em>Is Exclusive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -319,6 +472,17 @@ public interface Group11surveyPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getQuestion_IsExclusive();
+
+	/**
+	 * Returns the meta object for the attribute '{@link group11survey.Question#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see group11survey.Question#getName()
+	 * @see #getQuestion()
+	 * @generated
+	 */
+	EAttribute getQuestion_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link group11survey.Question#isIsOptional <em>Is Optional</em>}'.
@@ -342,37 +506,15 @@ public interface Group11surveyPackage extends EPackage {
 	EClass getAnswer();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link group11survey.Answer#getContent <em>Content</em>}'.
+	 * Returns the meta object for the reference list '{@link group11survey.Answer#getFollowup <em>Followup</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Content</em>'.
-	 * @see group11survey.Answer#getContent()
-	 * @see #getAnswer()
-	 * @generated
-	 */
-	EReference getAnswer_Content();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link group11survey.Answer#getFollowup <em>Followup</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Followup</em>'.
+	 * @return the meta object for the reference list '<em>Followup</em>'.
 	 * @see group11survey.Answer#getFollowup()
 	 * @see #getAnswer()
 	 * @generated
 	 */
 	EReference getAnswer_Followup();
-
-	/**
-	 * Returns the meta object for the attribute '{@link group11survey.Answer#isIsFreeText <em>Is Free Text</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Free Text</em>'.
-	 * @see group11survey.Answer#isIsFreeText()
-	 * @see #getAnswer()
-	 * @generated
-	 */
-	EAttribute getAnswer_IsFreeText();
 
 	/**
 	 * Returns the meta object for class '{@link group11survey.Survey <em>Survey</em>}'.
@@ -396,26 +538,26 @@ public interface Group11surveyPackage extends EPackage {
 	EReference getSurvey_Questions();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link group11survey.Survey#getIntro <em>Intro</em>}'.
+	 * Returns the meta object for the attribute '{@link group11survey.Survey#getIntro <em>Intro</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Intro</em>'.
+	 * @return the meta object for the attribute '<em>Intro</em>'.
 	 * @see group11survey.Survey#getIntro()
 	 * @see #getSurvey()
 	 * @generated
 	 */
-	EReference getSurvey_Intro();
+	EAttribute getSurvey_Intro();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link group11survey.Survey#getOutro <em>Outro</em>}'.
+	 * Returns the meta object for the attribute '{@link group11survey.Survey#getOutro <em>Outro</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Outro</em>'.
+	 * @return the meta object for the attribute '<em>Outro</em>'.
 	 * @see group11survey.Survey#getOutro()
 	 * @see #getSurvey()
 	 * @generated
 	 */
-	EReference getSurvey_Outro();
+	EAttribute getSurvey_Outro();
 
 	/**
 	 * Returns the meta object for the attribute '{@link group11survey.Survey#getName <em>Name</em>}'.
@@ -448,6 +590,48 @@ public interface Group11surveyPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getContent_Body();
+
+	/**
+	 * Returns the meta object for the attribute '{@link group11survey.Content#isIsFreeText <em>Is Free Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Free Text</em>'.
+	 * @see group11survey.Content#isIsFreeText()
+	 * @see #getContent()
+	 * @generated
+	 */
+	EAttribute getContent_IsFreeText();
+
+	/**
+	 * Returns the meta object for class '{@link group11survey.Item <em>Item</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Item</em>'.
+	 * @see group11survey.Item
+	 * @generated
+	 */
+	EClass getItem();
+
+	/**
+	 * Returns the meta object for class '{@link group11survey.TableQuestion <em>Table Question</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Table Question</em>'.
+	 * @see group11survey.TableQuestion
+	 * @generated
+	 */
+	EClass getTableQuestion();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link group11survey.TableQuestion#getItems <em>Items</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Items</em>'.
+	 * @see group11survey.TableQuestion#getItems()
+	 * @see #getTableQuestion()
+	 * @generated
+	 */
+	EReference getTableQuestion_Items();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -491,20 +675,20 @@ public interface Group11surveyPackage extends EPackage {
 		EReference QUESTION__ANSWERS = eINSTANCE.getQuestion_Answers();
 
 		/**
-		 * The meta object literal for the '<em><b>Content</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference QUESTION__CONTENT = eINSTANCE.getQuestion_Content();
-
-		/**
 		 * The meta object literal for the '<em><b>Is Exclusive</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EAttribute QUESTION__IS_EXCLUSIVE = eINSTANCE.getQuestion_IsExclusive();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute QUESTION__NAME = eINSTANCE.getQuestion_Name();
 
 		/**
 		 * The meta object literal for the '<em><b>Is Optional</b></em>' attribute feature.
@@ -525,28 +709,12 @@ public interface Group11surveyPackage extends EPackage {
 		EClass ANSWER = eINSTANCE.getAnswer();
 
 		/**
-		 * The meta object literal for the '<em><b>Content</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ANSWER__CONTENT = eINSTANCE.getAnswer_Content();
-
-		/**
-		 * The meta object literal for the '<em><b>Followup</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Followup</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference ANSWER__FOLLOWUP = eINSTANCE.getAnswer_Followup();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Free Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ANSWER__IS_FREE_TEXT = eINSTANCE.getAnswer_IsFreeText();
 
 		/**
 		 * The meta object literal for the '{@link group11survey.impl.SurveyImpl <em>Survey</em>}' class.
@@ -567,20 +735,20 @@ public interface Group11surveyPackage extends EPackage {
 		EReference SURVEY__QUESTIONS = eINSTANCE.getSurvey_Questions();
 
 		/**
-		 * The meta object literal for the '<em><b>Intro</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Intro</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SURVEY__INTRO = eINSTANCE.getSurvey_Intro();
+		EAttribute SURVEY__INTRO = eINSTANCE.getSurvey_Intro();
 
 		/**
-		 * The meta object literal for the '<em><b>Outro</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Outro</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SURVEY__OUTRO = eINSTANCE.getSurvey_Outro();
+		EAttribute SURVEY__OUTRO = eINSTANCE.getSurvey_Outro();
 
 		/**
 		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
@@ -607,6 +775,42 @@ public interface Group11surveyPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CONTENT__BODY = eINSTANCE.getContent_Body();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Free Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CONTENT__IS_FREE_TEXT = eINSTANCE.getContent_IsFreeText();
+
+		/**
+		 * The meta object literal for the '{@link group11survey.impl.ItemImpl <em>Item</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see group11survey.impl.ItemImpl
+		 * @see group11survey.impl.Group11surveyPackageImpl#getItem()
+		 * @generated
+		 */
+		EClass ITEM = eINSTANCE.getItem();
+
+		/**
+		 * The meta object literal for the '{@link group11survey.impl.TableQuestionImpl <em>Table Question</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see group11survey.impl.TableQuestionImpl
+		 * @see group11survey.impl.Group11surveyPackageImpl#getTableQuestion()
+		 * @generated
+		 */
+		EClass TABLE_QUESTION = eINSTANCE.getTableQuestion();
+
+		/**
+		 * The meta object literal for the '<em><b>Items</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TABLE_QUESTION__ITEMS = eINSTANCE.getTableQuestion_Items();
 
 	}
 

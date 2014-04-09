@@ -8,23 +8,26 @@
   <genPackages prefix="Group11survey" disposableProviderFactory="true" ecorePackage="metamodel1.ecore#/">
     <genClasses ecoreClass="metamodel1.ecore#//Question">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Question/answers"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Question/content"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Question/isExclusive"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Question/isOptional"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Question/isExclusive"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Question/name"/>
     </genClasses>
     <genClasses ecoreClass="metamodel1.ecore#//Answer">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Answer/content"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Answer/followup"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Answer/isFreeText"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Answer/followup"/>
     </genClasses>
     <genClasses ecoreClass="metamodel1.ecore#//Survey">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Survey/questions"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Survey/intro"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//Survey/outro"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Survey/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Survey/intro"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Survey/outro"/>
     </genClasses>
     <genClasses ecoreClass="metamodel1.ecore#//Content">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Content/body"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute metamodel1.ecore#//Content/isFreeText"/>
+    </genClasses>
+    <genClasses ecoreClass="metamodel1.ecore#//Item"/>
+    <genClasses ecoreClass="metamodel1.ecore#//TableQuestion">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference metamodel1.ecore#//TableQuestion/items"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

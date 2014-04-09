@@ -2,24 +2,17 @@
  */
 package group11survey.impl;
 
-import group11survey.Content;
 import group11survey.Group11surveyPackage;
 import group11survey.Question;
 import group11survey.Survey;
-
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -31,9 +24,9 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link group11survey.impl.SurveyImpl#getQuestions <em>Questions</em>}</li>
+ *   <li>{@link group11survey.impl.SurveyImpl#getName <em>Name</em>}</li>
  *   <li>{@link group11survey.impl.SurveyImpl#getIntro <em>Intro</em>}</li>
  *   <li>{@link group11survey.impl.SurveyImpl#getOutro <em>Outro</em>}</li>
- *   <li>{@link group11survey.impl.SurveyImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
@@ -49,26 +42,6 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 	 * @ordered
 	 */
 	protected EList<Question> questions;
-
-	/**
-	 * The cached value of the '{@link #getIntro() <em>Intro</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getIntro()
-	 * @generated
-	 * @ordered
-	 */
-	protected Content intro;
-
-	/**
-	 * The cached value of the '{@link #getOutro() <em>Outro</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getOutro()
-	 * @generated
-	 * @ordered
-	 */
-	protected Content outro;
 
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -89,6 +62,46 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getIntro() <em>Intro</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIntro()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String INTRO_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getIntro() <em>Intro</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIntro()
+	 * @generated
+	 * @ordered
+	 */
+	protected String intro = INTRO_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getOutro() <em>Outro</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutro()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String OUTRO_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getOutro() <em>Outro</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutro()
+	 * @generated
+	 * @ordered
+	 */
+	protected String outro = OUTRO_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -126,7 +139,7 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Content getIntro() {
+	public String getIntro() {
 		return intro;
 	}
 
@@ -135,14 +148,11 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetIntro(Content newIntro, NotificationChain msgs) {
-		Content oldIntro = intro;
+	public void setIntro(String newIntro) {
+		String oldIntro = intro;
 		intro = newIntro;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Group11surveyPackage.SURVEY__INTRO, oldIntro, newIntro);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.SURVEY__INTRO, oldIntro, intro));
 	}
 
 	/**
@@ -150,26 +160,7 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setIntro(Content newIntro) {
-		if (newIntro != intro) {
-			NotificationChain msgs = null;
-			if (intro != null)
-				msgs = ((InternalEObject)intro).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Group11surveyPackage.SURVEY__INTRO, null, msgs);
-			if (newIntro != null)
-				msgs = ((InternalEObject)newIntro).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - Group11surveyPackage.SURVEY__INTRO, null, msgs);
-			msgs = basicSetIntro(newIntro, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.SURVEY__INTRO, newIntro, newIntro));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Content getOutro() {
+	public String getOutro() {
 		return outro;
 	}
 
@@ -178,33 +169,11 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetOutro(Content newOutro, NotificationChain msgs) {
-		Content oldOutro = outro;
+	public void setOutro(String newOutro) {
+		String oldOutro = outro;
 		outro = newOutro;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Group11surveyPackage.SURVEY__OUTRO, oldOutro, newOutro);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setOutro(Content newOutro) {
-		if (newOutro != outro) {
-			NotificationChain msgs = null;
-			if (outro != null)
-				msgs = ((InternalEObject)outro).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Group11surveyPackage.SURVEY__OUTRO, null, msgs);
-			if (newOutro != null)
-				msgs = ((InternalEObject)newOutro).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - Group11surveyPackage.SURVEY__OUTRO, null, msgs);
-			msgs = basicSetOutro(newOutro, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.SURVEY__OUTRO, newOutro, newOutro));
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.SURVEY__OUTRO, oldOutro, outro));
 	}
 
 	/**
@@ -238,10 +207,6 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 		switch (featureID) {
 			case Group11surveyPackage.SURVEY__QUESTIONS:
 				return ((InternalEList<?>)getQuestions()).basicRemove(otherEnd, msgs);
-			case Group11surveyPackage.SURVEY__INTRO:
-				return basicSetIntro(null, msgs);
-			case Group11surveyPackage.SURVEY__OUTRO:
-				return basicSetOutro(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -256,12 +221,12 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 		switch (featureID) {
 			case Group11surveyPackage.SURVEY__QUESTIONS:
 				return getQuestions();
+			case Group11surveyPackage.SURVEY__NAME:
+				return getName();
 			case Group11surveyPackage.SURVEY__INTRO:
 				return getIntro();
 			case Group11surveyPackage.SURVEY__OUTRO:
 				return getOutro();
-			case Group11surveyPackage.SURVEY__NAME:
-				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -279,14 +244,14 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 				getQuestions().clear();
 				getQuestions().addAll((Collection<? extends Question>)newValue);
 				return;
-			case Group11surveyPackage.SURVEY__INTRO:
-				setIntro((Content)newValue);
-				return;
-			case Group11surveyPackage.SURVEY__OUTRO:
-				setOutro((Content)newValue);
-				return;
 			case Group11surveyPackage.SURVEY__NAME:
 				setName((String)newValue);
+				return;
+			case Group11surveyPackage.SURVEY__INTRO:
+				setIntro((String)newValue);
+				return;
+			case Group11surveyPackage.SURVEY__OUTRO:
+				setOutro((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -303,14 +268,14 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 			case Group11surveyPackage.SURVEY__QUESTIONS:
 				getQuestions().clear();
 				return;
-			case Group11surveyPackage.SURVEY__INTRO:
-				setIntro((Content)null);
-				return;
-			case Group11surveyPackage.SURVEY__OUTRO:
-				setOutro((Content)null);
-				return;
 			case Group11surveyPackage.SURVEY__NAME:
 				setName(NAME_EDEFAULT);
+				return;
+			case Group11surveyPackage.SURVEY__INTRO:
+				setIntro(INTRO_EDEFAULT);
+				return;
+			case Group11surveyPackage.SURVEY__OUTRO:
+				setOutro(OUTRO_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -326,12 +291,12 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 		switch (featureID) {
 			case Group11surveyPackage.SURVEY__QUESTIONS:
 				return questions != null && !questions.isEmpty();
-			case Group11surveyPackage.SURVEY__INTRO:
-				return intro != null;
-			case Group11surveyPackage.SURVEY__OUTRO:
-				return outro != null;
 			case Group11surveyPackage.SURVEY__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case Group11surveyPackage.SURVEY__INTRO:
+				return INTRO_EDEFAULT == null ? intro != null : !INTRO_EDEFAULT.equals(intro);
+			case Group11surveyPackage.SURVEY__OUTRO:
+				return OUTRO_EDEFAULT == null ? outro != null : !OUTRO_EDEFAULT.equals(outro);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -348,6 +313,10 @@ public class SurveyImpl extends MinimalEObjectImpl.Container implements Survey {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
 		result.append(name);
+		result.append(", intro: ");
+		result.append(intro);
+		result.append(", outro: ");
+		result.append(outro);
 		result.append(')');
 		return result.toString();
 	}

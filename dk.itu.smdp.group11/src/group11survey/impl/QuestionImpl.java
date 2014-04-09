@@ -3,23 +3,15 @@
 package group11survey.impl;
 
 import group11survey.Answer;
-import group11survey.Content;
 import group11survey.Group11surveyPackage;
 import group11survey.Question;
-
 import java.util.Collection;
-
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -31,15 +23,15 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * <ul>
  *   <li>{@link group11survey.impl.QuestionImpl#getAnswers <em>Answers</em>}</li>
- *   <li>{@link group11survey.impl.QuestionImpl#getContent <em>Content</em>}</li>
- *   <li>{@link group11survey.impl.QuestionImpl#isIsExclusive <em>Is Exclusive</em>}</li>
  *   <li>{@link group11survey.impl.QuestionImpl#isIsOptional <em>Is Optional</em>}</li>
+ *   <li>{@link group11survey.impl.QuestionImpl#isIsExclusive <em>Is Exclusive</em>}</li>
+ *   <li>{@link group11survey.impl.QuestionImpl#getName <em>Name</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class QuestionImpl extends MinimalEObjectImpl.Container implements Question {
+public class QuestionImpl extends ContentImpl implements Question {
 	/**
 	 * The cached value of the '{@link #getAnswers() <em>Answers</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -49,36 +41,6 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
 	 * @ordered
 	 */
 	protected EList<Answer> answers;
-
-	/**
-	 * The cached value of the '{@link #getContent() <em>Content</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getContent()
-	 * @generated
-	 * @ordered
-	 */
-	protected Content content;
-
-	/**
-	 * The default value of the '{@link #isIsExclusive() <em>Is Exclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsExclusive()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean IS_EXCLUSIVE_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isIsExclusive() <em>Is Exclusive</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsExclusive()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean isExclusive = IS_EXCLUSIVE_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #isIsOptional() <em>Is Optional</em>}' attribute.
@@ -108,6 +70,46 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
 	 * @ordered
 	 */
 	protected boolean isOptionalESet;
+
+	/**
+	 * The default value of the '{@link #isIsExclusive() <em>Is Exclusive</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsExclusive()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_EXCLUSIVE_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsExclusive() <em>Is Exclusive</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsExclusive()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isExclusive = IS_EXCLUSIVE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String NAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
+	protected String name = NAME_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,49 +147,6 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Content getContent() {
-		return content;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetContent(Content newContent, NotificationChain msgs) {
-		Content oldContent = content;
-		content = newContent;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, Group11surveyPackage.QUESTION__CONTENT, oldContent, newContent);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setContent(Content newContent) {
-		if (newContent != content) {
-			NotificationChain msgs = null;
-			if (content != null)
-				msgs = ((InternalEObject)content).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - Group11surveyPackage.QUESTION__CONTENT, null, msgs);
-			if (newContent != null)
-				msgs = ((InternalEObject)newContent).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - Group11surveyPackage.QUESTION__CONTENT, null, msgs);
-			msgs = basicSetContent(newContent, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.QUESTION__CONTENT, newContent, newContent));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isIsExclusive() {
 		return isExclusive;
 	}
@@ -202,6 +161,27 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
 		isExclusive = newIsExclusive;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.QUESTION__IS_EXCLUSIVE, oldIsExclusive, isExclusive));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.QUESTION__NAME, oldName, name));
 	}
 
 	/**
@@ -260,8 +240,6 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
 		switch (featureID) {
 			case Group11surveyPackage.QUESTION__ANSWERS:
 				return ((InternalEList<?>)getAnswers()).basicRemove(otherEnd, msgs);
-			case Group11surveyPackage.QUESTION__CONTENT:
-				return basicSetContent(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -276,12 +254,12 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
 		switch (featureID) {
 			case Group11surveyPackage.QUESTION__ANSWERS:
 				return getAnswers();
-			case Group11surveyPackage.QUESTION__CONTENT:
-				return getContent();
-			case Group11surveyPackage.QUESTION__IS_EXCLUSIVE:
-				return isIsExclusive();
 			case Group11surveyPackage.QUESTION__IS_OPTIONAL:
 				return isIsOptional();
+			case Group11surveyPackage.QUESTION__IS_EXCLUSIVE:
+				return isIsExclusive();
+			case Group11surveyPackage.QUESTION__NAME:
+				return getName();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -299,14 +277,14 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
 				getAnswers().clear();
 				getAnswers().addAll((Collection<? extends Answer>)newValue);
 				return;
-			case Group11surveyPackage.QUESTION__CONTENT:
-				setContent((Content)newValue);
+			case Group11surveyPackage.QUESTION__IS_OPTIONAL:
+				setIsOptional((Boolean)newValue);
 				return;
 			case Group11surveyPackage.QUESTION__IS_EXCLUSIVE:
 				setIsExclusive((Boolean)newValue);
 				return;
-			case Group11surveyPackage.QUESTION__IS_OPTIONAL:
-				setIsOptional((Boolean)newValue);
+			case Group11surveyPackage.QUESTION__NAME:
+				setName((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -323,14 +301,14 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
 			case Group11surveyPackage.QUESTION__ANSWERS:
 				getAnswers().clear();
 				return;
-			case Group11surveyPackage.QUESTION__CONTENT:
-				setContent((Content)null);
+			case Group11surveyPackage.QUESTION__IS_OPTIONAL:
+				unsetIsOptional();
 				return;
 			case Group11surveyPackage.QUESTION__IS_EXCLUSIVE:
 				setIsExclusive(IS_EXCLUSIVE_EDEFAULT);
 				return;
-			case Group11surveyPackage.QUESTION__IS_OPTIONAL:
-				unsetIsOptional();
+			case Group11surveyPackage.QUESTION__NAME:
+				setName(NAME_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -346,12 +324,12 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
 		switch (featureID) {
 			case Group11surveyPackage.QUESTION__ANSWERS:
 				return answers != null && !answers.isEmpty();
-			case Group11surveyPackage.QUESTION__CONTENT:
-				return content != null;
-			case Group11surveyPackage.QUESTION__IS_EXCLUSIVE:
-				return isExclusive != IS_EXCLUSIVE_EDEFAULT;
 			case Group11surveyPackage.QUESTION__IS_OPTIONAL:
 				return isSetIsOptional();
+			case Group11surveyPackage.QUESTION__IS_EXCLUSIVE:
+				return isExclusive != IS_EXCLUSIVE_EDEFAULT;
+			case Group11surveyPackage.QUESTION__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -366,10 +344,12 @@ public class QuestionImpl extends MinimalEObjectImpl.Container implements Questi
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (isExclusive: ");
-		result.append(isExclusive);
-		result.append(", isOptional: ");
+		result.append(" (isOptional: ");
 		if (isOptionalESet) result.append(isOptional); else result.append("<unset>");
+		result.append(", isExclusive: ");
+		result.append(isExclusive);
+		result.append(", name: ");
+		result.append(name);
 		result.append(')');
 		return result.toString();
 	}
