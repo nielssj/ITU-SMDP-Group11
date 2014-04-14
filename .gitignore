@@ -57,3 +57,8 @@ proguard/
 
 # Idea IDE
 .idea
+
+#Xtend and XText
+plugin.xml_gen
+src-gen
+xtend-gen
