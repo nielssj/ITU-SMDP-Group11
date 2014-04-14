@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true">
+        <TextView
+                android:id="@+id/question2Text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="What is your quest?*"
+                android:gravity="center_horizontal"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_margin="10dp" />
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                android:layout_below="@id/question2Text" />
+
+    </RelativeLayout>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <CheckBox
+                    android:id="@+id/question2CheckBox1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="To burn bananas"/>
+            <CheckBox
+                    android:id="@+id/question2CheckBox2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="To seek the Holy Grail"
+                    android:layout_below="@+id/question2CheckBox1"/>
+            <CheckBox
+                    android:id="@+id/question2CheckBox3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="I don't know"
+                    android:layout_below="@+id/question2CheckBox2"/>
+            <CheckBox
+                    android:id="@+id/question2CheckBox4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Other:"
+                    android:layout_below="@+id/question2CheckBox3"/>
+                <EditText
+                        android:id="@+id/question2CheckBox4Text"
+                        android:inputType="textMultiLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="top|left"
+                        android:minLines="3"
+                        android:maxLines="5"
+                        android:scrollbars="vertical"
+                        android:layout_margin="5dp"
+                        android:layout_below="@+id/question2CheckBox4"/>
+        </RelativeLayout>
+    </ScrollView>
+    <Button
+            android:id="@+id/nextQuestion"
+            android:text="Next Question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentBottom="true"
+            android:onClick="nextQuestion"/>
+</LinearLayout>

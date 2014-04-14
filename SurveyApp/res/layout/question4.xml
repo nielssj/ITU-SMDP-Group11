@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true">
+        <TextView
+                android:id="@+id/question4Text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Any other comments?*"
+                android:gravity="center_horizontal"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_margin="10dp" />
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                android:layout_below="@id/question4Text" />
+
+    </RelativeLayout>
+    <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <EditText
+                android:id="@+id/question4FreeText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="20dp"
+                android:gravity="top|left"
+                android:scrollbars="vertical"
+                android:layout_above="@id/nextQuestion"
+                />
+        <Button
+                android:id="@+id/nextQuestion"
+                android:text="Next Question"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:layout_alignParentBottom="true"
+                android:onClick="nextQuestion"/>
+    </RelativeLayout>
+</LinearLayout>
