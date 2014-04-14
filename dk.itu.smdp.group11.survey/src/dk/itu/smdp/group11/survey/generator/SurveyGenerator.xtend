@@ -23,14 +23,14 @@ class SurveyGenerator implements IGenerator {
     </head>
     <body>
         <br />
-        <div class="container">
+        <div class="container" ng-controller="SurveyController">
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h1 class="panel-title">« it.name »</h1>
                 </div>
                 <div class="panel-body">
                     <p class="lead into">« it.intro »</p>
-                    <form class="form-vertical col-md-12" role="form">
+                    <form class="form-vertical col-md-12" role="form" name="surveyForm" ng-submit="sendSurveyAnswers()">
                         «FOR question : questions»
                         <div class="form-group" « IF ( isFollowup( it, question) ) »ng-show="« showQuestionTrigger( it, question ) »"« ENDIF »>
                             <p>« question.body »</p>«
@@ -56,7 +56,7 @@ class SurveyGenerator implements IGenerator {
                             </div>
                             «ENDFOR»
                         </div>«{  i = 0 null }»
-«ENDFOR»<button type="submit" class="btn btn-primary pull-right">Submit</button>
+«ENDFOR»                        <button type="submit" class="btn btn-primary pull-right" ng-disabled="surveyForm.$pristine">Submit</button>
                     </form>
                     <p class="lead outro">« it.outro »</p>
                 </div>
@@ -65,20 +65,22 @@ class SurveyGenerator implements IGenerator {
     </body>
     <script>
         var survey = angular.module( 'survey', [] );
-        survey.controller( 'Survey', function ( $scope ) {
+        survey.controller( 'SurveyController', function ( $scope ) {
             $scope.survey = {
                 questions: {
-                    «FOR question : questions SEPARATOR ', '»
-                    « question.name »: { « IF ( !question.isExclusive ) »
-                        « FOR answer : question.answers SEPARATOR ', '»
-                            « toId( question.name ) »: false
+                    «FOR question : questions SEPARATOR ','»
+                    « question.name »: {« IF ( !question.isExclusive ) »
+                        « FOR answer : question.answers SEPARATOR ','»
+                            « toId( answer.body ) »: false
                         «ENDFOR»
-                    « ELSE »
-                        optional: '', regular: ''
-                    « ENDIF » }
+                    « ELSE
+                    » optional: '', regular: '' « ENDIF »}
                     «ENDFOR»
                 }
             };
+            $scope.sendSurveyAnswers = function() {
+                console.log( $scope.survey );
+            }
         } );
     </script
 </html>'''
