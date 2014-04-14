@@ -1,35 +1,35 @@
 Survey "A complete demo"
 
-	Intro "This survey demonstrates all the capabilities built into the Survey Generator."
-	
-	Question "ORANGESIZE" exclusive optional "How big do you like your oranges?"
-	(
-		Answer "Large"
-		Answer "Small"		
-	)
-	
-	Question "FAVCITY" exclusive "What is your favorite city?" 
-	(
-		Answer "Copenhagen" 
-		Answer "London"
-		Answer "Paris"
-		Answer freetext "A different city"
-	)
+    Intro "This survey demonstrates all the capabilities built into the Survey Generator."
 
-	Question "FAVFRUITS" "Which of the following fruits do you enjoy eating?" 
-	(
-		Answer "Apples" 
-		Answer "Oranges" -> ORANGESIZE
-		Answer "Bananas"
-		Answer freetext "Other fruits you like"
-	)
-	
-	TableQuestion "FOOTRATE" exclusive "Rate the following football teams"
-	(
-		items ( "Looser", "Mediocre", "Winner" )
-		Answer "Liverpool F.C."
-		Answer "Juventus Torino"
-		Answer "Getafe CF"
-	) 
+    Question "ORANGESIZE" exclusive optional "How big do you like your oranges?"
+    (
+        Answer "Large"
+        Answer "Small"
+    )
 
-	Outro "Thank you for taking the time to fill in our survey."
+    Question "FAVCITY" exclusive "What is your favorite city?"
+    (
+        Answer "Copenhagen"
+        Answer "London"
+        Answer "Paris"
+        Answer freetext "A different city"
+    )
+
+    Question "FAVFRUITS" "Which of the following fruits do you enjoy eating?"
+    (
+        Answer "Apples"
+        Answer "Oranges" -> ORANGESIZE
+        Answer "Bananas"
+        Answer freetext "Other fruits you like"
+    )
+
+    TableQuestion "FOOTRATE" exclusive "Rate the following football teams"
+    (
+        items ( "Looser", "Mediocre", "Winner" )
+        Answer "Liverpool F.C."
+        Answer "Juventus Torino"
+        Answer "Getafe CF"
+    )
+
+    Outro "Thank you for taking the time to fill in our survey."
