@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true">
+        <TextView
+                android:id="@+id/question3Text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="What is the airspeed velocity of an unladen swallow?"
+                android:gravity="center_horizontal"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_margin="10dp" />
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                android:layout_below="@id/question3Text" />
+
+    </RelativeLayout>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <CheckBox
+                    android:id="@+id/question3CheckBox1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10 km/h"/>
+            <CheckBox
+                    android:id="@+id/question3CheckBox2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="African or European?"
+                    android:layout_below="@+id/question3CheckBox1"/>
+            <CheckBox
+                    android:id="@+id/question3CheckBox3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2 teemos"
+                    android:layout_below="@+id/question3CheckBox2"/>
+        </RelativeLayout>
+    </ScrollView>
+    <Button
+            android:id="@+id/nextQuestion"
+            android:text="Next Question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_alignParentBottom="true"
+            android:onClick="nextQuestion"/>
+</LinearLayout>

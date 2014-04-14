@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true">
+        <TextView
+                android:id="@+id/question1Text"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Do you want to build a snowman?*"
+                android:gravity="center_horizontal"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_margin="10dp" />
+        <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="?android:attr/listDivider"
+                android:layout_below="@id/question1Text" />
+
+    </RelativeLayout>
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        <RelativeLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <RadioGroup
+                    android:id="@+id/question1RadioGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+
+                <RadioButton
+                        android:id="@+id/question1RadioButton1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Yes" />
+
+                <RadioButton
+                        android:id="@+id/question1RadioButton2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No" />
+                <RadioButton
+                        android:id="@+id/question1RadioButton3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Go away Anna!" />
+                <RadioButton
+                        android:id="@+id/question1RadioButton4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Other:" />
+                <EditText
+                        android:id="@+id/question1RadioButton4Text"
+                        android:inputType="textMultiLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="top|left"
+                        android:minLines="3"
+                        android:maxLines="5"
+                        android:scrollbars="vertical"
+                        android:layout_margin="5dp"/>
+            </RadioGroup>
+        </RelativeLayout>
+    </ScrollView>
+    <Button
+        android:id="@+id/nextQuestion"
+        android:text="Next Question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_alignParentBottom="true"
+        android:onClick="nextQuestion"/>
+</LinearLayout>

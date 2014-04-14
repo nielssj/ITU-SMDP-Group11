@@ -8,12 +8,13 @@
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            android:descendantFocusability="beforeDescendants"
+            android:focusableInTouchMode="true">
         <TextView
-                android:id="@+id/questionText"
+                android:id="@+id/question4Text"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Question text"
+                android:text="Any other comments?*"
                 android:gravity="center_horizontal"
                 android:textSize="20sp"
                 android:textColor="#ffffff"
@@ -23,13 +24,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:background="?android:attr/listDivider"
-                android:layout_below="@id/questionText" />
+                android:layout_below="@id/question4Text" />
 
     </RelativeLayout>
     <RelativeLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+        <EditText
+                android:id="@+id/question4FreeText"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="textMultiLine"
+                android:layout_marginTop="20dp"
+                android:gravity="top|left"
+                android:scrollbars="vertical"
+                android:layout_above="@id/nextQuestion"
+                />
         <Button
                 android:id="@+id/nextQuestion"
                 android:text="Next Question"
@@ -41,10 +51,5 @@
                 android:layout_marginTop="20dp"
                 android:layout_alignParentBottom="true"
                 android:onClick="nextQuestion"/>
-        <ListView
-                android:id="@+id/list"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_above="@id/nextQuestion"/>
     </RelativeLayout>
 </LinearLayout>
