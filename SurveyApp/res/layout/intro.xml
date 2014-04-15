@@ -3,17 +3,21 @@
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-    <TextView
+    <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Welcome to this awesome survey!"
-            android:textSize="20sp"
-            android:textColor="#ffffff"
-            android:layout_margin="10dp"/>
+            android:layout_height="match_parent">
+        <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Welcome to this awesome survey!"
+                android:textSize="20sp"
+                android:textColor="#ffffff"
+                android:layout_margin="10dp"/>
+    </ScrollView>
     <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="BeginSurvey"
+            android:text="Begin Survey"
             android:layout_marginTop="20dp"
             android:layout_centerInParent="true"
             android:layout_alignParentBottom="true"
