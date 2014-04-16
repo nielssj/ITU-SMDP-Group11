@@ -17,7 +17,7 @@ EString returns ecore::EString:
 	STRING | ID;
 
 Question_Impl returns Question:
-	'Question' name=EString (isExclusive?='exclusive')? (isOptional?='optional')? body=EString 
+	'Question' name=EString ((isExclusive?='exclusive')? & (isOptional?='optional')?) body=EString
 	'('
 		answers+=Answer (answers+=Answer)* 
 	')';
@@ -26,7 +26,7 @@ Answer returns Answer:
 	'Answer' (isFreeText?='freetext')? body=EString ('->' followup+=[Question|EString] ( "," followup+=[Question|EString])* )?;
 
 TableQuestion returns TableQuestion:
-	'TableQuestion' name=EString (isExclusive?='exclusive')? (isOptional?='optional')? body=EString
+	'TableQuestion' name=EString ((isExclusive?='exclusive')? & (isOptional?='optional')?) body=EString
 	'('
 		'Items' '('items+=Item ( "," items+=Item)*')'
 		answers+=Answer (answers+=Answer)*
