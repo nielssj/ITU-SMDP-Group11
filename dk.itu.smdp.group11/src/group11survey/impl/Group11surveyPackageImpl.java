@@ -9,8 +9,8 @@ import group11survey.Group11surveyPackage;
 import group11survey.Item;
 import group11survey.Question;
 import group11survey.Survey;
-
 import group11survey.TableQuestion;
+
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -151,6 +151,15 @@ public class Group11surveyPackageImpl extends EPackageImpl implements Group11sur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getQuestion_IsOptional() {
+		return (EAttribute)questionEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EAttribute getQuestion_IsExclusive() {
 		return (EAttribute)questionEClass.getEStructuralFeatures().get(2);
 	}
@@ -162,15 +171,6 @@ public class Group11surveyPackageImpl extends EPackageImpl implements Group11sur
 	 */
 	public EAttribute getQuestion_Name() {
 		return (EAttribute)questionEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EAttribute getQuestion_IsOptional() {
-		return (EAttribute)questionEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -196,6 +196,15 @@ public class Group11surveyPackageImpl extends EPackageImpl implements Group11sur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getAnswer_IsFreeText() {
+		return (EAttribute)answerEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getSurvey() {
 		return surveyEClass;
 	}
@@ -207,6 +216,15 @@ public class Group11surveyPackageImpl extends EPackageImpl implements Group11sur
 	 */
 	public EReference getSurvey_Questions() {
 		return (EReference)surveyEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getSurvey_Name() {
+		return (EAttribute)surveyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -232,15 +250,6 @@ public class Group11surveyPackageImpl extends EPackageImpl implements Group11sur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getSurvey_Name() {
-		return (EAttribute)surveyEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getContent() {
 		return contentEClass;
 	}
@@ -259,8 +268,8 @@ public class Group11surveyPackageImpl extends EPackageImpl implements Group11sur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getContent_IsFreeText() {
-		return (EAttribute)contentEClass.getEStructuralFeatures().get(1);
+	public EClass getItem() {
+		return itemEClass;
 	}
 
 	/**
@@ -268,8 +277,8 @@ public class Group11surveyPackageImpl extends EPackageImpl implements Group11sur
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getItem() {
-		return itemEClass;
+	public EAttribute getItem_IsFreeText() {
+		return (EAttribute)itemEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -326,6 +335,7 @@ public class Group11surveyPackageImpl extends EPackageImpl implements Group11sur
 
 		answerEClass = createEClass(ANSWER);
 		createEReference(answerEClass, ANSWER__FOLLOWUP);
+		createEAttribute(answerEClass, ANSWER__IS_FREE_TEXT);
 
 		surveyEClass = createEClass(SURVEY);
 		createEReference(surveyEClass, SURVEY__QUESTIONS);
@@ -335,9 +345,9 @@ public class Group11surveyPackageImpl extends EPackageImpl implements Group11sur
 
 		contentEClass = createEClass(CONTENT);
 		createEAttribute(contentEClass, CONTENT__BODY);
-		createEAttribute(contentEClass, CONTENT__IS_FREE_TEXT);
 
 		itemEClass = createEClass(ITEM);
+		createEAttribute(itemEClass, ITEM__IS_FREE_TEXT);
 
 		tableQuestionEClass = createEClass(TABLE_QUESTION);
 		createEReference(tableQuestionEClass, TABLE_QUESTION__ITEMS);
@@ -385,6 +395,7 @@ public class Group11surveyPackageImpl extends EPackageImpl implements Group11sur
 
 		initEClass(answerEClass, Answer.class, "Answer", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAnswer_Followup(), this.getQuestion(), null, "followup", null, 0, -1, Answer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getAnswer_IsFreeText(), ecorePackage.getEBoolean(), "isFreeText", null, 0, 1, Answer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(surveyEClass, Survey.class, "Survey", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getSurvey_Questions(), this.getQuestion(), null, "questions", null, 1, -1, Survey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -394,9 +405,9 @@ public class Group11surveyPackageImpl extends EPackageImpl implements Group11sur
 
 		initEClass(contentEClass, Content.class, "Content", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getContent_Body(), ecorePackage.getEString(), "body", null, 0, 1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getContent_IsFreeText(), ecorePackage.getEBoolean(), "isFreeText", null, 0, 1, Content.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(itemEClass, Item.class, "Item", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getItem_IsFreeText(), ecorePackage.getEBoolean(), "isFreeText", null, 0, 1, Item.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(tableQuestionEClass, TableQuestion.class, "TableQuestion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getTableQuestion_Items(), this.getItem(), null, "items", null, 1, -1, TableQuestion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

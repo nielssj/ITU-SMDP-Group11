@@ -5,13 +5,19 @@ package group11survey.impl;
 import group11survey.Answer;
 import group11survey.Group11surveyPackage;
 import group11survey.Question;
+
 import java.util.Collection;
+
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -147,48 +153,6 @@ public class QuestionImpl extends ContentImpl implements Question {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsExclusive() {
-		return isExclusive;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIsExclusive(boolean newIsExclusive) {
-		boolean oldIsExclusive = isExclusive;
-		isExclusive = newIsExclusive;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.QUESTION__IS_EXCLUSIVE, oldIsExclusive, isExclusive));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setName(String newName) {
-		String oldName = name;
-		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.QUESTION__NAME, oldName, name));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public boolean isIsOptional() {
 		return isOptional;
 	}
@@ -228,6 +192,48 @@ public class QuestionImpl extends ContentImpl implements Question {
 	 */
 	public boolean isSetIsOptional() {
 		return isOptionalESet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public boolean isIsExclusive() {
+		return isExclusive;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIsExclusive(boolean newIsExclusive) {
+		boolean oldIsExclusive = isExclusive;
+		isExclusive = newIsExclusive;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.QUESTION__IS_EXCLUSIVE, oldIsExclusive, isExclusive));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setName(String newName) {
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.QUESTION__NAME, oldName, name));
 	}
 
 	/**
