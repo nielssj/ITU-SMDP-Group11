@@ -1195,7 +1195,7 @@ public class Questions {
                     android:layout_height="wrap_content"
                     android:text="«answer.body»"/>
              «IF answer.isFreeText»
-            <EditText
+             <EditText
                     android:id="@+id/question«questionId»CheckBox«answerNumber»Text"
                     android:inputType="textMultiLine"
                     android:layout_width="match_parent"
