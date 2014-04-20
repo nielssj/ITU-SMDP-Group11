@@ -1,35 +1,43 @@
 Survey "A complete demo"
 
-    Intro "This survey demonstrates all the capabilities built into the Survey Generator."
+	Intro "This survey demonstrates all the capabilities built into the Survey Generator."
 
-    Question "ORANGESIZE" exclusive optional "How big do you like your oranges?"
-    (
-        Answer "Large"
-        Answer "Small"
-    )
+	TableQuestion "CARLIKE" "What do you like about the following types of cars?"
+	(
+		Items ( "BMW.", "Fiat", "Peugeot" )
+		Answer "Power"
+		Answer "Comfort"
+		Answer "Security"
+	)
 
-    Question "FAVCITY" exclusive "What is your favorite city?"
-    (
-        Answer "Copenhagen"
-        Answer "London"
-        Answer "Paris"
-        Answer freetext "A different city"
-    )
+	Question "ORANGESIZE" exclusive optional "How big do you like your oranges?"
+	(
+		Answer "Large"
+		Answer "Small"
+	)
 
-    Question "FAVFRUITS" "Which of the following fruits do you enjoy eating?"
-    (
-        Answer "Apples"
-        Answer "Oranges" -> ORANGESIZE
-        Answer "Bananas"
-        Answer freetext "Other fruits you like"
-    )
+	Question "FAVCITY" exclusive "What is your favorite city?"
+	(
+		Answer "Copenhagen"
+		Answer "London"
+		Answer "Paris"
+		Answer freetext "A different city"
+	)
 
-    TableQuestion "FOOTRATE" exclusive "Rate the following football teams"
-    (
-        items ( "Looser", "Mediocre", "Winner" )
-        Answer "Liverpool F.C."
-        Answer "Juventus Torino"
-        Answer "Getafe CF"
-    )
+	Question "FAVFRUITS" "Which of the following fruits do you enjoy eating?"
+	(
+		Answer "Apples"
+		Answer "Oranges" -> ORANGESIZE
+		Answer "Bananas"
+		Answer freetext "Other fruits you like"
+	)
 
-    Outro "Thank you for taking the time to fill in our survey."
+	TableQuestion "FOOTRATE" exclusive optional "Rate the following football teams"
+	(
+		Items ( "Liverpool F.C.", "Juventus Torino", "Getafe CF" )
+		Answer "Looser"
+		Answer "Mediocre"
+		Answer "Winner"
+	)
+
+	Outro "Thank you for taking the time to fill in our survey."
