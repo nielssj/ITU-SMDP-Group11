@@ -13,12 +13,12 @@ import group11survey.Answer
 
 /**
  * Generates code from your model files on save.
- * 
+ *
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
 class SurveyGenerator implements IGenerator {
-	
-	def static compileToHtml(Survey it) {
+
+    def static compileToHtml(Survey it) {
         var int i = 0
         '''<!DOCTYPE html>
 <html ng-app="survey">
@@ -87,6 +87,33 @@ class SurveyGenerator implements IGenerator {
                     «ENDFOR»
                 }
             };
+            $scope.survey = [
+                «FOR question : questions SEPARATOR ','»
+                {
+                    id: "« toId( question.name ) »",
+                    question: "« question.body »",
+                    answers: [
+                        « FOR answer : question.answers SEPARATOR ','»
+                        {
+                            answer: "« answer.body »",
+                            isFreeText: « IF answer.isFreeText »true« ELSE »false« ENDIF »,
+                            « IF answer.followup.length > 0 »
+                            followups: [
+                                « FOR followup : answer.followup SEPARATOR ','»
+                                    "« toId( followup.name ) »"
+                                « ENDFOR »
+                            ]
+                            « ENDIF»
+                        }
+                        «ENDFOR»
+                    ],
+                    isExclusive: « IF question.isExclusive »true« ELSE »false« ENDIF »,
+                    isOptional: « IF question.isOptional »true« ELSE »false« ENDIF »,
+                    isFollowup: « IF isFollowup( it, question ) »true« ELSE »false« ENDIF »,
+                }
+                «ENDFOR»
+            ];
+
             $scope.sendSurveyAnswers = function() {
                 console.log( $scope.survey );
             }
@@ -94,12 +121,12 @@ class SurveyGenerator implements IGenerator {
     </script
 </html>'''
     }
-	
-	 /**
-	  * Generate the MainActivity class. Mostly static.
-	  */
-	 def static compileToAndroidMainActivity(Survey it) {
-	 	'''
+
+     /**
+      * Generate the MainActivity class. Mostly static.
+      */
+     def static compileToAndroidMainActivity(Survey it) {
+        '''
 package dk.itu.smdp.group11.«toId(it.name)»;
 
 import android.app.Activity;
@@ -341,14 +368,14 @@ public class MainActivity extends Activity {
         finish();
     }
 }
-	 	'''
-	 }
-	 
-	 /**
-	  * Generates the AndroidManifest.xml file. Mostly static.
-	  */
-	 def static compileToAndroidManifest(Survey it) {
-	 	'''
+        '''
+    }
+
+     /**
+      * Generates the AndroidManifest.xml file. Mostly static.
+      */
+     def static compileToAndroidManifest(Survey it) {
+        '''
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="dk.itu.smdp.group11.«toId(it.name)»"
@@ -369,14 +396,14 @@ public class MainActivity extends Activity {
         </activity>
     </application>
 </manifest>
-	 	'''
-	 }
-	 
-	 /**
-	  * Generates the Question class. Mostly static.
-	  */
-	 def static compileToAndroidQuestion(Survey it) {
-	 	'''
+        '''
+    }
+
+     /**
+      * Generates the Question class. Mostly static.
+      */
+     def static compileToAndroidQuestion(Survey it) {
+        '''
 package dk.itu.smdp.group11.«toId(it.name)»;
 
 import java.util.List;
@@ -531,14 +558,14 @@ public class Question {
         this.checkBoxes = checkBoxes;
     }
 }
-	 	'''
-	 }
-	
-	 /**
-	  * Generates the Answer class. Mostly static.
-	  */
-	 def static compileToAndroidAnswer(Survey it) {
-	 	'''
+        '''
+    }
+
+     /**
+      * Generates the Answer class. Mostly static.
+      */
+     def static compileToAndroidAnswer(Survey it) {
+        '''
 package dk.itu.smdp.group11.«toId(it.name)»;
 
 public class Answer {
@@ -567,18 +594,18 @@ public class Answer {
         this.isFreeText = isFreeText;
     }
 }
-	 	'''
-	 }
-	 
-	 /**
-	  * Generates the Questions class. This is where all the questions are set up.
-	  */
-	 def static compileToAndroidQuestions(Survey it) {
-	 	var int questionNumber = 0;
-	 	var boolean haveFirstQuestion = false;
-	 	var int answerNumber = 0;
-	 	var int itemNumber = 0;
-	 	'''
+        '''
+    }
+
+     /**
+      * Generates the Questions class. This is where all the questions are set up.
+      */
+     def static compileToAndroidQuestions(Survey it) {
+        var int questionNumber = 0;
+        var boolean haveFirstQuestion = false;
+        var int answerNumber = 0;
+        var int itemNumber = 0;
+        '''
 package dk.itu.smdp.group11.«toId(it.name)»;
 
 import java.util.*;
@@ -590,133 +617,133 @@ public class Questions {
     public Questions() {
         questionMap = new LinkedHashMap<String, Question>();
         questionQueue = new LinkedList<Question>();
-        
-    	«FOR question : questions»
-    	Question question«questionNumber = questionNumber + 1» = new Question();
-    	question«questionNumber».setQuestionName("«question.name»");
-    	question«questionNumber».setQuestionId(«questionNumber»);
-    	question«questionNumber».setQuestion("«question.body»");
-    	question«questionNumber».setAnswers(Arrays.asList(«FOR answer : question.answers SEPARATOR ', '»new Answer("«answer.body»", «answer.isFreeText»)«ENDFOR»));
-    	question«questionNumber».setExclusive(«question.isExclusive»);
-    	question«questionNumber».setOptional(«question.isOptional»);
-    	question«questionNumber».setFollowup(«isFollowup(it, question)»);
-    	question«questionNumber».setTableQuestion(«question instanceof TableQuestion»);
-    	question«questionNumber».setLayout(R.layout.question«questionNumber»);
-    	«IF question instanceof TableQuestion»
-    	question«questionNumber».setItems(Arrays.asList(«FOR answer : (question as TableQuestion).items SEPARATOR ', '»new Answer("«answer.body»", «answer.isFreeText»)«ENDFOR»));
-    	«ENDIF»
-    	«IF !haveFirstQuestion && !isFollowup(it, question)»
-    	questionQueue.add(question«questionNumber»);
-		«{ haveFirstQuestion = true; "" }»
-    	«ENDIF»
-    	
-    	«IF question.answers.size == 1 && question.answers.get(0).isFreeText»
-    	List<Integer> freeTextAnswers«questionNumber» = new ArrayList<Integer>();
-    	freeTextAnswers«questionNumber».add(R.id.question«questionNumber»FreeText);
-    	question«questionNumber».setFreeText(freeTextAnswers«questionNumber»);
-    	«ELSEIF question instanceof TableQuestion»
-    	«IF question.isExclusive»
-    	List<Integer> radioGroups«questionNumber» = new ArrayList<Integer>();
-    	«FOR answer : (question as TableQuestion).items»
-    	«{answerNumber = answerNumber + 1; ""}»
-    	radioGroups«questionNumber».add(R.id.question«questionNumber»RadioGroup«answerNumber»);
-    	«ENDFOR»
-    	«{answerNumber = 0; ""}»
-    	question«questionNumber».setRadioGroups(radioGroups«questionNumber»);
-    	
-    	List<Integer> freeTextAnswers«questionNumber» = new ArrayList<Integer>();
-    	«FOR answer : (question as TableQuestion).items»
-    	«{answerNumber = answerNumber + 1; ""}»
-    	freeTextAnswers«questionNumber».add(«IF answer.isFreeText»R.id.question«questionNumber»RadioGroup«answerNumber»Text«ELSE»null«ENDIF»);
-    	«ENDFOR»
-    	«{answerNumber = 0; ""}»
-    	question«questionNumber».setFreeText(freeTextAnswers«questionNumber»);
-    	«ELSE»
-    	List<Integer> checkBoxes«questionNumber» = new ArrayList<Integer>();
-    	«FOR item : (question as TableQuestion).items»
-    	«{itemNumber = itemNumber + 1; ""}»
-    	«FOR answer : question.answers»
-    	«{answerNumber = answerNumber + 1; ""}»
-    	checkBoxes«questionNumber».add(R.id.question«questionNumber»Item«itemNumber»CheckBox«answerNumber»);
-    	«ENDFOR»
-    	«{answerNumber = 0; ""}»
-    	«ENDFOR»
-    	«{itemNumber = 0; ""}»
-    	question«questionNumber».setCheckBoxes(checkBoxes«questionNumber»);
-    	
-    	List<Integer> freeTextAnswers«questionNumber» = new ArrayList<Integer>();
-    	«FOR answer : (question as TableQuestion).items»
-    	«{answerNumber = answerNumber + 1; ""}»
-    	freeTextAnswers«questionNumber».add(«IF answer.isFreeText»R.id.question«questionNumber»Item«answerNumber»Text«ELSE»null«ENDIF»);
-    	«ENDFOR»
-    	«{answerNumber = 0; ""}»
-    	question«questionNumber».setFreeText(freeTextAnswers«questionNumber»);
-    	«ENDIF»
-    	«ELSEIF question.isExclusive»
-    	List<Integer> radioGroups«questionNumber» = new ArrayList<Integer>();
-    	radioGroups«questionNumber».add(R.id.question«questionNumber»RadioGroup);
-    	question«questionNumber».setRadioGroups(radioGroups«questionNumber»);
-    	
-    	List<Integer> freeTextAnswers«questionNumber» = new ArrayList<Integer>();
-    	«FOR answer : question.answers»
-    	«{answerNumber = answerNumber + 1; ""}»
-    	freeTextAnswers«questionNumber».add(«IF answer.isFreeText»R.id.question«questionNumber»RadioButton«answerNumber»Text«ELSE»null«ENDIF»);
-    	«ENDFOR»
-    	«{answerNumber = 0; ""}»
-    	question«questionNumber».setFreeText(freeTextAnswers«questionNumber»);
-    	
-    	Map<Integer, List<String>> followUpQuestionsMap«questionNumber» = new HashMap<Integer, List<String>>();
-    	«FOR answer : question.answers»
-    	«{answerNumber = answerNumber + 1; ""}»
-    	«IF answer.followup.size > 0»
-    	List<String> followupQuestions«questionNumber»Answer«answerNumber» = new ArrayList<String>();
-    	«FOR followUpAnswer : answer.followup»
-    	followupQuestions«questionNumber»Answer«answerNumber».add("«followUpAnswer.name»");
-    	«ENDFOR»
-    	followUpQuestionsMap«questionNumber».put(«answerNumber - 1», followupQuestions«questionNumber»Answer«answerNumber»);
-    	«ELSE»
-    	followUpQuestionsMap«questionNumber».put(«answerNumber - 1», null);
-    	«ENDIF»
-    	«ENDFOR»
-    	«{answerNumber = 0; ""}»
-    	question«questionNumber».setFollowup(followupQuestionsMap«questionNumber»);
-    	
-    	«ELSE»
-    	List<Integer> checkBoxes«questionNumber» = new ArrayList<Integer>();
-    	«FOR answer : question.answers»
-    	«{answerNumber = answerNumber + 1; ""}»
-    	checkBoxes«questionNumber».add(R.id.question«questionNumber»CheckBox«answerNumber»);
-    	«ENDFOR»
-    	«{answerNumber = 0; ""}»
-    	question«questionNumber».setCheckBoxes(checkBoxes«questionNumber»);
-    	
-    	List<Integer> freeTextAnswers«questionNumber» = new ArrayList<Integer>();
-    	«FOR answer : question.answers»
-    	«{answerNumber = answerNumber + 1; ""}»
-    	freeTextAnswers«questionNumber».add(«IF answer.isFreeText»R.id.question«questionNumber»CheckBox«answerNumber»Text«ELSE»null«ENDIF»);
-    	«ENDFOR»
-    	«{answerNumber = 0; ""}»
-    	question«questionNumber».setFreeText(freeTextAnswers«questionNumber»);
-    	
-    	Map<Integer, List<String>> followUpQuestionsMap«questionNumber» = new HashMap<Integer, List<String>>();
-    	«FOR answer : question.answers»
-    	«{answerNumber = answerNumber + 1; ""}»
-    	«IF answer.followup.size > 0»
-    	List<String> followupQuestions«questionNumber»Answer«answerNumber» = new ArrayList<String>();
-    	«FOR followUpAnswer : answer.followup»
-    	followupQuestions«questionNumber»Answer«answerNumber».add("«followUpAnswer.name»");
-    	«ENDFOR»
-    	followUpQuestionsMap«questionNumber».put(«answerNumber - 1», followupQuestions«questionNumber»Answer«answerNumber»);
-    	«ELSE»
-    	followUpQuestionsMap«questionNumber».put(«answerNumber - 1», null);
-    	«ENDIF»
-    	«ENDFOR»
-    	«{answerNumber = 0; ""}»
-    	question«questionNumber».setFollowup(followupQuestionsMap«questionNumber»);
-    	«ENDIF»
-    	questionMap.put(question«questionNumber».getQuestionName(), question«questionNumber»);
-    	
-    	«ENDFOR»
+
+        «FOR question : questions»
+        Question question«questionNumber = questionNumber + 1» = new Question();
+        question«questionNumber».setQuestionName("«question.name»");
+        question«questionNumber».setQuestionId(«questionNumber»);
+        question«questionNumber».setQuestion("«question.body»");
+        question«questionNumber».setAnswers(Arrays.asList(«FOR answer : question.answers SEPARATOR ', '»new Answer("«answer.body»", «answer.isFreeText»)«ENDFOR»));
+        question«questionNumber».setExclusive(«question.isExclusive»);
+        question«questionNumber».setOptional(«question.isOptional»);
+        question«questionNumber».setFollowup(«isFollowup(it, question)»);
+        question«questionNumber».setTableQuestion(«question instanceof TableQuestion»);
+        question«questionNumber».setLayout(R.layout.question«questionNumber»);
+        «IF question instanceof TableQuestion»
+        question«questionNumber».setItems(Arrays.asList(«FOR answer : (question as TableQuestion).items SEPARATOR ', '»new Answer("«answer.body»", «answer.isFreeText»)«ENDFOR»));
+        «ENDIF»
+        «IF !haveFirstQuestion && !isFollowup(it, question)»
+        questionQueue.add(question«questionNumber»);
+        «{ haveFirstQuestion = true; "" }»
+        «ENDIF»
+
+        «IF question.answers.size == 1 && question.answers.get(0).isFreeText»
+        List<Integer> freeTextAnswers«questionNumber» = new ArrayList<Integer>();
+        freeTextAnswers«questionNumber».add(R.id.question«questionNumber»FreeText);
+        question«questionNumber».setFreeText(freeTextAnswers«questionNumber»);
+        «ELSEIF question instanceof TableQuestion»
+        «IF question.isExclusive»
+        List<Integer> radioGroups«questionNumber» = new ArrayList<Integer>();
+        «FOR answer : (question as TableQuestion).items»
+        «{answerNumber = answerNumber + 1; ""}»
+        radioGroups«questionNumber».add(R.id.question«questionNumber»RadioGroup«answerNumber»);
+        «ENDFOR»
+        «{answerNumber = 0; ""}»
+        question«questionNumber».setRadioGroups(radioGroups«questionNumber»);
+
+        List<Integer> freeTextAnswers«questionNumber» = new ArrayList<Integer>();
+        «FOR answer : (question as TableQuestion).items»
+        «{answerNumber = answerNumber + 1; ""}»
+        freeTextAnswers«questionNumber».add(«IF answer.isFreeText»R.id.question«questionNumber»RadioGroup«answerNumber»Text«ELSE»null«ENDIF»);
+        «ENDFOR»
+        «{answerNumber = 0; ""}»
+        question«questionNumber».setFreeText(freeTextAnswers«questionNumber»);
+        «ELSE»
+        List<Integer> checkBoxes«questionNumber» = new ArrayList<Integer>();
+        «FOR item : (question as TableQuestion).items»
+        «{itemNumber = itemNumber + 1; ""}»
+        «FOR answer : question.answers»
+        «{answerNumber = answerNumber + 1; ""}»
+        checkBoxes«questionNumber».add(R.id.question«questionNumber»Item«itemNumber»CheckBox«answerNumber»);
+        «ENDFOR»
+        «{answerNumber = 0; ""}»
+        «ENDFOR»
+        «{itemNumber = 0; ""}»
+        question«questionNumber».setCheckBoxes(checkBoxes«questionNumber»);
+
+        List<Integer> freeTextAnswers«questionNumber» = new ArrayList<Integer>();
+        «FOR answer : (question as TableQuestion).items»
+        «{answerNumber = answerNumber + 1; ""}»
+        freeTextAnswers«questionNumber».add(«IF answer.isFreeText»R.id.question«questionNumber»Item«answerNumber»Text«ELSE»null«ENDIF»);
+        «ENDFOR»
+        «{answerNumber = 0; ""}»
+        question«questionNumber».setFreeText(freeTextAnswers«questionNumber»);
+        «ENDIF»
+        «ELSEIF question.isExclusive»
+        List<Integer> radioGroups«questionNumber» = new ArrayList<Integer>();
+        radioGroups«questionNumber».add(R.id.question«questionNumber»RadioGroup);
+        question«questionNumber».setRadioGroups(radioGroups«questionNumber»);
+
+        List<Integer> freeTextAnswers«questionNumber» = new ArrayList<Integer>();
+        «FOR answer : question.answers»
+        «{answerNumber = answerNumber + 1; ""}»
+        freeTextAnswers«questionNumber».add(«IF answer.isFreeText»R.id.question«questionNumber»RadioButton«answerNumber»Text«ELSE»null«ENDIF»);
+        «ENDFOR»
+        «{answerNumber = 0; ""}»
+        question«questionNumber».setFreeText(freeTextAnswers«questionNumber»);
+
+        Map<Integer, List<String>> followUpQuestionsMap«questionNumber» = new HashMap<Integer, List<String>>();
+        «FOR answer : question.answers»
+        «{answerNumber = answerNumber + 1; ""}»
+        «IF answer.followup.size > 0»
+        List<String> followupQuestions«questionNumber»Answer«answerNumber» = new ArrayList<String>();
+        «FOR followUpAnswer : answer.followup»
+        followupQuestions«questionNumber»Answer«answerNumber».add("«followUpAnswer.name»");
+        «ENDFOR»
+        followUpQuestionsMap«questionNumber».put(«answerNumber - 1», followupQuestions«questionNumber»Answer«answerNumber»);
+        «ELSE»
+        followUpQuestionsMap«questionNumber».put(«answerNumber - 1», null);
+        «ENDIF»
+        «ENDFOR»
+        «{answerNumber = 0; ""}»
+        question«questionNumber».setFollowup(followupQuestionsMap«questionNumber»);
+
+        «ELSE»
+        List<Integer> checkBoxes«questionNumber» = new ArrayList<Integer>();
+        «FOR answer : question.answers»
+        «{answerNumber = answerNumber + 1; ""}»
+        checkBoxes«questionNumber».add(R.id.question«questionNumber»CheckBox«answerNumber»);
+        «ENDFOR»
+        «{answerNumber = 0; ""}»
+        question«questionNumber».setCheckBoxes(checkBoxes«questionNumber»);
+
+        List<Integer> freeTextAnswers«questionNumber» = new ArrayList<Integer>();
+        «FOR answer : question.answers»
+        «{answerNumber = answerNumber + 1; ""}»
+        freeTextAnswers«questionNumber».add(«IF answer.isFreeText»R.id.question«questionNumber»CheckBox«answerNumber»Text«ELSE»null«ENDIF»);
+        «ENDFOR»
+        «{answerNumber = 0; ""}»
+        question«questionNumber».setFreeText(freeTextAnswers«questionNumber»);
+
+        Map<Integer, List<String>> followUpQuestionsMap«questionNumber» = new HashMap<Integer, List<String>>();
+        «FOR answer : question.answers»
+        «{answerNumber = answerNumber + 1; ""}»
+        «IF answer.followup.size > 0»
+        List<String> followupQuestions«questionNumber»Answer«answerNumber» = new ArrayList<String>();
+        «FOR followUpAnswer : answer.followup»
+        followupQuestions«questionNumber»Answer«answerNumber».add("«followUpAnswer.name»");
+        «ENDFOR»
+        followUpQuestionsMap«questionNumber».put(«answerNumber - 1», followupQuestions«questionNumber»Answer«answerNumber»);
+        «ELSE»
+        followUpQuestionsMap«questionNumber».put(«answerNumber - 1», null);
+        «ENDIF»
+        «ENDFOR»
+        «{answerNumber = 0; ""}»
+        question«questionNumber».setFollowup(followupQuestionsMap«questionNumber»);
+        «ENDIF»
+        questionMap.put(question«questionNumber».getQuestionName(), question«questionNumber»);
+
+        «ENDFOR»
     }
 
     public Map<String, Question> getQuestionMap() {
@@ -735,14 +762,14 @@ public class Questions {
         this.questionQueue = questionQueue;
     }
 }
-	 	'''
-	 }
-	 
-	 /**
-	  * Generates the intro layout. Mostly static.
-	  */
-	 def static compileToAndroidLayoutIntro(Survey it) {
-	 	'''
+        '''
+     }
+
+     /**
+      * Generates the intro layout. Mostly static.
+      */
+     def static compileToAndroidLayoutIntro(Survey it) {
+        '''
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
@@ -770,14 +797,14 @@ public class Questions {
             android:textSize="20sp"
             android:textStyle="bold"/>
 </RelativeLayout>
-	 	'''
-	 }
-	 
-	 /**
-	  * Generates the outro layout. Mostly static.
-	  */
-	 def static compileToAndroidLayoutOutro(Survey it) {
-	 	'''
+        '''
+     }
+
+     /**
+      * Generates the outro layout. Mostly static.
+      */
+     def static compileToAndroidLayoutOutro(Survey it) {
+        '''
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
@@ -806,17 +833,17 @@ public class Questions {
             android:textSize="20sp"
             android:textStyle="bold"/>
 </RelativeLayout>
-	 	'''
-	 }
-	 
-	var static int questionId = 1;
-	 /**
-	  * Generates the question layout for the given question.
-	  */
-	 def static compileToAndroidLayoutQuestion(Question it) {
-	 	var int itemNumber = 0;
-	 	var int answerNumber = 0;
-	 	'''
+        '''
+     }
+
+    var static int questionId = 1;
+     /**
+      * Generates the question layout for the given question.
+      */
+     def static compileToAndroidLayoutQuestion(Question it) {
+        var int itemNumber = 0;
+        var int answerNumber = 0;
+        '''
 «IF it.answers.size == 1 && it.answers.get(0).isFreeText»
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -912,8 +939,8 @@ public class Questions {
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-        	«FOR item : (it as TableQuestion).items»
-        	«{itemNumber = itemNumber + 1; ""}»
+            «FOR item : (it as TableQuestion).items»
+            «{itemNumber = itemNumber + 1; ""}»
             <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -935,19 +962,19 @@ public class Questions {
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal">
-        		«FOR answer : it.answers»
-        		«{answerNumber = answerNumber + 1; ""}»
+                «FOR answer : it.answers»
+                «{answerNumber = answerNumber + 1; ""}»
                     <RadioButton
                             android:id="@+id/question«questionId»RadioGroup«itemNumber»RadioButton«answerNumber»"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="«answer.body»"/>
-        		«ENDFOR»
-        		«{answerNumber = 0; ""}»
-        		</RadioGroup>
-    		</LinearLayout>
-        	«ENDFOR»
-        	«{itemNumber = 0; ""}»
+                «ENDFOR»
+                «{answerNumber = 0; ""}»
+                </RadioGroup>
+            </LinearLayout>
+            «ENDFOR»
+            «{itemNumber = 0; ""}»
         </LinearLayout>
     </HorizontalScrollView>
     <Button
@@ -1000,8 +1027,8 @@ public class Questions {
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-        	«FOR item : (it as TableQuestion).items»
-        	«{itemNumber = itemNumber + 1; ""}»
+            «FOR item : (it as TableQuestion).items»
+            «{itemNumber = itemNumber + 1; ""}»
             <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1012,23 +1039,23 @@ public class Questions {
                         android:layout_height="wrap_content"
                         android:text="«item.body»"
                         android:textSize="20sp"/>
-				«IF item.isFreeText»
+                «IF item.isFreeText»
                 <EditText
                         android:id="@+id/question«questionId»Item«itemNumber»Text"
                         android:layout_width="150dp"
                         android:layout_height="wrap_content"/>
-				«ENDIF»
-				«FOR answer : it.answers»
-				«{answerNumber = answerNumber + 1; ""}»
+                «ENDIF»
+                «FOR answer : it.answers»
+                «{answerNumber = answerNumber + 1; ""}»
                 <CheckBox
                         android:id="@+id/question«questionId»Item«itemNumber»Checkbox«answerNumber»"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="«answer.body»"/>
-				«ENDFOR»
-				«{answerNumber = 0; ""}»
-        	«ENDFOR»
-        	«{itemNumber = 0; ""}»
+                «ENDFOR»
+                «{answerNumber = 0; ""}»
+            «ENDFOR»
+            «{itemNumber = 0; ""}»
         </LinearLayout>
     </HorizontalScrollView>
     <Button
@@ -1086,14 +1113,14 @@ public class Questions {
                     android:id="@+id/question«questionId»RadioGroup"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" >
-			«FOR answer : it.answers»
-			«{answerNumber = answerNumber + 1; ""}»
+            «FOR answer : it.answers»
+            «{answerNumber = answerNumber + 1; ""}»
                 <RadioButton
                         android:id="@+id/question«questionId»RadioButton«answerNumber»"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="«answer.body»" />
-				«IF answer.isFreeText»
+                «IF answer.isFreeText»
                 <EditText
                         android:id="@+id/question«questionId»RadioButton«answerNumber»Text"
                         android:inputType="textMultiLine"
@@ -1104,9 +1131,9 @@ public class Questions {
                         android:maxLines="5"
                         android:scrollbars="vertical"
                         android:layout_margin="5dp"/>
-				«ENDIF»
-			«ENDFOR»
-			«{answerNumber = 0; ""}»
+                «ENDIF»
+            «ENDFOR»
+            «{answerNumber = 0; ""}»
             </RadioGroup>
         </RelativeLayout>
     </ScrollView>
@@ -1160,9 +1187,9 @@ public class Questions {
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-		«FOR answer : it.answers»
-		«{answerNumber = answerNumber + 1; ""}»
-			<CheckBox
+        «FOR answer : it.answers»
+        «{answerNumber = answerNumber + 1; ""}»
+            <CheckBox
                     android:id="@+id/question«questionId»CheckBox«answerNumber»"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -1179,7 +1206,7 @@ public class Questions {
                     android:scrollbars="vertical"
                     android:layout_margin="5dp"/>
              «ENDIF»
-		«ENDFOR»
+        «ENDFOR»
         </LinearLayout>
     </ScrollView>
     <Button
@@ -1195,16 +1222,16 @@ public class Questions {
             android:onClick="nextQuestion"/>
 </LinearLayout>
 «ENDIF»
-	 	'''
-	 }
-	
-	/*
+        '''
+    }
+
+    /*
      * Utility function to have workable files and id's as strings.
      */
     def static toId(String text) {
         text.replaceAll("\\W+", "")
     }
-    
+
     /*
      * Checks if a question is actually a follow-up for at least one other question
      */
@@ -1222,7 +1249,7 @@ public class Questions {
         }
         return false
     }
-    
+
     /*
      * Creates the condition used by Angular to show or hide a specific follow-up question
      */
@@ -1245,41 +1272,41 @@ public class Questions {
         }
         trigger = trigger + "false"
     }
-	
-	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-		resource.allContents.toIterable.filter(typeof(Survey)).forEach[Survey it |
-			/**
-			 * HTML files.
-			 */
-			fsa.generateFile( "surveys/" + toId( it.name ) + "/html/survey.html", it.compileToHtml )
-			
-			/**
-			 * Android files.
-			 */
-			// Main Activity.
-			fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/src/dk.itu.smdp.group11." + toId(it.name) + "/MainActivity.java", it.compileToAndroidMainActivity)
-			
-			// Static Question and Answer classes.
-			fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/src/dk.itu.smdp.group11." + toId(it.name) + "/Question.java", it.compileToAndroidQuestion)
-			fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/src/dk.itu.smdp.group11." + toId(it.name) + "/Answer.java", it.compileToAndroidAnswer)
-			
-			// Questions class, where all the questions are initialized.
-			fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/src/dk.itu.smdp.group11." + toId(it.name) + "/Questions.java", it.compileToAndroidQuestions)
 
-			// Intro Layout.
-			fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/res/layout/intro.xml", it.compileToAndroidLayoutIntro)
-			
-			// Outro layout.
-			fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/res/layout/outro.xml", it.compileToAndroidLayoutOutro)
-			
-			// Question layouts.
-			for (Question question : it.questions) {
-				fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/res/layout/question"+ questionId + ".xml", question.compileToAndroidLayoutQuestion)
-				questionId = questionId + 1;
-			}
-			
-			// Static Manifest.
-			fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/AndroidManifest.xml", it.compileToAndroidManifest)
-		]
-	}
+    override void doGenerate(Resource resource, IFileSystemAccess fsa) {
+        resource.allContents.toIterable.filter(typeof(Survey)).forEach[Survey it |
+            /**
+             * HTML files.
+             */
+            fsa.generateFile( "surveys/" + toId( it.name ) + "/html/survey.html", it.compileToHtml )
+
+            /**
+             * Android files.
+             */
+            // Main Activity.
+            fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/src/dk.itu.smdp.group11." + toId(it.name) + "/MainActivity.java", it.compileToAndroidMainActivity)
+
+            // Static Question and Answer classes.
+            fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/src/dk.itu.smdp.group11." + toId(it.name) + "/Question.java", it.compileToAndroidQuestion)
+            fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/src/dk.itu.smdp.group11." + toId(it.name) + "/Answer.java", it.compileToAndroidAnswer)
+
+            // Questions class, where all the questions are initialized.
+            fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/src/dk.itu.smdp.group11." + toId(it.name) + "/Questions.java", it.compileToAndroidQuestions)
+
+            // Intro Layout.
+            fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/res/layout/intro.xml", it.compileToAndroidLayoutIntro)
+
+            // Outro layout.
+            fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/res/layout/outro.xml", it.compileToAndroidLayoutOutro)
+
+            // Question layouts.
+            for (Question question : it.questions) {
+                fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/res/layout/question"+ questionId + ".xml", question.compileToAndroidLayoutQuestion)
+                questionId = questionId + 1;
+            }
+
+            // Static Manifest.
+            fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/AndroidManifest.xml", it.compileToAndroidManifest)
+        ]
+    }
 }
