@@ -48,12 +48,30 @@ class SurveyGenerator implements IGenerator {
         survey.controller( 'SurveyController', function ( $scope, $compile ) {
             $scope.results = {
                 «FOR question : questions SEPARATOR ',' »
-                « question.name »: {« IF ( !question.isExclusive ) »
+                « question.name »: {
+                « IF question instanceof TableQuestion »
+                « IF ( question.isExclusive ) »
+                    « FOR item : (question as TableQuestion).items SEPARATOR ',' »
+                        '« item.body »': undefined
+                    «ENDFOR»
+                « ELSE »
+                    « FOR answer : question.answers SEPARATOR ',' »
+                        '« answer.body »': {
+                            « FOR item : (question as TableQuestion).items SEPARATOR ',' »
+                            '« item.body »': false
+                            « ENDFOR »
+                        }
+                    «ENDFOR»
+                « ENDIF »
+                « ELSE »
+                « IF ( !question.isExclusive ) »
                     « FOR answer : question.answers SEPARATOR ',' »
                         « toId( answer.body ) »: false
                     «ENDFOR»
                 « ELSE
-                » optional: '', regular: '' « ENDIF »}
+                » optional: '', regular: '' « ENDIF »
+                « ENDIF »
+                }
                 «ENDFOR»
             };
             var survey = [
@@ -121,12 +139,40 @@ class SurveyGenerator implements IGenerator {
                         html += createCheckboxAnswer( question.answers[ i ], question );
                     }
                 }
-                html += '</div>'
+                html += '</div><br />'
                 return html;
             }
 
             var createTableQuestion = function( question ) {
-                return '';
+                var i, j, html = '<div class="form-group clearfix">';
+                html += '<p>' + question.body + '</p>';
+                html += '<table class="table">';
+                html += '<tr>';
+                html += '<td>&nbsp;</td>'
+                for ( i = 0; i < question.answers.length; i++ ) {
+                    html += '<td>' + question.answers[ i ].body + '</td>';
+                }
+                html += '</tr>'
+                for ( j = 0; j < question.tableItems.length; j++ ) {
+                    html += '</tr>';
+                    html += '<td>' + question.tableItems[ j ] + '</td>';
+                    for ( i = 0; i < question.answers.length; i++ ) {
+                        if ( question.isExclusive ) {
+                            html += '<td>';
+                            html += '<input type="radio" value="' + question.answers[ i ].body + '" ng-model="results.' + question.id + '[\'' + question.tableItems[ j ] + '\']">';
+                            html += '</td>';
+                        } else {
+                            html += '<td>';
+                            html += '<input type="checkbox" ng-model="results.' + question.id + '[\'' + question.answers[ i ].body + '\'][\'' + question.tableItems[ j ] + '\']">';
+                            html += '</td>';
+                        }
+                    }
+                    html += '</tr>';
+                }
+                html += '</table>';
+                html += '</div><br />';
+
+                return html;
             }
 
             var createCheckboxAnswer = function( answer, question ) {
@@ -164,7 +210,7 @@ class SurveyGenerator implements IGenerator {
             buildSurvey( survey );
 
             $scope.sendSurveyAnswers = function() {
-                console.log( $scope.survey );
+                console.log( $scope.results );
             }
         } );
     </script
