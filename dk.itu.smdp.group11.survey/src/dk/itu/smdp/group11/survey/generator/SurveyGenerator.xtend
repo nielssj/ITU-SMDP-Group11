@@ -66,10 +66,14 @@ class SurveyGenerator implements IGenerator {
                 « ELSE »
                 « IF ( !question.isExclusive ) »
                     « FOR answer : question.answers SEPARATOR ',' »
-                        « toId( answer.body ) »: false
+                        '« answer.body »': {
+                            state: false« IF answer.isFreeText »,
+                            value: undefined
+                            « ENDIF »
+                            }
                     «ENDFOR»
-                « ELSE
-                » optional: '', regular: '' « ENDIF »
+                « ELSE »
+                optional: '', regular: ''« ENDIF »
                 « ENDIF »
                 }
                 «ENDFOR»
@@ -180,9 +184,9 @@ class SurveyGenerator implements IGenerator {
                 if ( ! answer.isFreeText ) {
                     html += '<label>';
                 }
-                html += '<input type="checkbox" ng-model="results.' + question.id + '[\'' + answer.body + '\']">'
+                html += '<input type="checkbox" ng-model="results.' + question.id + '[\'' + answer.body + '\'].state">'
                 if ( answer.isFreeText ) {
-                    html += '<input ng-disabled="!results.' + question.id + '[\'' + answer.body + '\']" placeholder="' + answer.body + '" style="width: auto;" ng-required="true" ng-minlength="1" class="form-control" type="text">';
+                    html += '<input ng-model="results.' + question.id + '[\'' + answer.body + '\'].value" ng-disabled="!results.' + question.id + '[\'' + answer.body + '\'].state" placeholder="' + answer.body + '" style="width: auto;" ng-required="true" ng-minlength="1" class="form-control" type="text">';
                 } else {
                     html += answer.body
                     html += '</label>';
@@ -198,7 +202,7 @@ class SurveyGenerator implements IGenerator {
                 }
                 html += '<input type="radio" value="' + answer.body + '" ng-model="results.' + question.id + '.regular">'
                 if ( answer.isFreeText ) {
-                    html += '<input ng-disabled="results.' + question.id + '.regular !== \'' + answer.body + '\'" placeholder="' + answer.body + '" style="width: auto;" ng-required="true" ng-minlength="1" class="form-control" type="text">';
+                    html += '<input ng-model="results.' + question.id + '.optional" ng-disabled="results.' + question.id + '.regular !== \'' + answer.body + '\'" placeholder="' + answer.body + '" style="width: auto;" ng-required="true" ng-minlength="1" class="form-control" type="text">';
                 } else {
                     html += answer.body
                     html += '</label>';
