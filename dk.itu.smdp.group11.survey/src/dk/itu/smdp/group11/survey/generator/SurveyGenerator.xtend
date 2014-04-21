@@ -1030,52 +1030,56 @@ public class Questions {
                 android:layout_below="@id/question«questionId»Text" />
 
     </RelativeLayout>
-    <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-            «FOR item : (it as TableQuestion).items»
-            «{itemNumber = itemNumber + 1; ""}»
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="5dip">
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="«item.body»"
-                        android:textSize="20sp"/>
-                «IF item.isFreeText»
-                <EditText
-                        android:id="@+id/question«questionId»RadioGroup«itemNumber»Text"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"/>
-                «ENDIF»
-                <RadioGroup
-                        android:id="@+id/question«questionId»RadioGroup«itemNumber»"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-                «FOR answer : it.answers»
-                «{answerNumber = answerNumber + 1; ""}»
-                    <RadioButton
-                            android:id="@+id/question«questionId»RadioGroup«itemNumber»RadioButton«answerNumber»"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="«answer.body»"/>
-                «ENDFOR»
-                «{answerNumber = 0; ""}»
-                </RadioGroup>
-            </LinearLayout>
-            «ENDFOR»
-            «{itemNumber = 0; ""}»
-        </LinearLayout>
-    </HorizontalScrollView>
+    <ScrollView
+	        android:layout_width="match_parent"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1">
+	    <HorizontalScrollView
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent">
+	        <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="match_parent"
+	                android:orientation="vertical">
+	            «FOR item : (it as TableQuestion).items»
+	            «{itemNumber = itemNumber + 1; ""}»
+	            <LinearLayout
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:orientation="horizontal"
+	                    android:padding="5dip">
+	                <TextView
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:text="«item.body»"
+	                        android:textSize="20sp"/>
+	                «IF item.isFreeText»
+	                <EditText
+	                        android:id="@+id/question«questionId»RadioGroup«itemNumber»Text"
+	                        android:layout_width="150dp"
+	                        android:layout_height="wrap_content"/>
+	                «ENDIF»
+	                <RadioGroup
+	                        android:id="@+id/question«questionId»RadioGroup«itemNumber»"
+	                        android:layout_width="match_parent"
+	                        android:layout_height="match_parent"
+	                        android:orientation="horizontal">
+	                «FOR answer : it.answers»
+	                «{answerNumber = answerNumber + 1; ""}»
+	                    <RadioButton
+	                            android:id="@+id/question«questionId»RadioGroup«itemNumber»RadioButton«answerNumber»"
+	                            android:layout_width="wrap_content"
+	                            android:layout_height="wrap_content"
+	                            android:text="«answer.body»"/>
+	                «ENDFOR»
+	                «{answerNumber = 0; ""}»
+	                </RadioGroup>
+	            </LinearLayout>
+	            «ENDFOR»
+	            «{itemNumber = 0; ""}»
+	        </LinearLayout>
+	    </HorizontalScrollView>
+    </ScrollView>
     <Button
             android:id="@+id/nextQuestion"
             android:text="Next Question"
@@ -1118,45 +1122,49 @@ public class Questions {
             android:layout_below="@id/question«questionId»Text" />
 
     </RelativeLayout>
-    <HorizontalScrollView
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
-        <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-            «FOR item : (it as TableQuestion).items»
-            «{itemNumber = itemNumber + 1; ""}»
-            <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="5dip">
-                <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="«item.body»"
-                        android:textSize="20sp"/>
-                «IF item.isFreeText»
-                <EditText
-                        android:id="@+id/question«questionId»Item«itemNumber»Text"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"/>
-                «ENDIF»
-                «FOR answer : it.answers»
-                «{answerNumber = answerNumber + 1; ""}»
-                <CheckBox
-                        android:id="@+id/question«questionId»Item«itemNumber»Checkbox«answerNumber»"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="«answer.body»"/>
-                «ENDFOR»
-                «{answerNumber = 0; ""}»
-            «ENDFOR»
-            «{itemNumber = 0; ""}»
-        </LinearLayout>
-    </HorizontalScrollView>
+	    <HorizontalScrollView
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent">
+	        <LinearLayout
+	                android:layout_width="match_parent"
+	                android:layout_height="match_parent"
+	                android:orientation="vertical">
+	            «FOR item : (it as TableQuestion).items»
+	            «{itemNumber = itemNumber + 1; ""}»
+	            <LinearLayout
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:orientation="horizontal"
+	                    android:padding="5dip">
+	                <TextView
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:text="«item.body»"
+	                        android:textSize="20sp"/>
+	                «IF item.isFreeText»
+	                <EditText
+	                        android:id="@+id/question«questionId»Item«itemNumber»Text"
+	                        android:layout_width="150dp"
+	                        android:layout_height="wrap_content"/>
+	                «ENDIF»
+	                «FOR answer : it.answers»
+	                «{answerNumber = answerNumber + 1; ""}»
+	                <CheckBox
+	                        android:id="@+id/question«questionId»Item«itemNumber»Checkbox«answerNumber»"
+	                        android:layout_width="wrap_content"
+	                        android:layout_height="wrap_content"
+	                        android:text="«answer.body»"/>
+	                «ENDFOR»
+	                «{answerNumber = 0; ""}»
+	            «ENDFOR»
+	            «{itemNumber = 0; ""}»
+	        </LinearLayout>
+	    </HorizontalScrollView>
+    </ScrollView>
     <Button
             android:id="@+id/nextQuestion"
             android:text="Next Question"
