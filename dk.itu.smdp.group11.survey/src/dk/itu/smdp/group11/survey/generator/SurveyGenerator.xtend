@@ -1379,7 +1379,7 @@ public class Questions {
         }
         trigger = trigger + "false"
     }
-
+	
     override void doGenerate(Resource resource, IFileSystemAccess fsa) {
         resource.allContents.toIterable.filter(typeof(Survey)).forEach[Survey it |
             /**
