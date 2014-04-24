@@ -2,7 +2,7 @@ Survey "A complete demo"
 
 	Intro "This survey demonstrates all the capabilities built into the Survey Generator."
 
-	TableQuestion "CARLIKE" "What do you like about the following types of cars?"
+	TableQuestion CARLIKE "What do you like about the following types of cars?"
 	(
 		Items ( "BMW.", "Fiat", "Peugeot" )
 		Answer "Power"
@@ -10,13 +10,13 @@ Survey "A complete demo"
 		Answer "Security"
 	)
 
-	Question "ORANGESIZE" exclusive optional "How big do you like your oranges?"
+	Question ORANGESIZE exclusive optional "How big do you like your oranges?"
 	(
 		Answer "Large"
 		Answer "Small"
 	)
 
-	Question "FAVCITY" exclusive "What is your favorite city?"
+	Question FAVCITY exclusive "What is your favorite city?"
 	(
 		Answer "Copenhagen"
 		Answer "London"
@@ -24,7 +24,7 @@ Survey "A complete demo"
 		Answer freetext "A different city"
 	)
 
-	Question "FAVFRUITS" "Which of the following fruits do you enjoy eating?"
+	Question FAVFRUITS "Which of the following fruits do you enjoy eating?"
 	(
 		Answer "Apples"
 		Answer "Oranges" -> ORANGESIZE
@@ -32,7 +32,7 @@ Survey "A complete demo"
 		Answer freetext "Other fruits you like"
 	)
 
-	TableQuestion "FOOTRATE" exclusive optional "Rate the following football teams"
+	TableQuestion FOOTRATE exclusive optional "Rate the following football teams"
 	(
 		Items ( "Liverpool F.C.", "Juventus Torino", "Getafe CF" )
 		Answer "Looser"
