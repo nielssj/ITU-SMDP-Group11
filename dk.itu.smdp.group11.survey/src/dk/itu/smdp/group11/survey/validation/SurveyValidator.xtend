@@ -3,17 +3,13 @@
  */
 package dk.itu.smdp.group11.survey.validation
 
-import group11survey.Group11surveyPackage
-import group11survey.Survey
-import org.eclipse.xtext.validation.Check
-import java.util.List
-import java.util.Set
-import java.util.HashSet
-import group11survey.Question
-import group11survey.TableQuestion
 import group11survey.Answer
-
-//import org.eclipse.xtext.validation.Check
+import group11survey.Group11surveyPackage
+import group11survey.Question
+import group11survey.Survey
+import group11survey.TableQuestion
+import java.util.List
+import org.eclipse.xtext.validation.Check
 
 /**
  * Custom validation rules. 
@@ -31,27 +27,26 @@ class SurveyValidator extends AbstractSurveyValidator {
 	
 	@Check
 	def checkQuestionBodyNotEmpty(Question question) {
-		if (!(question.body != null && question.body.trim.length > 0)) {
+		if (question.body == null || question.body.trim.length < 1) {
 			error('Question can not be empty', Group11surveyPackage.Literals.CONTENT__BODY)
 		}
 	}
 	
 	@Check
 	def checkQuestionHasName(Question question) {
-		if (!(question.name != null && question.name.trim.length > 0)) {
+		if (question.name == null || question.name.trim.length < 1) {
 			error('Question ID can not be empty', Group11surveyPackage.Literals.QUESTION__NAME)
 		}
 	}
 	
 	List<String> list
-	Set<String> set
 	@Check
-	def checkQuestionHasUniqueName(Survey survey) {
+	def checkQuestionHasUniqueName(Question question) {		
 		list = newArrayList()
-		{survey.questions}.forEach[list.add(name)]
-		set = new HashSet<String>(list)
-		if (list.size != set.size) {
-			error('Question IDs must be unique', Group11surveyPackage.Literals.SURVEY__QUESTIONS)
+		{(question.eContainer as Survey).questions}.forEach[list.add(name)]
+		list.remove(question.name)
+		if (list.contains(question.name)) {
+			error('Question IDs must be unique', Group11surveyPackage.Literals.QUESTION__NAME, 1)
 		}
 	}
 
@@ -64,15 +59,39 @@ class SurveyValidator extends AbstractSurveyValidator {
 	
 	@Check 
 	def checkExclusiveQuestionHasMultipleAnswers(Question question) {
-		if (question instanceof TableQuestion && question.isExclusive && (question as TableQuestion).items.length < 2) {
-			error('Exclusive table question must have at least two items', Group11surveyPackage.Literals.TABLE_QUESTION__ITEMS)
-		} else if (question.isExclusive && question.answers.size < 2) {
+		if (question.isExclusive && question.answers.size < 2) {
 			error('Exclusive question must have at least two answers', Group11surveyPackage.Literals.QUESTION__IS_EXCLUSIVE)
 		}
 	}
 	
 	@Check
-	def checkNoCycles(Survey survey) {
-		{survey.questions}.forall[] // TODO
+	def checkTableQuestionHasNoFollowups(Answer answer) {
+		if ((answer.eContainer as Question) instanceof TableQuestion) {
+			if (!(answer.followup.size == 0)) {
+				error('Table question answers can not have followup questions', Group11surveyPackage.Literals.ANSWER__FOLLOWUP)
+			}
+		}
+	}
+	
+	Survey survey
+	Question currentQuestion
+	@Check
+	def checkNoCycles(Answer answer) {
+		survey = (answer.eContainer as Question).eContainer as Survey
+		currentQuestion = answer.eContainer as Question
+		
+		for (Answer currentQuestionAnswer : currentQuestion.answers) {
+			for (Question currentAnswerFollowup : answer.followup) {
+				for (Question nextQuestion : survey.questions) {
+					if (currentAnswerFollowup.name.equals(nextQuestion.name)) {
+						for (Answer nextQuestionAnswer : nextQuestion.answers) {
+							if (nextQuestionAnswer.followup.contains(currentQuestion)) {
+								error('Cycle detected', Group11surveyPackage.Literals.ANSWER__FOLLOWUP)
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
