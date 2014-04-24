@@ -10,6 +10,8 @@ import java.util.List
 import java.util.Set
 import java.util.HashSet
 import group11survey.Question
+import group11survey.TableQuestion
+import group11survey.Answer
 
 //import org.eclipse.xtext.validation.Check
 
@@ -19,17 +21,6 @@ import group11survey.Question
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
 class SurveyValidator extends AbstractSurveyValidator {
-
-//  public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					MyDslPackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
 
 	@Check
 	def checkSurveyHasQuestion(Survey survey) {
@@ -63,16 +54,25 @@ class SurveyValidator extends AbstractSurveyValidator {
 			error('Question IDs must be unique', Group11surveyPackage.Literals.SURVEY__QUESTIONS)
 		}
 	}
-	
+
 	@Check
-	def checkQuestionFollowups(Question question) {
-		if (!{question.answers}.forall[followup.forall[name != question.name]]) {
-			error('Question can not contain itself in followup questions', Group11surveyPackage.Literals.QUESTION__ANSWERS)
+	def checkQuestionFollowups(Answer answer) {
+		if (!{answer.followup}.forall[name != (answer.eContainer as Question).name]) {
+			error('Question can not contain itself in followup questions', Group11surveyPackage.Literals.ANSWER__FOLLOWUP)
 		}
 	}
 	
-//	@Check
-//	def checkNoCycles(Survey survey) {
-//		
-//	}
+	@Check 
+	def checkExclusiveQuestionHasMultipleAnswers(Question question) {
+		if (question instanceof TableQuestion && question.isExclusive && (question as TableQuestion).items.length < 2) {
+			error('Exclusive table question must have at least two items', Group11surveyPackage.Literals.TABLE_QUESTION__ITEMS)
+		} else if (question.isExclusive && question.answers.size < 2) {
+			error('Exclusive question must have at least two answers', Group11surveyPackage.Literals.QUESTION__IS_EXCLUSIVE)
+		}
+	}
+	
+	@Check
+	def checkNoCycles(Survey survey) {
+		{survey.questions}.forall[] // TODO
+	}
 }
