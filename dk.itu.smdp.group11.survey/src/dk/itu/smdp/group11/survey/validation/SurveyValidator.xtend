@@ -46,7 +46,7 @@ class SurveyValidator extends AbstractSurveyValidator {
 		{(question.eContainer as Survey).questions}.forEach[list.add(name)]
 		list.remove(question.name)
 		if (list.contains(question.name)) {
-			error('Question IDs must be unique', Group11surveyPackage.Literals.QUESTION__NAME, 1)
+			error('Question IDs must be unique', Group11surveyPackage.Literals.QUESTION__NAME)
 		}
 	}
 
