@@ -135,7 +135,7 @@ class SurveyGenerator implements IGenerator {
 
             var createQuestion = function( question ) {
                 var i, html = '<div class="form-group" id="question-' + question.id + '">';
-                html += '<p>' + question.body + '</p>';
+                html += '<p>' + question.body + '' + ( question.isOptional ? '' : '<span style="color:red">&nbsp;*</span>' ) +'</p>';
                 for ( i = 0; i < question.answers.length; i++ ) {
                     if ( question.isExclusive ) {
                         html += createRadioAnswer( question.answers[ i ], question );
@@ -149,7 +149,7 @@ class SurveyGenerator implements IGenerator {
 
             var createTableQuestion = function( question ) {
                 var i, j, html = '<div class="form-group clearfix" id="question-' + question.id + '">';
-                html += '<p>' + question.body + '</p>';
+                html += '<p>' + question.body + '' + ( question.isOptional ? '' : '<span style="color:red">&nbsp;*</span>' ) +'</p>';
                 html += '<table class="table">';
                 html += '<tr>';
                 html += '<td>&nbsp;</td>'
@@ -232,13 +232,13 @@ class SurveyGenerator implements IGenerator {
                     if ( ! $( '#question-' + followupsIds[ i ] ).is( ':visible' ) ) {
                         question = getQuestion( survey, followupsIds[ i ] );
                         if ( question.isTableQuestion ) {
-                            html +=  '<br />' + createTableQuestion( question );
+                            html +=  createTableQuestion( question );
                         } else {
-                            html += '<br />' + createQuestion( question );
+                            html += createQuestion( question );
                         }
                     }
                 }
-                $( '#question-' + sourceQuestionId ).after( $compile( html )( $scope ) );
+                $( '#question-' + sourceQuestionId ).next().after( $compile( html )( $scope ) );
             }
 
             buildSurvey( survey );
