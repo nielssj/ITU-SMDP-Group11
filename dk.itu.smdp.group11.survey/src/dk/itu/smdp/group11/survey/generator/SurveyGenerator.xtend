@@ -134,7 +134,7 @@ class SurveyGenerator implements IGenerator {
             }
 
             var createQuestion = function( question ) {
-                var i, html = '<div class="form-group">';
+                var i, html = '<div class="form-group" id="question-' + question.id + '">';
                 html += '<p>' + question.body + '</p>';
                 for ( i = 0; i < question.answers.length; i++ ) {
                     if ( question.isExclusive ) {
@@ -148,7 +148,7 @@ class SurveyGenerator implements IGenerator {
             }
 
             var createTableQuestion = function( question ) {
-                var i, j, html = '<div class="form-group clearfix">';
+                var i, j, html = '<div class="form-group clearfix" id="question-' + question.id + '">';
                 html += '<p>' + question.body + '</p>';
                 html += '<table class="table">';
                 html += '<tr>';
@@ -184,7 +184,10 @@ class SurveyGenerator implements IGenerator {
                 if ( ! answer.isFreeText ) {
                     html += '<label>';
                 }
-                html += '<input type="checkbox" ng-model="results.' + question.id + '[\'' + answer.body + '\'].state">'
+                html += '<input '
+                	+ 'type="checkbox"'
+                	+ 'ng-click="showFollowups(\'' + question.id + '\', [' + ( typeof answer.followups === 'undefined' ? '' : '\'' + answer.followups.join( '\', \'' ) + '\'' ) + '] )"'
+                	+ 'ng-model="results.' + question.id + '[\'' + answer.body + '\'].state">';
                 if ( answer.isFreeText ) {
                     html += '<input ng-model="results.' + question.id + '[\'' + answer.body + '\'].value" ng-disabled="!results.' + question.id + '[\'' + answer.body + '\'].state" placeholder="' + answer.body + '" style="width: auto;" ng-required="true" ng-minlength="1" class="form-control" type="text">';
                 } else {
@@ -200,7 +203,11 @@ class SurveyGenerator implements IGenerator {
                 if ( !answer.isFreeText ) {
                     html += '<label>';
                 }
-                html += '<input type="radio" value="' + answer.body + '" ng-model="results.' + question.id + '.regular">'
+                html += '<input '
+                	+ 'type="radio"'
+                	+ 'value="' + answer.body + '"'
+                	+ 'ng-click="showFollowups(\'' + question.id + '\', [' + ( typeof answer.followups === 'undefined' ? '' : '\'' + answer.followups.join( '\', \'' ) + '\'' ) + '] )"'
+                	+ 'ng-model="results.' + question.id + '.regular">';
                 if ( answer.isFreeText ) {
                     html += '<input ng-model="results.' + question.id + '.optional" ng-disabled="results.' + question.id + '.regular !== \'' + answer.body + '\'" placeholder="' + answer.body + '" style="width: auto;" ng-required="true" ng-minlength="1" class="form-control" type="text">';
                 } else {
@@ -209,6 +216,29 @@ class SurveyGenerator implements IGenerator {
                 }
                 html += '</div>';
                 return html;
+            }
+
+            var getQuestion = function( survey, questionId ) {
+                for ( var i = 0; i < survey.length; i++ ) {
+                    if ( survey[ i ].id === questionId ) {
+                        return survey[ i ];
+                    }
+                };
+            }
+
+            $scope.showFollowups = function( sourceQuestionId, followupsIds ) {
+                var i, question, html = '';
+                for ( i = 0; i < followupsIds.length; i++ ) {
+                    if ( ! $( '#question-' + followupsIds[ i ] ).is( ':visible' ) ) {
+                        question = getQuestion( survey, followupsIds[ i ] );
+                        if ( question.isTableQuestion ) {
+                            html +=  '<br />' + createTableQuestion( question );
+                        } else {
+                            html += '<br />' + createQuestion( question );
+                        }
+                    }
+                }
+                $( '#question-' + sourceQuestionId ).after( $compile( html )( $scope ) );
             }
 
             buildSurvey( survey );
@@ -1379,7 +1409,7 @@ public class Questions {
         }
         trigger = trigger + "false"
     }
-	
+
     override void doGenerate(Resource resource, IFileSystemAccess fsa) {
         resource.allContents.toIterable.filter(typeof(Survey)).forEach[Survey it |
             /**
