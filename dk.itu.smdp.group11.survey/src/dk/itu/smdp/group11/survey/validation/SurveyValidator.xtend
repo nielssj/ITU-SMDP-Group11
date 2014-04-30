@@ -49,13 +49,6 @@ class SurveyValidator extends AbstractSurveyValidator {
 			error('Question IDs must be unique', Group11surveyPackage.Literals.QUESTION__NAME)
 		}
 	}
-
-	@Check
-	def checkQuestionFollowups(Answer answer) {
-		if (!{answer.followup}.forall[name != (answer.eContainer as Question).name]) {
-			error('Question can not contain itself in followup questions', Group11surveyPackage.Literals.ANSWER__FOLLOWUP)
-		}
-	}
 	
 	@Check 
 	def checkExclusiveQuestionHasMultipleAnswers(Question question) {
@@ -91,6 +84,18 @@ class SurveyValidator extends AbstractSurveyValidator {
 						}
 					}
 				}
+			}
+		}
+	}
+	
+	@Check
+	def checkQuestionOrder(Answer answer) {
+		survey = (answer.eContainer as Question).eContainer as Survey
+		currentQuestion = answer.eContainer as Question
+		
+		for (Question followupQuestion : answer.followup) {
+			if (survey.questions.indexOf(followupQuestion) < survey.questions.indexOf(currentQuestion)) {
+				warning('The order of your defined questions is not guaranteed, since you referenced a higher order question in a lower order question.', Group11surveyPackage.Literals.ANSWER__FOLLOWUP)
 			}
 		}
 	}
