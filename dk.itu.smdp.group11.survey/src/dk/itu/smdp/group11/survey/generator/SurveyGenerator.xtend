@@ -10,6 +10,28 @@ import group11survey.Survey
 import group11survey.TableQuestion
 import group11survey.Question
 import group11survey.Answer
+import org.eclipse.emf.common.util.EList
+import java.util.Stack
+import java.util.Map
+import java.util.HashMap
+
+class Node {
+    @Property
+    var int id
+
+    new(int id){
+        this.id = id
+    }
+}
+
+class Temp {
+    @Property
+    var boolean isTrue
+
+    new(boolean isTrue){
+        this.isTrue = isTrue
+    }
+}
 
 /**
  * Generates code from your model files on save.
@@ -17,6 +39,89 @@ import group11survey.Answer
  * see http://www.eclipse.org/Xtext/documentation.html#TutorialCodeGeneration
  */
 class SurveyGenerator implements IGenerator {
+	
+	var static node = new Node(0);
+	var static Stack<Integer> questionStack = new Stack();
+//	var static Map<Integer,Stack<Integer>> myMap = new HashMap();
+	
+	def static questionsToDot(EList<Question> questions, Survey it, String answerToFollowup, boolean followUp, int previousNodeID){
+		var currentNode = new Node(node.id)
+//		var previousNode = new Node(previousNodeID)
+
+		questionStack.add(0, previousNodeID);
+		
+		'''
+		«FOR question : questions»
+		
+			«node.setId(node.id+1)»
+«««			«questionStack.add(0,{node.id})»
+«««			«previousNode.setId(currentNode.id)»
+			«currentNode.setId(node.id)»
+«««			«IF (!myMap.keySet.nullOrEmpty && myMap.containsKey(previousNode.id))»
+«««				«FOR item : myMap.get(previousNode.id)»
+«««					"«{item}»" -> "«{currentNode.id}»" [label=next];
+«««				«ENDFOR»
+«««			«ELSE»
+«««				"«{previousNode.id}»" -> "«{node.id}»" [label="«{answerToFollowup}»"];
+«««			«ENDIF»
+
+			«IF (!followUp)»
+				-> "«{currentNode.id}»" [label="next"];
+			«ELSE»
+				-> "«{currentNode.id}»" [label="«{answerToFollowup}»"];
+			«ENDIF»
+			
+«««			"«{node.id}»"
+			"«{currentNode.id}»" [shape=doublecircle, label="«question.name»"];
+«««			"«{node.id}»" -> 
+
+			«questionStack.add(0,{currentNode.id})»
+			
+			«FOR answer : question.answers»
+				«IF (!answer.followup.nullOrEmpty)»
+				
+					"«questionStack.get(0)»"
+					«questionsToDot(answer.followup,it,answer.body,true,currentNode.id)»
+					
+«««					«IF (myMap.get(currentNode.id).nullOrEmpty)»
+«««						«myMap.put(currentNode.id,new Stack())»
+«««					«ENDIF»
+«««					«myMap.get(currentNode.id).add(questionStack.remove(0))»
+				«ENDIF»
+			«ENDFOR»
+			
+«««			«questionStack.remove(0)»
+			
+«««			«IF (!questionStack.get(0).equals(node.id))»
+			«IF (followUp)»
+				«IF (questionStack.get(0).equals(currentNode.id))»
+					«questionStack.remove(0)»
+				«ENDIF»
+				"«{currentNode.id}»" -> "«questionStack.get(0)»" [label="back"];
+«««				"«questionStack.remove(0)»" -> "«{node.id}»" [label="«{answerToFollowup}»"];
+«««				«IF (myMap.get(currentNode.id).nullOrEmpty)»
+«««					«myMap.put(currentNode.id,new Stack())»
+«««				«ENDIF»
+«««				«myMap.get(currentNode.id).add(questionStack.remove(0))»
+			«ENDIF»
+			
+			"«questionStack.remove(0)»"
+			
+		«ENDFOR»
+		'''
+	}
+	
+	def static compileToDot(Survey it){
+		'''
+			digraph "«it.name»" {
+				"0" [shape=point];
+				"0"
+				«questionsToDot(questions,it,"", false, 0)»
+				-> outro;
+				outro [shape=point];
+			}
+		'''
+	}
 	
 	def static compileToHtml(Survey it) {
         var int i = 0
@@ -1206,6 +1311,17 @@ public class Questions {
     }
     
     /*
+     * Checks if an answer of a question has an follow-up question
+     */
+    def static hasFollowup(Question question) {
+        for (Answer answer : question.answers) {
+        	if (!answer.followup.nullOrEmpty)
+	            return true
+        }
+        return false
+    }
+    
+    /*
      * Checks if a question is actually a follow-up for at least one other question
      */
     def static isFollowup(Survey survey, Question comparedQuestion) {
@@ -1248,6 +1364,12 @@ public class Questions {
 	
 	override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 		resource.allContents.toIterable.filter(typeof(Survey)).forEach[Survey it |
+	
+			/**
+			 * Generate GraphvizDot representation.
+			 */
+			fsa.generateFile( "surveys/" + toId( it.name ) + "/dot/survey.dot", it.compileToDot )
+			
 			/**
 			 * HTML files.
 			 */
