@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * The following features are implemented:
  * <ul>
  *   <li>{@link group11survey.impl.ContentImpl#getBody <em>Body</em>}</li>
- *   <li>{@link group11survey.impl.ContentImpl#isIsFreeText <em>Is Free Text</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,26 +45,6 @@ public class ContentImpl extends MinimalEObjectImpl.Container implements Content
 	 * @ordered
 	 */
 	protected String body = BODY_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isIsFreeText() <em>Is Free Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsFreeText()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean IS_FREE_TEXT_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isIsFreeText() <em>Is Free Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isIsFreeText()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean isFreeText = IS_FREE_TEXT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -112,34 +91,11 @@ public class ContentImpl extends MinimalEObjectImpl.Container implements Content
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isIsFreeText() {
-		return isFreeText;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setIsFreeText(boolean newIsFreeText) {
-		boolean oldIsFreeText = isFreeText;
-		isFreeText = newIsFreeText;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.CONTENT__IS_FREE_TEXT, oldIsFreeText, isFreeText));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case Group11surveyPackage.CONTENT__BODY:
 				return getBody();
-			case Group11surveyPackage.CONTENT__IS_FREE_TEXT:
-				return isIsFreeText();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -154,9 +110,6 @@ public class ContentImpl extends MinimalEObjectImpl.Container implements Content
 		switch (featureID) {
 			case Group11surveyPackage.CONTENT__BODY:
 				setBody((String)newValue);
-				return;
-			case Group11surveyPackage.CONTENT__IS_FREE_TEXT:
-				setIsFreeText((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -173,9 +126,6 @@ public class ContentImpl extends MinimalEObjectImpl.Container implements Content
 			case Group11surveyPackage.CONTENT__BODY:
 				setBody(BODY_EDEFAULT);
 				return;
-			case Group11surveyPackage.CONTENT__IS_FREE_TEXT:
-				setIsFreeText(IS_FREE_TEXT_EDEFAULT);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -190,8 +140,6 @@ public class ContentImpl extends MinimalEObjectImpl.Container implements Content
 		switch (featureID) {
 			case Group11surveyPackage.CONTENT__BODY:
 				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
-			case Group11surveyPackage.CONTENT__IS_FREE_TEXT:
-				return isFreeText != IS_FREE_TEXT_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -208,8 +156,6 @@ public class ContentImpl extends MinimalEObjectImpl.Container implements Content
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (body: ");
 		result.append(body);
-		result.append(", isFreeText: ");
-		result.append(isFreeText);
 		result.append(')');
 		return result.toString();
 	}

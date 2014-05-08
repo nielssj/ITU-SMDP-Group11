@@ -86,7 +86,6 @@ public abstract class AbstractSurveySemanticSequencer extends AbstractDelegating
 	 *         name=EString 
 	 *         isExclusive?='exclusive'? 
 	 *         isOptional?='optional'? 
-	 *         isFreeText?='freetext'? 
 	 *         body=EString 
 	 *         answers+=Answer 
 	 *         answers+=Answer*
@@ -112,7 +111,6 @@ public abstract class AbstractSurveySemanticSequencer extends AbstractDelegating
 	 *         name=EString 
 	 *         isExclusive?='exclusive'? 
 	 *         isOptional?='optional'? 
-	 *         isFreeText?='freetext'? 
 	 *         body=EString 
 	 *         items+=Item 
 	 *         items+=Item* 

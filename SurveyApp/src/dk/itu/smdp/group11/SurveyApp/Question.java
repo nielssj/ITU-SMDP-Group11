@@ -1,5 +1,9 @@
 package dk.itu.smdp.group11.SurveyApp;
 
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,14 +20,17 @@ public class Question {
     private Map<Integer, List<String>> followup;
     private boolean isExclusive;
     private boolean isOptional;
-    private boolean isFreeText;
     private boolean isFollowup;
     private boolean isAnswered;
     private String answer = "";
     private int layout;
+    private boolean isTableQuestion;
+    private List<Answer> items;
+    private List<Integer> radioGroups;
+    private List<Integer> checkBoxes;
+    private List<Integer> freeText;
 
     public Question() {
-        followup = new HashMap<Integer, List<String>>();
     }
 
     public String getQuestion() {
@@ -82,14 +89,6 @@ public class Question {
         this.isOptional = isOptional;
     }
 
-    public boolean isFreeText() {
-        return isFreeText;
-    }
-
-    public void setFreeText(boolean isFreeText) {
-        this.isFreeText = isFreeText;
-    }
-
     public boolean isFollowup() {
         return isFollowup;
     }
@@ -120,5 +119,45 @@ public class Question {
 
     public void setLayout(int layout) {
         this.layout = layout;
+    }
+
+    public boolean isTableQuestion() {
+        return isTableQuestion;
+    }
+
+    public void setTableQuestion(boolean isTableQuestion) {
+        this.isTableQuestion = isTableQuestion;
+    }
+
+    public List<Answer> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Answer> items) {
+        this.items = items;
+    }
+
+    public List<Integer> getRadioGroups() {
+        return radioGroups;
+    }
+
+    public void setRadioGroups(List<Integer> radioGroups) {
+        this.radioGroups = radioGroups;
+    }
+
+    public List<Integer> getFreeText() {
+        return freeText;
+    }
+
+    public void setFreeText(List<Integer> freeText) {
+        this.freeText = freeText;
+    }
+
+    public List<Integer> getCheckBoxes() {
+        return checkBoxes;
+    }
+
+    public void setCheckBoxes(List<Integer> checkBoxes) {
+        this.checkBoxes = checkBoxes;
     }
 }

@@ -1,0 +1,45 @@
+Survey "SurveyApp"
+
+Intro "Welcome to this awesome survey!"
+
+Question "1" exclusive "Do you want to build a snowman?" (
+	Answer "Yes"
+	Answer "No"
+	Answer "Go away Anna!"
+	Answer freetext "Other:"
+)
+
+Question "2" "What is your quest?" (
+	Answer "To burn bananas"
+	Answer "To seek the Holy Grail" -> "3"
+	Answer "I don't know"
+	Answer freetext "Other"
+)
+
+Question "3" optional "What is the airspeed velocity of an unladen swallow?"  (
+	Answer "10 km/h"
+	Answer "African or European?"
+	Answer "2 teemos"
+)
+
+Question "4" "Any other comments?" (
+	Answer freetext ""
+)
+
+TableQuestion "5" exclusive "How good are these things?" (
+	Items ("Chocolate", "Chips", "Beer", freetext "Other")
+	Answer "Bad"
+	Answer "Average"
+	Answer "Good"
+	Answer "Excellent"
+)
+
+TableQuestion "6" "How good are these things 2?" (
+	Items ("Chocolate", "Chips", "Beer", freetext "Other")
+	Answer "Bad"
+	Answer "Average"
+	Answer "Good"
+	Answer "Excellent"
+)
+
+Outro "This is the end of the survey! Bye!"

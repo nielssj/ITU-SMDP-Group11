@@ -57,56 +57,6 @@ public interface Group11surveyPackage extends EPackage {
 	Group11surveyPackage eINSTANCE = group11survey.impl.Group11surveyPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link group11survey.impl.QuestionImpl <em>Question</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see group11survey.impl.QuestionImpl
-	 * @see group11survey.impl.Group11surveyPackageImpl#getQuestion()
-	 * @generated
-	 */
-	int QUESTION = 0;
-
-	/**
-	 * The meta object id for the '{@link group11survey.impl.AnswerImpl <em>Answer</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see group11survey.impl.AnswerImpl
-	 * @see group11survey.impl.Group11surveyPackageImpl#getAnswer()
-	 * @generated
-	 */
-	int ANSWER = 1;
-
-	/**
-	 * The meta object id for the '{@link group11survey.impl.SurveyImpl <em>Survey</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see group11survey.impl.SurveyImpl
-	 * @see group11survey.impl.Group11surveyPackageImpl#getSurvey()
-	 * @generated
-	 */
-	int SURVEY = 2;
-
-	/**
-	 * The meta object id for the '{@link group11survey.impl.ItemImpl <em>Item</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see group11survey.impl.ItemImpl
-	 * @see group11survey.impl.Group11surveyPackageImpl#getItem()
-	 * @generated
-	 */
-	int ITEM = 4;
-
-	/**
-	 * The meta object id for the '{@link group11survey.impl.TableQuestionImpl <em>Table Question</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see group11survey.impl.TableQuestionImpl
-	 * @see group11survey.impl.Group11surveyPackageImpl#getTableQuestion()
-	 * @generated
-	 */
-	int TABLE_QUESTION = 5;
-
-	/**
 	 * The meta object id for the '{@link group11survey.impl.ContentImpl <em>Content</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -126,22 +76,13 @@ public interface Group11surveyPackage extends EPackage {
 	int CONTENT__BODY = 0;
 
 	/**
-	 * The feature id for the '<em><b>Is Free Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONTENT__IS_FREE_TEXT = 1;
-
-	/**
 	 * The number of structural features of the '<em>Content</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONTENT_FEATURE_COUNT = 2;
+	int CONTENT_FEATURE_COUNT = 1;
 
 	/**
 	 * The number of operations of the '<em>Content</em>' class.
@@ -153,6 +94,16 @@ public interface Group11surveyPackage extends EPackage {
 	int CONTENT_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link group11survey.impl.QuestionImpl <em>Question</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see group11survey.impl.QuestionImpl
+	 * @see group11survey.impl.Group11surveyPackageImpl#getQuestion()
+	 * @generated
+	 */
+	int QUESTION = 0;
+
+	/**
 	 * The feature id for the '<em><b>Body</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -160,15 +111,6 @@ public interface Group11surveyPackage extends EPackage {
 	 * @ordered
 	 */
 	int QUESTION__BODY = CONTENT__BODY;
-
-	/**
-	 * The feature id for the '<em><b>Is Free Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int QUESTION__IS_FREE_TEXT = CONTENT__IS_FREE_TEXT;
 
 	/**
 	 * The feature id for the '<em><b>Answers</b></em>' containment reference list.
@@ -225,6 +167,16 @@ public interface Group11surveyPackage extends EPackage {
 	int QUESTION_OPERATION_COUNT = CONTENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link group11survey.impl.AnswerImpl <em>Answer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see group11survey.impl.AnswerImpl
+	 * @see group11survey.impl.Group11surveyPackageImpl#getAnswer()
+	 * @generated
+	 */
+	int ANSWER = 1;
+
+	/**
 	 * The feature id for the '<em><b>Body</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -232,15 +184,6 @@ public interface Group11surveyPackage extends EPackage {
 	 * @ordered
 	 */
 	int ANSWER__BODY = CONTENT__BODY;
-
-	/**
-	 * The feature id for the '<em><b>Is Free Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ANSWER__IS_FREE_TEXT = CONTENT__IS_FREE_TEXT;
 
 	/**
 	 * The feature id for the '<em><b>Followup</b></em>' reference list.
@@ -252,13 +195,22 @@ public interface Group11surveyPackage extends EPackage {
 	int ANSWER__FOLLOWUP = CONTENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Is Free Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ANSWER__IS_FREE_TEXT = CONTENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Answer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ANSWER_FEATURE_COUNT = CONTENT_FEATURE_COUNT + 1;
+	int ANSWER_FEATURE_COUNT = CONTENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Answer</em>' class.
@@ -268,6 +220,16 @@ public interface Group11surveyPackage extends EPackage {
 	 * @ordered
 	 */
 	int ANSWER_OPERATION_COUNT = CONTENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link group11survey.impl.SurveyImpl <em>Survey</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see group11survey.impl.SurveyImpl
+	 * @see group11survey.impl.Group11surveyPackageImpl#getSurvey()
+	 * @generated
+	 */
+	int SURVEY = 2;
 
 	/**
 	 * The feature id for the '<em><b>Questions</b></em>' containment reference list.
@@ -324,6 +286,16 @@ public interface Group11surveyPackage extends EPackage {
 	int SURVEY_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link group11survey.impl.ItemImpl <em>Item</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see group11survey.impl.ItemImpl
+	 * @see group11survey.impl.Group11surveyPackageImpl#getItem()
+	 * @generated
+	 */
+	int ITEM = 4;
+
+	/**
 	 * The feature id for the '<em><b>Body</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -339,7 +311,7 @@ public interface Group11surveyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM__IS_FREE_TEXT = CONTENT__IS_FREE_TEXT;
+	int ITEM__IS_FREE_TEXT = CONTENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Item</em>' class.
@@ -348,7 +320,7 @@ public interface Group11surveyPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ITEM_FEATURE_COUNT = CONTENT_FEATURE_COUNT + 0;
+	int ITEM_FEATURE_COUNT = CONTENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Item</em>' class.
@@ -360,6 +332,16 @@ public interface Group11surveyPackage extends EPackage {
 	int ITEM_OPERATION_COUNT = CONTENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link group11survey.impl.TableQuestionImpl <em>Table Question</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see group11survey.impl.TableQuestionImpl
+	 * @see group11survey.impl.Group11surveyPackageImpl#getTableQuestion()
+	 * @generated
+	 */
+	int TABLE_QUESTION = 5;
+
+	/**
 	 * The feature id for the '<em><b>Body</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -367,15 +349,6 @@ public interface Group11surveyPackage extends EPackage {
 	 * @ordered
 	 */
 	int TABLE_QUESTION__BODY = QUESTION__BODY;
-
-	/**
-	 * The feature id for the '<em><b>Is Free Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TABLE_QUESTION__IS_FREE_TEXT = QUESTION__IS_FREE_TEXT;
 
 	/**
 	 * The feature id for the '<em><b>Answers</b></em>' containment reference list.
@@ -463,6 +436,17 @@ public interface Group11surveyPackage extends EPackage {
 	EReference getQuestion_Answers();
 
 	/**
+	 * Returns the meta object for the attribute '{@link group11survey.Question#isIsOptional <em>Is Optional</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Optional</em>'.
+	 * @see group11survey.Question#isIsOptional()
+	 * @see #getQuestion()
+	 * @generated
+	 */
+	EAttribute getQuestion_IsOptional();
+
+	/**
 	 * Returns the meta object for the attribute '{@link group11survey.Question#isIsExclusive <em>Is Exclusive</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -483,17 +467,6 @@ public interface Group11surveyPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getQuestion_Name();
-
-	/**
-	 * Returns the meta object for the attribute '{@link group11survey.Question#isIsOptional <em>Is Optional</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Optional</em>'.
-	 * @see group11survey.Question#isIsOptional()
-	 * @see #getQuestion()
-	 * @generated
-	 */
-	EAttribute getQuestion_IsOptional();
 
 	/**
 	 * Returns the meta object for class '{@link group11survey.Answer <em>Answer</em>}'.
@@ -517,6 +490,17 @@ public interface Group11surveyPackage extends EPackage {
 	EReference getAnswer_Followup();
 
 	/**
+	 * Returns the meta object for the attribute '{@link group11survey.Answer#isIsFreeText <em>Is Free Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Free Text</em>'.
+	 * @see group11survey.Answer#isIsFreeText()
+	 * @see #getAnswer()
+	 * @generated
+	 */
+	EAttribute getAnswer_IsFreeText();
+
+	/**
 	 * Returns the meta object for class '{@link group11survey.Survey <em>Survey</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -536,6 +520,17 @@ public interface Group11surveyPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSurvey_Questions();
+
+	/**
+	 * Returns the meta object for the attribute '{@link group11survey.Survey#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see group11survey.Survey#getName()
+	 * @see #getSurvey()
+	 * @generated
+	 */
+	EAttribute getSurvey_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link group11survey.Survey#getIntro <em>Intro</em>}'.
@@ -560,17 +555,6 @@ public interface Group11surveyPackage extends EPackage {
 	EAttribute getSurvey_Outro();
 
 	/**
-	 * Returns the meta object for the attribute '{@link group11survey.Survey#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see group11survey.Survey#getName()
-	 * @see #getSurvey()
-	 * @generated
-	 */
-	EAttribute getSurvey_Name();
-
-	/**
 	 * Returns the meta object for class '{@link group11survey.Content <em>Content</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -592,17 +576,6 @@ public interface Group11surveyPackage extends EPackage {
 	EAttribute getContent_Body();
 
 	/**
-	 * Returns the meta object for the attribute '{@link group11survey.Content#isIsFreeText <em>Is Free Text</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Is Free Text</em>'.
-	 * @see group11survey.Content#isIsFreeText()
-	 * @see #getContent()
-	 * @generated
-	 */
-	EAttribute getContent_IsFreeText();
-
-	/**
 	 * Returns the meta object for class '{@link group11survey.Item <em>Item</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -611,6 +584,17 @@ public interface Group11surveyPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getItem();
+
+	/**
+	 * Returns the meta object for the attribute '{@link group11survey.Item#isIsFreeText <em>Is Free Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Free Text</em>'.
+	 * @see group11survey.Item#isIsFreeText()
+	 * @see #getItem()
+	 * @generated
+	 */
+	EAttribute getItem_IsFreeText();
 
 	/**
 	 * Returns the meta object for class '{@link group11survey.TableQuestion <em>Table Question</em>}'.
@@ -675,6 +659,14 @@ public interface Group11surveyPackage extends EPackage {
 		EReference QUESTION__ANSWERS = eINSTANCE.getQuestion_Answers();
 
 		/**
+		 * The meta object literal for the '<em><b>Is Optional</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute QUESTION__IS_OPTIONAL = eINSTANCE.getQuestion_IsOptional();
+
+		/**
 		 * The meta object literal for the '<em><b>Is Exclusive</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -689,14 +681,6 @@ public interface Group11surveyPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute QUESTION__NAME = eINSTANCE.getQuestion_Name();
-
-		/**
-		 * The meta object literal for the '<em><b>Is Optional</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute QUESTION__IS_OPTIONAL = eINSTANCE.getQuestion_IsOptional();
 
 		/**
 		 * The meta object literal for the '{@link group11survey.impl.AnswerImpl <em>Answer</em>}' class.
@@ -717,6 +701,14 @@ public interface Group11surveyPackage extends EPackage {
 		EReference ANSWER__FOLLOWUP = eINSTANCE.getAnswer_Followup();
 
 		/**
+		 * The meta object literal for the '<em><b>Is Free Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ANSWER__IS_FREE_TEXT = eINSTANCE.getAnswer_IsFreeText();
+
+		/**
 		 * The meta object literal for the '{@link group11survey.impl.SurveyImpl <em>Survey</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -735,6 +727,14 @@ public interface Group11surveyPackage extends EPackage {
 		EReference SURVEY__QUESTIONS = eINSTANCE.getSurvey_Questions();
 
 		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute SURVEY__NAME = eINSTANCE.getSurvey_Name();
+
+		/**
 		 * The meta object literal for the '<em><b>Intro</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -749,14 +749,6 @@ public interface Group11surveyPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute SURVEY__OUTRO = eINSTANCE.getSurvey_Outro();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SURVEY__NAME = eINSTANCE.getSurvey_Name();
 
 		/**
 		 * The meta object literal for the '{@link group11survey.impl.ContentImpl <em>Content</em>}' class.
@@ -777,14 +769,6 @@ public interface Group11surveyPackage extends EPackage {
 		EAttribute CONTENT__BODY = eINSTANCE.getContent_Body();
 
 		/**
-		 * The meta object literal for the '<em><b>Is Free Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CONTENT__IS_FREE_TEXT = eINSTANCE.getContent_IsFreeText();
-
-		/**
 		 * The meta object literal for the '{@link group11survey.impl.ItemImpl <em>Item</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -793,6 +777,14 @@ public interface Group11surveyPackage extends EPackage {
 		 * @generated
 		 */
 		EClass ITEM = eINSTANCE.getItem();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Free Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ITEM__IS_FREE_TEXT = eINSTANCE.getItem_IsFreeText();
 
 		/**
 		 * The meta object literal for the '{@link group11survey.impl.TableQuestionImpl <em>Table Question</em>}' class.
