@@ -14,15 +14,12 @@ import org.eclipse.xtext.junit4.util.ParseHelper
 import org.eclipse.xtext.junit4.validation.ValidationTestHelper
 import org.junit.Test
 import org.junit.runner.RunWith
-
 import static org.junit.Assert.*
 
 @InjectWith(SurveyInjectorProvider)
 @RunWith(XtextRunner)
 class TestSurvey {
-	@Inject
-	ParseHelper<Survey> parser
-	
+	@Inject ParseHelper<Survey> parser
 	@Inject extension ValidationTestHelper
 	
 	@Test
@@ -40,6 +37,54 @@ class TestSurvey {
 		model.assertNoErrors
 		val surveyName = model.name
 		assertEquals(surveyName, "Test")
+	}
+	
+	@Test
+	def void testQuestionHasCorrectName() {
+		Group11surveyPackage.eINSTANCE.eClass()
+		val model = parser.parse(
+			'''
+			Survey "Test"
+			Question Q "Question Text" (
+				Answer "Answer 1"
+			)
+			
+			'''
+		)
+		model.assertNoErrors
+		assertEquals(model.questions.get(0).name, "Q")
+	}
+	
+	@Test
+	def void testQuestionHasCorrectBody() {
+		Group11surveyPackage.eINSTANCE.eClass()
+		val model = parser.parse(
+			'''
+			Survey "Test"
+			Question Q "Question Text" (
+				Answer "Answer 1"
+			)
+			
+			'''
+		)
+		model.assertNoErrors
+		assertEquals(model.questions.get(0).body, "Question Text")
+	}
+	
+	@Test
+	def void testAnswerHasCorrectBody() {
+		Group11surveyPackage.eINSTANCE.eClass()
+		val model = parser.parse(
+			'''
+			Survey "Test"
+			Question Q "Question Text" (
+				Answer "Answer 1"
+			)
+			
+			'''
+		)
+		model.assertNoErrors
+		assertEquals(model.questions.get(0).answers.get(0).body, "Answer 1")
 	}
 	
 	@Test
@@ -230,16 +275,17 @@ class TestSurvey {
 //	@Test
 //	def void testRegularQuestionWith3Items() {
 //		Group11surveyPackage.eINSTANCE.eClass()
-//		parser.parse(
+//		val model = parser.parse(
 //			'''
 //			Survey "Test"
 //			Question Q "Question Text" (
 //				Items ("Item 1", "Item 2", "Item 3")
 //			)
 //			'''
-//		).assertError(Group11surveyPackage::eINSTANCE.question, null)
+//		)
+//		model.assertError(Group11surveyPackage::eINSTANCE.survey, null)
 //	}
-
+	
 	
 	@Test
 	def void testTableQuestionWith3Items() {
