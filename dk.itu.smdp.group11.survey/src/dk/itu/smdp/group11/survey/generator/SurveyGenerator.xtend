@@ -103,34 +103,36 @@ class SurveyGenerator implements IGenerator {
 	def static compileToDot(Survey it){
 		'''
 			digraph "«it.name»" {
-«««				Default settings
-				nodesep=1.0;
-                node [color=Red,fontname=Courier,shape=box];
-                edge [color=Blue];
-				«IF (!intro.nullOrEmpty)»
-«««             	Intro as start node
-					"0" [label="Intro: «intro»"];
-				«ELSE»
-					"0" [shape=point];
-				«ENDIF»
-«««				Create question stream
-				«{previousNode.setId(0)}»
-				«questionsToDot(it, questions, "", true)»
-				«IF (!outro.nullOrEmpty)»
-«««					Outro as end node
-					"outro" [label="Outro: «outro»"];
-				«ELSE»
-					"outro" [shape=point];
-				«ENDIF»
-«««				Default edges from last question and followup questions to the final node
-				«IF (previousNode.id!=null)»
-					"«{previousNode.id}»"-> "outro" [label="next"];
-				«ENDIF»
-				«IF (!followupQuestionStack.nullOrEmpty)»
-					{«FOR followupQuestion : followupQuestionStack»"«followupQuestion»"«ENDFOR»} -> "outro" [label="next"];
-					«followupQuestionStack.removeAllElements»
-				«ENDIF»
-«««				Legend
+				subgraph clusterSurvey { 
+					label = "«name»";
+«««					Default settings
+					nodesep=1.0;
+	                node [color=Red,fontname=Courier,shape=box];
+	                edge [color=Blue];
+					«IF (!intro.nullOrEmpty)»
+«««             		Intro as start node
+						"0" [label="Intro: «intro»"];
+					«ELSE»
+						"0" [shape=point];
+					«ENDIF»
+«««					Create question stream
+					«{previousNode.setId(0)}»
+					«questionsToDot(it, questions, "", true)»
+					«IF (!outro.nullOrEmpty)»
+«««						Outro as end node
+						"outro" [label="Outro: «outro»"];
+					«ELSE»
+						"outro" [shape=point];
+					«ENDIF»
+«««					Default edges from last question and followup questions to the final node
+					«IF (previousNode.id!=null)»
+						"«{previousNode.id}»"-> "outro" [label="next"];
+					«ENDIF»
+					«IF (!followupQuestionStack.nullOrEmpty)»
+						{«FOR followupQuestion : followupQuestionStack»"«followupQuestion»"«ENDFOR»} -> "outro" [label="next"];
+						«followupQuestionStack.removeAllElements»
+					«ENDIF»
+«««					Legend
 				subgraph clusterLegend { 
 					{ rank=same key;key2 }
 				    label = "Legend";
@@ -150,6 +152,7 @@ class SurveyGenerator implements IGenerator {
 				}
 				"outro" -> "Intro/Outro" [style=invis]
 			}
+		}
 		'''
 	}
 	
