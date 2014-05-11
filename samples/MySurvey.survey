@@ -1,0 +1,46 @@
+Survey "Example Survey"
+
+Intro "Welcome to the survey!"
+
+Question "1" "Which car brand do you prefer?" (
+	Answer "Volkswagen" -> "2"
+	Answer "Fiat" -> "3"
+	Answer "Toyota" -> "4"
+)
+
+Question "2" "Do you like Lederhosen?" (
+	Answer "Yes"
+	Answer "No"
+)
+
+TableQuestion "3" "Rate the following italien dishes" (
+	Items ("Pizza", "Pasta", "Icecream")
+	Answer "I don't know"
+	Answer "1"
+	Answer "2"
+	Answer "3"
+	Answer "4"
+	Answer "5"
+)
+
+Question "4" optional "Do you like Samurai?" (
+	Answer "Yes"
+	Answer "No" -> "5"
+)
+
+Question "5" optional "Okay. But do you like Ninjas?" (
+	Answer "Yes"
+	Answer "No"
+)
+
+Question "6" optional "Do you prefer bicycles?" (
+	Answer "Yes"
+	Answer "No" -> "7"
+)
+
+Question "7" optional "Why don't you prefer bicycles?" (
+	Answer freetext "Because..."
+	Answer "I don't want to answer this"
+)
+
+Outro "Thanks for participating!"

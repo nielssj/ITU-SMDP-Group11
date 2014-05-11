@@ -156,7 +156,6 @@ class SurveyGenerator implements IGenerator {
 		'''
 	}
 	
-	
     def static compileToHtml(Survey it) {
         '''<!DOCTYPE html>
 <html ng-app="survey">
