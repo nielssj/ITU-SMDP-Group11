@@ -460,6 +460,49 @@ class TestSurvey {
 		model.assertError(Group11surveyPackage::eINSTANCE.answer, SurveyValidator::NoCycles)
 	}
 	
+	@Test
+	def void testSurveyHasNoQuestion() {
+		Group11surveyPackage.eINSTANCE.eClass()
+		val model = parser.parse(
+			'''
+			Survey "Test"
+			'''
+		)
+		model.assertError(Group11surveyPackage::eINSTANCE.survey, SurveyValidator::SurveyHasQuestion)
+	}
+	
+	@Test
+	def void testQuestionHasNoName() {
+		Group11surveyPackage.eINSTANCE.eClass()
+		val model = parser.parse(
+			'''
+			Survey "Test"
+			Question "How big do you like your oranges?"
+			(
+				Answer "Large"
+				Answer "Small" -> CARLIKE
+			)
+			'''
+		)
+		model.assertError(Group11surveyPackage::eINSTANCE.question, SurveyValidator::QuestionHasName)
+	}
+	
+	@Test
+	def void testQuestionBodyIsEmpty() {
+		Group11surveyPackage.eINSTANCE.eClass()
+		val model = parser.parse(
+			'''
+			Survey "Test"
+			Question ORANGESIZE ""
+			(
+				Answer "Large"
+				Answer "Small" -> CARLIKE
+			)
+			'''
+		)
+		model.assertError(Group11surveyPackage::eINSTANCE.question, SurveyValidator::QuestionBodyNotEmpty)
+	}
+	
 	// Counts how many free text answers there are and returns that number.
 	def int countFreetextAnswers(EList<Answer> answers) {
 		var int count = 0
