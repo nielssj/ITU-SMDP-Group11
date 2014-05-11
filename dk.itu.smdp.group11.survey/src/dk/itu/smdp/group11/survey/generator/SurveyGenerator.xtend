@@ -1568,7 +1568,7 @@ public class Questions {
         resource.allContents.toIterable.filter(typeof(Survey)).forEach[Survey it |
         	
         	/**
-             * HTML files.
+             * Dot files.
              */
             fsa.generateFile( "surveys/" + toId( it.name ) + "/dot/survey.dot", it.compileToDot )
         	
@@ -1606,5 +1606,8 @@ public class Questions {
             // Static Manifest.
             fsa.generateFile("surveys/" + toId(it.name) + "/android/" + toId(it.name) + "/AndroidManifest.xml", it.compileToAndroidManifest)
         ]
+
+        // Reset questionID
+        questionId = 1
     }
 }

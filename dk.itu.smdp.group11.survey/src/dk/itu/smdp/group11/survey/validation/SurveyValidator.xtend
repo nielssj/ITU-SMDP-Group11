@@ -17,11 +17,27 @@ import org.eclipse.xtext.validation.Check
  * see http://www.eclipse.org/Xtext/documentation.html#validation
  */
 class SurveyValidator extends AbstractSurveyValidator {
+	public static val SurveyHasQuestion = "dk.itu.smdp.group11.survey.SurveyHasQuestion"
+	public static val QuestionHasAnswer = "dk.itu.smdp.group11.survey.QuestionHasAnswer"
+	public static val ReferenceIsCorrect = "dk.itu.smdp.group11.survey.ReferenceIsCorrect"
+	public static val QuestionHasUniqueName = "dk.itu.smdp.group11.survey.QuestionHasUniqueName"
+	public static val ExclusiveQuestionHasMultipleAnswers = "dk.itu.smdp.group11.survey.ExclusiveQuestionHasMultipleAnswers"
+	public static val TableQuestionHasNoFollowups = "dk.itu.smdp.group11.survey.TableQuestionHasNoFollowups"
+	public static val NoCycles = "dk.itu.smdp.group11.survey.NoCycles"
 
 	@Check
 	def checkSurveyHasQuestion(Survey survey) {
 		if (survey.questions.size < 1) {
-			error('Survey must have at least one question', Group11surveyPackage.Literals.SURVEY__QUESTIONS)
+			error('Survey must have at least one question', Group11surveyPackage.Literals.SURVEY__QUESTIONS, 
+				SurveyHasQuestion)
+		}
+	}
+	
+	@Check
+	def checkQuestionHasAnswer(Question question) {
+		if (question.answers.size < 1) {
+			error('Question must have at least one answer', Group11surveyPackage.Literals.QUESTION__ANSWERS,
+				QuestionHasAnswer)
 		}
 	}
 	
@@ -41,19 +57,20 @@ class SurveyValidator extends AbstractSurveyValidator {
 	
 	List<String> list
 	@Check
-	def checkQuestionHasUniqueName(Question question) {		
+	def checkQuestionHasUniqueName(Question question) {
 		list = newArrayList()
 		{(question.eContainer as Survey).questions}.forEach[list.add(name)]
 		list.remove(question.name)
 		if (list.contains(question.name)) {
-			error('Question IDs must be unique', Group11surveyPackage.Literals.QUESTION__NAME)
+			error('Question IDs must be unique', Group11surveyPackage.Literals.QUESTION__NAME, QuestionHasUniqueName)
 		}
 	}
 	
 	@Check 
 	def checkExclusiveQuestionHasMultipleAnswers(Question question) {
 		if (question.isExclusive && question.answers.size < 2) {
-			error('Exclusive question must have at least two answers', Group11surveyPackage.Literals.QUESTION__IS_EXCLUSIVE)
+			error('Exclusive question must have at least two answers', Group11surveyPackage.Literals.QUESTION__IS_EXCLUSIVE, 
+				ExclusiveQuestionHasMultipleAnswers)
 		}
 	}
 	
@@ -61,7 +78,20 @@ class SurveyValidator extends AbstractSurveyValidator {
 	def checkTableQuestionHasNoFollowups(Answer answer) {
 		if ((answer.eContainer as Question) instanceof TableQuestion) {
 			if (!(answer.followup.size == 0)) {
-				error('Table question answers can not have followup questions', Group11surveyPackage.Literals.ANSWER__FOLLOWUP)
+				error('Table question answers can not have followup questions', Group11surveyPackage.Literals.ANSWER__FOLLOWUP,
+					TableQuestionHasNoFollowups)
+			}
+		}
+	}
+	
+	@Check
+	def checkReferenceIsCorrect(Answer answer) {
+		survey = (answer.eContainer as Question).eContainer as Survey
+		
+		for (Question followupQuestion : answer.followup) {
+			if (!survey.questions.contains(followupQuestion)) {
+				error('Reference to undefined question', Group11surveyPackage.Literals.ANSWER__FOLLOWUP, 
+					ReferenceIsCorrect)	
 			}
 		}
 	}
@@ -79,7 +109,7 @@ class SurveyValidator extends AbstractSurveyValidator {
 					if (currentAnswerFollowup.name.equals(nextQuestion.name)) {
 						for (Answer nextQuestionAnswer : nextQuestion.answers) {
 							if (nextQuestionAnswer.followup.contains(currentQuestion)) {
-								error('Cycle detected', Group11surveyPackage.Literals.ANSWER__FOLLOWUP)
+								error('Cycle detected', Group11surveyPackage.Literals.ANSWER__FOLLOWUP, NoCycles)
 							}
 						}
 					}
