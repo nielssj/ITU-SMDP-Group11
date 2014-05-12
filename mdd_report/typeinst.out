@@ -1,0 +1,17 @@
+\BOOKMARK [0][-]{chapter.1}{Lecture Notes in Computer Science}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Background}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Project Description}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Architecture}{chapter.1}% 4
+\BOOKMARK [2][-]{subsection.1.3.1}{Eclipse Modeling Framework}{section.1.3}% 5
+\BOOKMARK [2][-]{subsection.1.3.2}{Code Generators}{section.1.3}% 6
+\BOOKMARK [1][-]{section.1.4}{Language Design}{chapter.1}% 7
+\BOOKMARK [2][-]{subsection.1.4.1}{Meta-Model}{section.1.4}% 8
+\BOOKMARK [1][-]{section.1.5}{Validation Constraints}{chapter.1}% 9
+\BOOKMARK [1][-]{section.1.6}{Concrete Syntax}{chapter.1}% 10
+\BOOKMARK [2][-]{subsection.1.6.1}{Question attributes \(exclusive and optional\)}{section.1.6}% 11
+\BOOKMARK [2][-]{subsection.1.6.2}{Parenthesis for list-like structures}{section.1.6}% 12
+\BOOKMARK [2][-]{subsection.1.6.3}{Answer and item redundancy in table questions}{section.1.6}% 13
+\BOOKMARK [2][-]{subsection.1.6.4}{Question definition keywords}{section.1.6}% 14
+\BOOKMARK [1][-]{section.1.7}{Testing}{chapter.1}% 15
+\BOOKMARK [1][-]{section.1.8}{Conclusion}{chapter.1}% 16
+\BOOKMARK [1][-]{section.1.9}{Future Work}{chapter.1}% 17

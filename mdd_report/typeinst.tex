@@ -21,6 +21,8 @@
 \usepackage{color}
 \usepackage{tabularx}
 \usepackage{nameref}
+\usepackage[hidelinks]{hyperref}
+\usepackage{subfigure}
 
 % For nice code highlighting
 \usepackage{listings}
@@ -397,8 +399,8 @@ Question Q7 optional "Why don't you prefer bicycles?" (
 
 Outro "Thanks for participating!"
 \end{lstlisting}
-\caption{A complete survey example}
-\label{fig:full_survey}
+\caption{A survey example for generating DOT graph}
+\label{fig:survey_example_dot}
 \end{figure}
 
 \newpage
@@ -421,8 +423,87 @@ The graph of the survey example can be seen in Figure~\ref{fig:survey_graph}.
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=0.50,angle=270]{images/graph_example_survey}
-	\caption{Survey graph}
+	\caption{Generated DOT graph}
 	\label{fig:survey_graph}
+\end{figure}
+
+\newpage
+\begin{figure}[htb]
+\begin{lstlisting}[language=survey]
+Survey "SurveyApp"
+
+Intro "Welcome to this awesome survey!"
+
+Question Q1 exclusive "Do you want to build a snowman?" (
+	Answer "Yes"
+	Answer "No"
+	Answer "Go away Anna!"
+	Answer freetext "Other:"
+)
+
+Question Q2 "What is your quest?" (
+	Answer "To burn bananas"
+	Answer "To seek the Holy Grail" -> Q3, Q4
+	Answer "I don't know" -> Q3
+	Answer freetext "Other"
+)
+
+Question Q3 optional "What is the airspeed velocity of an unladen swallow?" (
+	Answer "10 km/h"
+	Answer "African or European?"
+	Answer "2 teemos"
+)
+
+TableQuestion Q4 exclusive "How good are these things?" (
+	Items ("Chocolate", "Chips", "Beer", freetext "Other")
+	Answer "Bad"
+	Answer "Average"
+	Answer "Good"
+	Answer "Excellent"
+)
+
+TableQuestion Q5 exclusive optional "How good are these things 2?" (
+	Items ("Milk", "Apple", "Fish", freetext "Other")
+	Answer "Bad"
+	Answer "Average"
+	Answer "Good"
+	Answer "Excellent"
+)
+
+Question Q6 "Any other comments?" (
+	Answer freetext ""
+)
+
+Outro "This is the end of the survey! Bye!"
+\end{lstlisting}
+\caption{A survey example for generating Android app}
+\label{fig:survey_example_android}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	\subfigure[Intro]{
+	\includegraphics[scale=0.22]{images/android/android_0}}
+	\quad
+	\subfigure[Question 1]{
+	\includegraphics[scale=0.22]{images/android/android_1}}
+	\subfigure[Question 2]{
+	\includegraphics[scale=0.22]{images/android/android_2}}
+	\quad
+	\subfigure[Question 3]{
+	\includegraphics[scale=0.22]{images/android/android_3}}
+	\subfigure[Question 4]{
+	\includegraphics[scale=0.22]{images/android/android_4}}
+	\quad
+	\subfigure[Question 5]{
+	\includegraphics[scale=0.22]{images/android/android_5}}
+	\subfigure[Question 6]{
+	\includegraphics[scale=0.22]{images/android/android_6}}
+	\quad
+	\subfigure[Outro]{
+	\includegraphics[scale=0.22]{images/android/android_7}}
+	\caption{Generated Android app}
+	\label{fig:android_app}
 \end{figure}
 
 \end{document}
