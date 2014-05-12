@@ -23,6 +23,7 @@
 \usepackage{nameref}
 \usepackage[hidelinks]{hyperref}
 \usepackage{subfigure}
+%\usepackage[titletoc]{appendix}
 
 % For nice code highlighting
 \usepackage{listings}
@@ -100,8 +101,8 @@
 % "llncs.dem" accompanies the document class "llncs.cls".
 %
 
-\toctitle{Lecture Notes in Computer Science}
-\tocauthor{Authors' Instructions}
+\toctitle{Domain-specific Language for Hierarchical Survey Construction}
+\tocauthor{Theresa Brandt von Fackh, Niels Martin S{\o}holm, Tomas Miseikis and Cosmin Catalin Sand}
 \maketitle
 
 \begin{abstract}
@@ -290,7 +291,10 @@ Many of the design arguments throughout the report are based on assumptions abou
 
 \end{thebibliography}
 \newpage
+\phantomsection
+\addcontentsline{toc}{section}{Appendix}
 \section*{Appendix}
+\label{appendix}
 \begin{figure}[htb]
 \begin{lstlisting}[language=survey]
 TableQuestion FOOTRATE exclusive optional "Rate the following football teams"
