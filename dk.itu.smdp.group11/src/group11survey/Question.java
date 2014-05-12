@@ -4,6 +4,8 @@ package group11survey;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.eclipse.emf.ecore.EObject;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Question</b></em>'.
@@ -16,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link group11survey.Question#isIsOptional <em>Is Optional</em>}</li>
  *   <li>{@link group11survey.Question#isIsExclusive <em>Is Exclusive</em>}</li>
  *   <li>{@link group11survey.Question#getName <em>Name</em>}</li>
+ *   <li>{@link group11survey.Question#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
  *
@@ -23,7 +26,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Question extends Content {
+public interface Question extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Answers</b></em>' containment reference list.
 	 * The list contents are of type {@link group11survey.Answer}.
@@ -144,5 +147,31 @@ public interface Question extends Content {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Body</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Body</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Body</em>' attribute.
+	 * @see #setBody(String)
+	 * @see group11survey.Group11surveyPackage#getQuestion_Body()
+	 * @model
+	 * @generated
+	 */
+	String getBody();
+
+	/**
+	 * Sets the value of the '{@link group11survey.Question#getBody <em>Body</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Body</em>' attribute.
+	 * @see #getBody()
+	 * @generated
+	 */
+	void setBody(String value);
 
 } // Question

@@ -59,7 +59,6 @@ public class Group11surveyFactoryImpl extends EFactoryImpl implements Group11sur
 			case Group11surveyPackage.QUESTION: return createQuestion();
 			case Group11surveyPackage.ANSWER: return createAnswer();
 			case Group11surveyPackage.SURVEY: return createSurvey();
-			case Group11surveyPackage.CONTENT: return createContent();
 			case Group11surveyPackage.ITEM: return createItem();
 			case Group11surveyPackage.TABLE_QUESTION: return createTableQuestion();
 			default:
@@ -95,16 +94,6 @@ public class Group11surveyFactoryImpl extends EFactoryImpl implements Group11sur
 	public Survey createSurvey() {
 		SurveyImpl survey = new SurveyImpl();
 		return survey;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Content createContent() {
-		ContentImpl content = new ContentImpl();
-		return content;
 	}
 
 	/**

@@ -83,7 +83,7 @@ public abstract class AbstractSurveySemanticSequencer extends AbstractDelegating
 	/**
 	 * Constraint:
 	 *     (
-	 *         name=EString 
+	 *         name=ID 
 	 *         isExclusive?='exclusive'? 
 	 *         isOptional?='optional'? 
 	 *         body=EString 
@@ -108,7 +108,7 @@ public abstract class AbstractSurveySemanticSequencer extends AbstractDelegating
 	/**
 	 * Constraint:
 	 *     (
-	 *         name=EString 
+	 *         name=ID 
 	 *         isExclusive?='exclusive'? 
 	 *         isOptional?='optional'? 
 	 *         body=EString 

@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -32,12 +33,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link group11survey.impl.QuestionImpl#isIsOptional <em>Is Optional</em>}</li>
  *   <li>{@link group11survey.impl.QuestionImpl#isIsExclusive <em>Is Exclusive</em>}</li>
  *   <li>{@link group11survey.impl.QuestionImpl#getName <em>Name</em>}</li>
+ *   <li>{@link group11survey.impl.QuestionImpl#getBody <em>Body</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class QuestionImpl extends ContentImpl implements Question {
+public class QuestionImpl extends MinimalEObjectImpl.Container implements Question {
 	/**
 	 * The cached value of the '{@link #getAnswers() <em>Answers</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -116,6 +118,26 @@ public class QuestionImpl extends ContentImpl implements Question {
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBody() <em>Body</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBody()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BODY_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBody() <em>Body</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBody()
+	 * @generated
+	 * @ordered
+	 */
+	protected String body = BODY_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -241,6 +263,27 @@ public class QuestionImpl extends ContentImpl implements Question {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getBody() {
+		return body;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBody(String newBody) {
+		String oldBody = body;
+		body = newBody;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, Group11surveyPackage.QUESTION__BODY, oldBody, body));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -266,6 +309,8 @@ public class QuestionImpl extends ContentImpl implements Question {
 				return isIsExclusive();
 			case Group11surveyPackage.QUESTION__NAME:
 				return getName();
+			case Group11surveyPackage.QUESTION__BODY:
+				return getBody();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -292,6 +337,9 @@ public class QuestionImpl extends ContentImpl implements Question {
 			case Group11surveyPackage.QUESTION__NAME:
 				setName((String)newValue);
 				return;
+			case Group11surveyPackage.QUESTION__BODY:
+				setBody((String)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -316,6 +364,9 @@ public class QuestionImpl extends ContentImpl implements Question {
 			case Group11surveyPackage.QUESTION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case Group11surveyPackage.QUESTION__BODY:
+				setBody(BODY_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -336,6 +387,8 @@ public class QuestionImpl extends ContentImpl implements Question {
 				return isExclusive != IS_EXCLUSIVE_EDEFAULT;
 			case Group11surveyPackage.QUESTION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case Group11surveyPackage.QUESTION__BODY:
+				return BODY_EDEFAULT == null ? body != null : !BODY_EDEFAULT.equals(body);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -356,6 +409,8 @@ public class QuestionImpl extends ContentImpl implements Question {
 		result.append(isExclusive);
 		result.append(", name: ");
 		result.append(name);
+		result.append(", body: ");
+		result.append(body);
 		result.append(')');
 		return result.toString();
 	}

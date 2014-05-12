@@ -49,15 +49,6 @@ public interface Group11surveyFactory extends EFactory {
 	Survey createSurvey();
 
 	/**
-	 * Returns a new object of class '<em>Content</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Content</em>'.
-	 * @generated
-	 */
-	Content createContent();
-
-	/**
 	 * Returns a new object of class '<em>Item</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

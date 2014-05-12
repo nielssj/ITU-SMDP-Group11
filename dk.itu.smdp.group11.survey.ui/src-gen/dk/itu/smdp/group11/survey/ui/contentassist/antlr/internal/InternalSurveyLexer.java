@@ -344,10 +344,10 @@ public class InternalSurveyLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2183:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2183:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2313:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2313:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2183:11: ( '^' )?
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2313:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -356,7 +356,7 @@ public class InternalSurveyLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2183:11: '^'
+                    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2313:11: '^'
                     {
                     match('^'); 
 
@@ -374,7 +374,7 @@ public class InternalSurveyLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2183:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2313:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -423,10 +423,10 @@ public class InternalSurveyLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2185:10: ( ( '0' .. '9' )+ )
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2185:12: ( '0' .. '9' )+
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2315:10: ( ( '0' .. '9' )+ )
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2315:12: ( '0' .. '9' )+
             {
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2185:12: ( '0' .. '9' )+
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2315:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -440,7 +440,7 @@ public class InternalSurveyLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2185:13: '0' .. '9'
+            	    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2315:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -472,10 +472,10 @@ public class InternalSurveyLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2187:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2187:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2317:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2317:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2187:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2317:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -493,10 +493,10 @@ public class InternalSurveyLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2187:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2317:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2187:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2317:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -512,7 +512,7 @@ public class InternalSurveyLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2187:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2317:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -528,7 +528,7 @@ public class InternalSurveyLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2187:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2317:66: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -553,10 +553,10 @@ public class InternalSurveyLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2187:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2317:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2187:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2317:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -572,7 +572,7 @@ public class InternalSurveyLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2187:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2317:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
                     	    {
                     	    match('\\'); 
                     	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
@@ -588,7 +588,7 @@ public class InternalSurveyLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2187:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2317:137: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -631,12 +631,12 @@ public class InternalSurveyLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2189:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2189:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2319:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2319:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2189:24: ( options {greedy=false; } : . )*
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2319:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -661,7 +661,7 @@ public class InternalSurveyLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2189:52: .
+            	    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2319:52: .
             	    {
             	    matchAny(); 
 
@@ -691,12 +691,12 @@ public class InternalSurveyLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2191:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2191:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2321:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2321:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2191:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2321:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -709,7 +709,7 @@ public class InternalSurveyLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2191:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2321:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -729,7 +729,7 @@ public class InternalSurveyLexer extends Lexer {
                 }
             } while (true);
 
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2191:40: ( ( '\\r' )? '\\n' )?
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2321:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -738,9 +738,9 @@ public class InternalSurveyLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2191:41: ( '\\r' )? '\\n'
+                    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2321:41: ( '\\r' )? '\\n'
                     {
-                    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2191:41: ( '\\r' )?
+                    // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2321:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -749,7 +749,7 @@ public class InternalSurveyLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2191:41: '\\r'
+                            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2321:41: '\\r'
                             {
                             match('\r'); 
 
@@ -781,10 +781,10 @@ public class InternalSurveyLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2193:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2193:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2323:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2323:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2193:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2323:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -838,8 +838,8 @@ public class InternalSurveyLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2195:16: ( . )
-            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2195:18: .
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2325:16: ( . )
+            // ../dk.itu.smdp.group11.survey.ui/src-gen/dk/itu/smdp/group11/survey/ui/contentassist/antlr/internal/InternalSurvey.g:2325:18: .
             {
             matchAny(); 
 

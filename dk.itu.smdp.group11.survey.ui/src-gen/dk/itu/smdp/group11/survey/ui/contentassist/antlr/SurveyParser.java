@@ -47,7 +47,7 @@ public class SurveyParser extends AbstractContentAssistParser {
 					put(grammarAccess.getAnswerAccess().getGroup_3(), "rule__Answer__Group_3__0");
 					put(grammarAccess.getAnswerAccess().getGroup_3_2(), "rule__Answer__Group_3_2__0");
 					put(grammarAccess.getTableQuestionAccess().getGroup(), "rule__TableQuestion__Group__0");
-					put(grammarAccess.getTableQuestionAccess().getGroup_9(), "rule__TableQuestion__Group_9__0");
+					put(grammarAccess.getTableQuestionAccess().getGroup_8(), "rule__TableQuestion__Group_8__0");
 					put(grammarAccess.getItemAccess().getGroup(), "rule__Item__Group__0");
 					put(grammarAccess.getSurveyAccess().getNameAssignment_1(), "rule__Survey__NameAssignment_1");
 					put(grammarAccess.getSurveyAccess().getIntroAssignment_2_1(), "rule__Survey__IntroAssignment_2_1");
@@ -55,25 +55,27 @@ public class SurveyParser extends AbstractContentAssistParser {
 					put(grammarAccess.getSurveyAccess().getQuestionsAssignment_4(), "rule__Survey__QuestionsAssignment_4");
 					put(grammarAccess.getSurveyAccess().getOutroAssignment_5_1(), "rule__Survey__OutroAssignment_5_1");
 					put(grammarAccess.getQuestion_ImplAccess().getNameAssignment_1(), "rule__Question_Impl__NameAssignment_1");
-					put(grammarAccess.getQuestion_ImplAccess().getIsExclusiveAssignment_2(), "rule__Question_Impl__IsExclusiveAssignment_2");
-					put(grammarAccess.getQuestion_ImplAccess().getIsOptionalAssignment_3(), "rule__Question_Impl__IsOptionalAssignment_3");
-					put(grammarAccess.getQuestion_ImplAccess().getBodyAssignment_4(), "rule__Question_Impl__BodyAssignment_4");
+					put(grammarAccess.getQuestion_ImplAccess().getIsExclusiveAssignment_2_0(), "rule__Question_Impl__IsExclusiveAssignment_2_0");
+					put(grammarAccess.getQuestion_ImplAccess().getIsOptionalAssignment_2_1(), "rule__Question_Impl__IsOptionalAssignment_2_1");
+					put(grammarAccess.getQuestion_ImplAccess().getBodyAssignment_3(), "rule__Question_Impl__BodyAssignment_3");
+					put(grammarAccess.getQuestion_ImplAccess().getAnswersAssignment_5(), "rule__Question_Impl__AnswersAssignment_5");
 					put(grammarAccess.getQuestion_ImplAccess().getAnswersAssignment_6(), "rule__Question_Impl__AnswersAssignment_6");
-					put(grammarAccess.getQuestion_ImplAccess().getAnswersAssignment_7(), "rule__Question_Impl__AnswersAssignment_7");
 					put(grammarAccess.getAnswerAccess().getIsFreeTextAssignment_1(), "rule__Answer__IsFreeTextAssignment_1");
 					put(grammarAccess.getAnswerAccess().getBodyAssignment_2(), "rule__Answer__BodyAssignment_2");
 					put(grammarAccess.getAnswerAccess().getFollowupAssignment_3_1(), "rule__Answer__FollowupAssignment_3_1");
 					put(grammarAccess.getAnswerAccess().getFollowupAssignment_3_2_1(), "rule__Answer__FollowupAssignment_3_2_1");
 					put(grammarAccess.getTableQuestionAccess().getNameAssignment_1(), "rule__TableQuestion__NameAssignment_1");
-					put(grammarAccess.getTableQuestionAccess().getIsExclusiveAssignment_2(), "rule__TableQuestion__IsExclusiveAssignment_2");
-					put(grammarAccess.getTableQuestionAccess().getIsOptionalAssignment_3(), "rule__TableQuestion__IsOptionalAssignment_3");
-					put(grammarAccess.getTableQuestionAccess().getBodyAssignment_4(), "rule__TableQuestion__BodyAssignment_4");
-					put(grammarAccess.getTableQuestionAccess().getItemsAssignment_8(), "rule__TableQuestion__ItemsAssignment_8");
-					put(grammarAccess.getTableQuestionAccess().getItemsAssignment_9_1(), "rule__TableQuestion__ItemsAssignment_9_1");
+					put(grammarAccess.getTableQuestionAccess().getIsExclusiveAssignment_2_0(), "rule__TableQuestion__IsExclusiveAssignment_2_0");
+					put(grammarAccess.getTableQuestionAccess().getIsOptionalAssignment_2_1(), "rule__TableQuestion__IsOptionalAssignment_2_1");
+					put(grammarAccess.getTableQuestionAccess().getBodyAssignment_3(), "rule__TableQuestion__BodyAssignment_3");
+					put(grammarAccess.getTableQuestionAccess().getItemsAssignment_7(), "rule__TableQuestion__ItemsAssignment_7");
+					put(grammarAccess.getTableQuestionAccess().getItemsAssignment_8_1(), "rule__TableQuestion__ItemsAssignment_8_1");
+					put(grammarAccess.getTableQuestionAccess().getAnswersAssignment_10(), "rule__TableQuestion__AnswersAssignment_10");
 					put(grammarAccess.getTableQuestionAccess().getAnswersAssignment_11(), "rule__TableQuestion__AnswersAssignment_11");
-					put(grammarAccess.getTableQuestionAccess().getAnswersAssignment_12(), "rule__TableQuestion__AnswersAssignment_12");
 					put(grammarAccess.getItemAccess().getIsFreeTextAssignment_0(), "rule__Item__IsFreeTextAssignment_0");
 					put(grammarAccess.getItemAccess().getBodyAssignment_1(), "rule__Item__BodyAssignment_1");
+					put(grammarAccess.getQuestion_ImplAccess().getUnorderedGroup_2(), "rule__Question_Impl__UnorderedGroup_2");
+					put(grammarAccess.getTableQuestionAccess().getUnorderedGroup_2(), "rule__TableQuestion__UnorderedGroup_2");
 				}
 			};
 		}
