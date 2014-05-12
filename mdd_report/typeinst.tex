@@ -31,6 +31,7 @@
 \definecolor{background}{HTML}{EEEEEE}
 \definecolor{delim}{RGB}{20,105,176}
 \colorlet{numb}{magenta!60!black}
+\colorlet{comment}{green!60!black}
 \lstdefinelanguage{survey}{
     basicstyle=\normalfont\ttfamily,
     numbers=left,
@@ -58,6 +59,7 @@
      {Items}{{{\color{numb}Items}}}{3}
      {freetext}{{{\color{numb}freetext}}}{7}
      {Outro}{{{\color{numb}Outro}}}{4},
+     morecomment=[s][\color{comment}]{/*}{*/}
 }
 
 \usepackage{url}
