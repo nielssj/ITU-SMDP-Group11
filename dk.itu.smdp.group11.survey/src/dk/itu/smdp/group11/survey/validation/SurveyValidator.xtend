@@ -24,6 +24,8 @@ class SurveyValidator extends AbstractSurveyValidator {
 	public static val ExclusiveQuestionHasMultipleAnswers = "dk.itu.smdp.group11.survey.ExclusiveQuestionHasMultipleAnswers"
 	public static val TableQuestionHasNoFollowups = "dk.itu.smdp.group11.survey.TableQuestionHasNoFollowups"
 	public static val NoCycles = "dk.itu.smdp.group11.survey.NoCycles"
+	public static val QuestionHasName = "dk.itu.smdp.group11.survey.QuestionHasName"
+	public static val QuestionBodyNotEmpty = "dk.itu.smdp.group11.survey.QuestionBodyNotEmpty"
 
 	@Check
 	def checkSurveyHasQuestion(Survey survey) {
@@ -44,14 +46,14 @@ class SurveyValidator extends AbstractSurveyValidator {
 	@Check
 	def checkQuestionBodyNotEmpty(Question question) {
 		if (question.body == null || question.body.trim.length < 1) {
-			error('Question can not be empty', Group11surveyPackage.Literals.CONTENT__BODY)
+			error('Question can not be empty', Group11surveyPackage.Literals.QUESTION__BODY, QuestionBodyNotEmpty)
 		}
 	}
 	
 	@Check
 	def checkQuestionHasName(Question question) {
 		if (question.name == null || question.name.trim.length < 1) {
-			error('Question ID can not be empty', Group11surveyPackage.Literals.QUESTION__NAME)
+			error('Question ID can not be empty', Group11surveyPackage.Literals.QUESTION__NAME, QuestionHasName)
 		}
 	}
 	

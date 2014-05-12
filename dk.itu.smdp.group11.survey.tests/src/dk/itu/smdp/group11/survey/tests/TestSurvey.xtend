@@ -460,7 +460,7 @@ class TestSurvey {
 		model.assertError(Group11surveyPackage::eINSTANCE.answer, SurveyValidator::NoCycles)
 	}
 	
-	@Test
+		@Test
 	def void testSurveyHasNoQuestion() {
 		Group11surveyPackage.eINSTANCE.eClass()
 		val model = parser.parse(
