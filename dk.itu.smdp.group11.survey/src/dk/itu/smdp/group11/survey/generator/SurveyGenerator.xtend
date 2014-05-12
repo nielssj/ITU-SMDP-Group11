@@ -25,137 +25,138 @@ class Node {
  */
 class SurveyGenerator implements IGenerator {
 
-	// Node ID counter
-	var static node = new Node(0);
-	// Stack for followup questions
-	var static Stack<Integer> followupQuestionStack = new Stack();
-	// To remember the previous question
-	var static previousNode = new Node(0);
-	
-	/**
-	 * Transform the questions into a flow
-	 */
-	def static questionsToDot(Survey survey, EList<Question> questions, String answerToFollowup, boolean mainQuestionStream){
-		var currentNode = new Node(node.id);
-		'''
-		«FOR question : questions»
-«««			Only if the question is not part of the main question stream (therefore a followup question)
-«««			or is not referenced as followUp question (therefore a main question)
-«««			{This condition is necessary to not make followup questions part of the main question stream}
-			«IF(!mainQuestionStream || !isFollowup(survey, question))» 
-«««				Increase node ID counter and set the ID as current node
-				«node.setId(node.id+1)»
-				«currentNode.setId(node.id)»
-«««				If the question is part of the main question stream (therefore a main question)
-				«IF (mainQuestionStream)»
-«««					Make a default edge from the previous node to the current node only if
-«««					the previous question is not mandatory or 
-«««					not all answers of the previous question have a followup question
-					«IF (previousNode.id!=null)»
-						"«{previousNode.id}»" -> "«{currentNode.id}»" [label="next"];
-					«ENDIF»
-«««					If there were followup questions from the previous question, 
-«««					make a default edge from each of them to the current node
-					«IF (!followupQuestionStack.nullOrEmpty)»
-						{«FOR followupQuestion : followupQuestionStack»"«followupQuestion»" «ENDFOR»} -> "«{currentNode.id}»" [label="next"];
-						«followupQuestionStack.removeAllElements»
-					«ENDIF»
-				«ELSE»
-«««					If the question is not part of the main question stream (therefore a followup question),
-«««					make an conditional edge from the previous question to the current followup question
-					"«{previousNode.id}»" -> "«{currentNode.id}»" [label="«{answerToFollowup}»", style="dashed"];
-«««					Put the current followup question into the stack only if the question is not mandatory 
-«««					or not all answers of the question have a followup question.
-«««					Only followup questions in the stack get a default edge back to the next main question in the stream.
-					«IF (question.isOptional || !isThereAFollowupForEachQuestion(question))»
-						«followupQuestionStack.add(0,{currentNode.id})»
-					«ENDIF»
-				«ENDIF»
-«««				Node for the question (Distinguishing between optional and mandatory questions)
-				"«{currentNode.id}»" [shape=«IF (question.isOptional)»octagon«ELSE»doubleoctagon«ENDIF», label="«question.name»: «question.body»"];
-«««				Checking answers of the question if they have followUp questions
-				«FOR answer : question.answers»
-					«IF (!answer.followup.nullOrEmpty)»
-«««						If there is a followup question for an answer, mark the current question
-«««						as previous question and call this function recursively with the followup
-«««						question of the answer.
-						«{previousNode.setId(currentNode.id)}»
-						«questionsToDot(survey, answer.followup,answer.body,false)»
-					«ENDIF»
-				«ENDFOR»
-«««				If the current question is in the main question stream and mandatory and has a
-«««				followup question for each of it's answers, don't remember this question as previous
-«««				question for the next question to prevent a default edge to the next question.
-				«IF (mainQuestionStream && !question.isOptional && isThereAFollowupForEachQuestion(question))»
-					«{previousNode.setId(null)}»
-				«ELSE»
-«««					Otherwise remember the current question as previous question
-					«{previousNode.setId(currentNode.id)}»
-				«ENDIF»
-			«ENDIF»
-		«ENDFOR»
-		'''
-	}
-	
-	/**
-	 * Generates a DOT file, which represents the flow of the survey
-	 */
-	def static compileToDot(Survey it){
-		'''
-			digraph "«it.name»" {
-				subgraph clusterSurvey { 
-					label = "«name»";
-«««					Default settings
-					nodesep=1.0;
-	                node [color=Red,fontname=Courier,shape=box];
-	                edge [color=Blue];
-					«IF (!intro.nullOrEmpty)»
-«««             		Intro as start node
-						"0" [label="Intro: «intro»"];
-					«ELSE»
-						"0" [shape=point];
-					«ENDIF»
-«««					Create question stream
-					«{previousNode.setId(0)}»
-					«questionsToDot(it, questions, "", true)»
-					«IF (!outro.nullOrEmpty)»
-«««						Outro as end node
-						"outro" [label="Outro: «outro»"];
-					«ELSE»
-						"outro" [shape=point];
-					«ENDIF»
-«««					Default edges from last question and followup questions to the final node
-					«IF (previousNode.id!=null)»
-						"«{previousNode.id}»"-> "outro" [label="next"];
-					«ENDIF»
-					«IF (!followupQuestionStack.nullOrEmpty)»
-						{«FOR followupQuestion : followupQuestionStack»"«followupQuestion»"«ENDFOR»} -> "outro" [label="next"];
-						«followupQuestionStack.removeAllElements»
-					«ENDIF»
-«««					Legend
-				subgraph clusterLegend { 
-					{ rank=same key;key2 }
-				    label = "Legend";
-				    key [shape=plaintext, label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
-				      <tr><td align="right" port="i1">&nbsp;</td></tr>
-				      <tr><td align="right" port="i2">&nbsp;</td></tr>
-				      </table>>]
-				    key2 [shape=plaintext, label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
-				      <tr><td port="i1">Default transition</td></tr>
-				      <tr><td port="i2">Conditional transition</td></tr>
-				      </table>>]
-				    key:i1:e -> key2:i1:w
-				    key:i2:e -> key2:i2:w [style=dashed]
-				    "Intro/Outro"
-				    "Optional question" [shape=octagon]
-				    "Mandatory question" [shape=doubleoctagon]
-				}
-				"outro" -> "Intro/Outro" [style=invis]
-			}
-		}
-		'''
-	}
-	
+    // Node ID counter
+    var static node = new Node(0);
+    // Stack for followup questions
+    var static Stack<Integer> followupQuestionStack = new Stack();
+    // To remember the previous question
+    var static previousNode = new Node(0);
+    
+    /**
+     * Transform the questions into a flow
+     */
+    def static questionsToDot(Survey survey, EList<Question> questions, String answerToFollowup, boolean mainQuestionStream){
+        var currentNode = new Node(node.id);
+        '''
+        «FOR question : questions»
+«««         Only if the question is not part of the main question stream (therefore a followup question)
+«««         or is not referenced as followUp question (therefore a main question)
+«««         {This condition is necessary to not make followup questions part of the main question stream}
+            «IF(!mainQuestionStream || !isFollowup(survey, question))» 
+«««             Increase node ID counter and set the ID as current node
+                «node.setId(node.id+1)»
+                «currentNode.setId(node.id)»
+«««             If the question is part of the main question stream (therefore a main question)
+                «IF (mainQuestionStream)»
+«««                 Make a default edge from the previous node to the current node only if
+«««                 the previous question is not mandatory or 
+«««                 not all answers of the previous question have a followup question
+                    «IF (previousNode.id!=null)»
+                        "«{previousNode.id}»" -> "«{currentNode.id}»" [label="next"];
+                    «ENDIF»
+«««                 If there were followup questions from the previous question, 
+«««                 make a default edge from each of them to the current node
+                    «IF (!followupQuestionStack.nullOrEmpty)»
+                        {«FOR followupQuestion : followupQuestionStack»"«followupQuestion»" «ENDFOR»} -> "«{currentNode.id}»" [label="next"];
+                        «followupQuestionStack.removeAllElements»
+                    «ENDIF»
+                «ELSE»
+«««                 If the question is not part of the main question stream (therefore a followup question),
+«««                 make an conditional edge from the previous question to the current followup question
+                    "«{previousNode.id}»" -> "«{currentNode.id}»" [label="«{answerToFollowup}»", style="dashed"];
+«««                 Put the current followup question into the stack only if the question is not mandatory 
+«««                 or not all answers of the question have a followup question.
+«««                 Only followup questions in the stack get a default edge back to the next main question in the stream.
+                    «IF (question.isOptional || !isThereAFollowupForEachQuestion(question))»
+                        «followupQuestionStack.add(0,{currentNode.id})»
+                    «ENDIF»
+                «ENDIF»
+«««             Node for the question (Distinguishing between optional and mandatory questions)
+                "«{currentNode.id}»" [shape=«IF (question.isOptional)»octagon«ELSE»doubleoctagon«ENDIF», label="«question.name»: «question.body»"];
+«««             Checking answers of the question if they have followUp questions
+                «FOR answer : question.answers»
+                    «IF (!answer.followup.nullOrEmpty)»
+«««                     If there is a followup question for an answer, mark the current question
+«««                     as previous question and call this function recursively with the followup
+«««                     question of the answer.
+                        «{previousNode.setId(currentNode.id)}»
+                        «questionsToDot(survey, answer.followup,answer.body,false)»
+                    «ENDIF»
+                «ENDFOR»
+«««             If the current question is in the main question stream and mandatory and has a
+«««             followup question for each of it's answers, don't remember this question as previous
+«««             question for the next question to prevent a default edge to the next question.
+                «IF (mainQuestionStream && !question.isOptional && isThereAFollowupForEachQuestion(question))»
+                    «{previousNode.setId(null)}»
+                «ELSE»
+«««                 Otherwise remember the current question as previous question
+                    «{previousNode.setId(currentNode.id)}»
+                «ENDIF»
+            «ENDIF»
+        «ENDFOR»
+        '''
+    }
+    
+    /**
+     * Generates a DOT file, which represents the flow of the survey
+     */
+    def static compileToDot(Survey it){
+        '''
+            digraph "«it.name»" {
+                subgraph clusterSurvey { 
+                    label = "«name»";
+«««                 Default settings
+                    nodesep=1.0;
+                    node [color=Red,fontname=Courier,shape=box];
+                    edge [color=Blue];
+                    «IF (!intro.nullOrEmpty)»
+«««                     Intro as start node
+                        "0" [label="Intro: «intro»"];
+                    «ELSE»
+                        "0" [shape=point];
+                    «ENDIF»
+«««                 Create question stream
+                    «{previousNode.setId(0)}»
+                    «questionsToDot(it, questions, "", true)»
+                    «IF (!outro.nullOrEmpty)»
+«««                     Outro as end node
+                        "outro" [label="Outro: «outro»"];
+                    «ELSE»
+                        "outro" [shape=point];
+                    «ENDIF»
+«««                 Default edges from last question and followup questions to the final node
+                    «IF (previousNode.id!=null)»
+                        "«{previousNode.id}»"-> "outro" [label="next"];
+                    «ENDIF»
+                    «IF (!followupQuestionStack.nullOrEmpty)»
+                        {«FOR followupQuestion : followupQuestionStack»"«followupQuestion»"«ENDFOR»} -> "outro" [label="next"];
+                        «followupQuestionStack.removeAllElements»
+                    «ENDIF»
+«««                 Legend
+                subgraph clusterLegend { 
+                    { rank=same key;key2 }
+                    label = "Legend";
+                    key [shape=plaintext, label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+                      <tr><td align="right" port="i1">&nbsp;</td></tr>
+                      <tr><td align="right" port="i2">&nbsp;</td></tr>
+                      </table>>]
+                    key2 [shape=plaintext, label=<<table border="0" cellpadding="2" cellspacing="0" cellborder="0">
+                      <tr><td port="i1">Default transition</td></tr>
+                      <tr><td port="i2">Conditional transition</td></tr>
+                      </table>>]
+                    key:i1:e -> key2:i1:w
+                    key:i2:e -> key2:i2:w [style=dashed]
+                    "Intro/Outro"
+                    "Optional question" [shape=octagon]
+                    "Mandatory question" [shape=doubleoctagon]
+                }
+                "outro" -> "Intro/Outro" [style=invis]
+            }
+        }
+        '''
+    }
+    
+    
     def static compileToHtml(Survey it) {
         '''<!DOCTYPE html>
 <html ng-app="survey">
@@ -326,9 +327,9 @@ class SurveyGenerator implements IGenerator {
                     html += '<label>';
                 }
                 html += '<input '
-                	+ 'type="checkbox"'
-                	+ 'ng-click="showFollowups(\'' + question.id + '\', [' + ( typeof answer.followups === 'undefined' ? '' : '\'' + answer.followups.join( '\', \'' ) + '\'' ) + '] )"'
-                	+ 'ng-model="results.' + question.id + '[\'' + answer.body + '\'].state">';
+                    + 'type="checkbox"'
+                    + 'ng-click="showFollowups(\'' + question.id + '\', [' + ( typeof answer.followups === 'undefined' ? '' : '\'' + answer.followups.join( '\', \'' ) + '\'' ) + '] )"'
+                    + 'ng-model="results.' + question.id + '[\'' + answer.body + '\'].state">';
                 if ( answer.isFreeText ) {
                     html += '<input ng-model="results.' + question.id + '[\'' + answer.body + '\'].value" ng-disabled="!results.' + question.id + '[\'' + answer.body + '\'].state" placeholder="' + answer.body + '" style="width: auto;" ng-required="true" ng-minlength="1" class="form-control" type="text">';
                 } else {
@@ -345,10 +346,10 @@ class SurveyGenerator implements IGenerator {
                     html += '<label>';
                 }
                 html += '<input '
-                	+ 'type="radio"'
-                	+ 'value="' + answer.body + '"'
-                	+ 'ng-click="showFollowups(\'' + question.id + '\', [' + ( typeof answer.followups === 'undefined' ? '' : '\'' + answer.followups.join( '\', \'' ) + '\'' ) + '] )"'
-                	+ 'ng-model="results.' + question.id + '.regular">';
+                    + 'type="radio"'
+                    + 'value="' + answer.body + '"'
+                    + 'ng-click="showFollowups(\'' + question.id + '\', [' + ( typeof answer.followups === 'undefined' ? '' : '\'' + answer.followups.join( '\', \'' ) + '\'' ) + '] )"'
+                    + 'ng-model="results.' + question.id + '.regular">';
                 if ( answer.isFreeText ) {
                     html += '<input ng-model="results.' + question.id + '.optional" ng-disabled="results.' + question.id + '.regular !== \'' + answer.body + '\'" placeholder="' + answer.body + '" style="width: auto;" ng-required="true" ng-minlength="1" class="form-control" type="text">';
                 } else {
@@ -655,7 +656,7 @@ public class MainActivity extends Activity {
             android:minSdkVersion="8"
             android:targetSdkVersion="19"/>
     <application android:label="«toId(it.name)»" android:icon="@drawable/ic_launcher">
-        <activity android:name="MainActivity"
+        <activity android:name="dk.itu.smdp.group11.«toId(it.name)».MainActivity"
                   android:label="«toId(it.name)»"
                   android:configChanges="orientation"
                   android:windowSoftInputMode="adjustPan">
@@ -934,7 +935,7 @@ public class Questions {
         «{itemNumber = itemNumber + 1; ""}»
         «FOR answer : question.answers»
         «{answerNumber = answerNumber + 1; ""}»
-        checkBoxes«questionNumber».add(R.id.question«questionNumber»Item«itemNumber»CheckBox«answerNumber»);
+        checkBoxes«questionNumber».add(R.id.question«questionNumber»Item«itemNumber»Checkbox«answerNumber»);
         «ENDFOR»
         «{answerNumber = 0; ""}»
         «ENDFOR»
@@ -976,7 +977,7 @@ public class Questions {
         «ENDIF»
         «ENDFOR»
         «{answerNumber = 0; ""}»
-        question«questionNumber».setFollowup(followupQuestionsMap«questionNumber»);
+        question«questionNumber».setFollowup(followUpQuestionsMap«questionNumber»);
 
         «ELSE»
         List<Integer> checkBoxes«questionNumber» = new ArrayList<Integer>();
@@ -1009,7 +1010,7 @@ public class Questions {
         «ENDIF»
         «ENDFOR»
         «{answerNumber = 0; ""}»
-        question«questionNumber».setFollowup(followupQuestionsMap«questionNumber»);
+        question«questionNumber».setFollowup(followUpQuestionsMap«questionNumber»);
         «ENDIF»
         questionMap.put(question«questionNumber».getQuestionName(), question«questionNumber»);
 
@@ -1202,54 +1203,54 @@ public class Questions {
 
     </RelativeLayout>
     <ScrollView
-	        android:layout_width="match_parent"
-	        android:layout_height="match_parent"
-	        android:layout_weight="1">
-	    <HorizontalScrollView
-	            android:layout_width="match_parent"
-	            android:layout_height="match_parent">
-	        <LinearLayout
-	                android:layout_width="match_parent"
-	                android:layout_height="match_parent"
-	                android:orientation="vertical">
-	            «FOR item : (it as TableQuestion).items»
-	            «{itemNumber = itemNumber + 1; ""}»
-	            <LinearLayout
-	                    android:layout_width="wrap_content"
-	                    android:layout_height="wrap_content"
-	                    android:orientation="horizontal"
-	                    android:padding="5dip">
-	                <TextView
-	                        android:layout_width="wrap_content"
-	                        android:layout_height="wrap_content"
-	                        android:text="«item.body»"
-	                        android:textSize="20sp"/>
-	                «IF item.isFreeText»
-	                <EditText
-	                        android:id="@+id/question«questionId»RadioGroup«itemNumber»Text"
-	                        android:layout_width="150dp"
-	                        android:layout_height="wrap_content"/>
-	                «ENDIF»
-	                <RadioGroup
-	                        android:id="@+id/question«questionId»RadioGroup«itemNumber»"
-	                        android:layout_width="match_parent"
-	                        android:layout_height="match_parent"
-	                        android:orientation="horizontal">
-	                «FOR answer : it.answers»
-	                «{answerNumber = answerNumber + 1; ""}»
-	                    <RadioButton
-	                            android:id="@+id/question«questionId»RadioGroup«itemNumber»RadioButton«answerNumber»"
-	                            android:layout_width="wrap_content"
-	                            android:layout_height="wrap_content"
-	                            android:text="«answer.body»"/>
-	                «ENDFOR»
-	                «{answerNumber = 0; ""}»
-	                </RadioGroup>
-	            </LinearLayout>
-	            «ENDFOR»
-	            «{itemNumber = 0; ""}»
-	        </LinearLayout>
-	    </HorizontalScrollView>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+        <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                «FOR item : (it as TableQuestion).items»
+                «{itemNumber = itemNumber + 1; ""}»
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="5dip">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="«item.body»"
+                            android:textSize="20sp"/>
+                    «IF item.isFreeText»
+                    <EditText
+                            android:id="@+id/question«questionId»RadioGroup«itemNumber»Text"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"/>
+                    «ENDIF»
+                    <RadioGroup
+                            android:id="@+id/question«questionId»RadioGroup«itemNumber»"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal">
+                    «FOR answer : it.answers»
+                    «{answerNumber = answerNumber + 1; ""}»
+                        <RadioButton
+                                android:id="@+id/question«questionId»RadioGroup«itemNumber»RadioButton«answerNumber»"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="«answer.body»"/>
+                    «ENDFOR»
+                    «{answerNumber = 0; ""}»
+                    </RadioGroup>
+                </LinearLayout>
+                «ENDFOR»
+                «{itemNumber = 0; ""}»
+            </LinearLayout>
+        </HorizontalScrollView>
     </ScrollView>
     <Button
             android:id="@+id/nextQuestion"
@@ -1297,44 +1298,45 @@ public class Questions {
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
-	    <HorizontalScrollView
-	            android:layout_width="match_parent"
-	            android:layout_height="match_parent">
-	        <LinearLayout
-	                android:layout_width="match_parent"
-	                android:layout_height="match_parent"
-	                android:orientation="vertical">
-	            «FOR item : (it as TableQuestion).items»
-	            «{itemNumber = itemNumber + 1; ""}»
-	            <LinearLayout
-	                    android:layout_width="wrap_content"
-	                    android:layout_height="wrap_content"
-	                    android:orientation="horizontal"
-	                    android:padding="5dip">
-	                <TextView
-	                        android:layout_width="wrap_content"
-	                        android:layout_height="wrap_content"
-	                        android:text="«item.body»"
-	                        android:textSize="20sp"/>
-	                «IF item.isFreeText»
-	                <EditText
-	                        android:id="@+id/question«questionId»Item«itemNumber»Text"
-	                        android:layout_width="150dp"
-	                        android:layout_height="wrap_content"/>
-	                «ENDIF»
-	                «FOR answer : it.answers»
-	                «{answerNumber = answerNumber + 1; ""}»
-	                <CheckBox
-	                        android:id="@+id/question«questionId»Item«itemNumber»Checkbox«answerNumber»"
-	                        android:layout_width="wrap_content"
-	                        android:layout_height="wrap_content"
-	                        android:text="«answer.body»"/>
-	                «ENDFOR»
-	                «{answerNumber = 0; ""}»
-	            «ENDFOR»
-	            «{itemNumber = 0; ""}»
-	        </LinearLayout>
-	    </HorizontalScrollView>
+        <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                «FOR item : (it as TableQuestion).items»
+                «{itemNumber = itemNumber + 1; ""}»
+                <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="5dip">
+                    <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="«item.body»"
+                            android:textSize="20sp"/>
+                    «IF item.isFreeText»
+                    <EditText
+                            android:id="@+id/question«questionId»Item«itemNumber»Text"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"/>
+                    «ENDIF»
+                    «FOR answer : it.answers»
+                    «{answerNumber = answerNumber + 1; ""}»
+                    <CheckBox
+                            android:id="@+id/question«questionId»Item«itemNumber»Checkbox«answerNumber»"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="«answer.body»"/>
+                    «ENDFOR»
+                    «{answerNumber = 0; ""}»
+                </LinearLayout>
+                «ENDFOR»
+                «{itemNumber = 0; ""}»
+            </LinearLayout>
+        </HorizontalScrollView>
     </ScrollView>
     <Button
             android:id="@+id/nextQuestion"
@@ -1405,7 +1407,6 @@ public class Questions {
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="top|left"
-                        android:minLines="3"
                         android:maxLines="5"
                         android:scrollbars="vertical"
                         android:layout_margin="5dp"/>
@@ -1479,7 +1480,6 @@ public class Questions {
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="top|left"
-                    android:minLines="3"
                     android:maxLines="5"
                     android:scrollbars="vertical"
                     android:layout_margin="5dp"/>
@@ -1504,15 +1504,15 @@ public class Questions {
     }
 
 
-	/*
+    /*
      * Utility function to count followUp questions.
      */
     def static isThereAFollowupForEachQuestion(Question question) {
-    	var int counter = 0;
+        var int counter = 0;
         for (Answer answer : question.answers) {
-        	var temp = answer.followup;
-        	if (temp!=null && !temp.nullOrEmpty)
-        		counter = counter+1;
+            var temp = answer.followup;
+            if (temp!=null && !temp.nullOrEmpty)
+                counter = counter+1;
         }
         return (counter==question.answers.size);
     }
@@ -1566,13 +1566,13 @@ public class Questions {
 
     override void doGenerate(Resource resource, IFileSystemAccess fsa) {
         resource.allContents.toIterable.filter(typeof(Survey)).forEach[Survey it |
-        	
-        	/**
+            
+            /**
              * Dot files.
              */
             fsa.generateFile( "surveys/" + toId( it.name ) + "/dot/survey.dot", it.compileToDot )
-        	
-        	
+            
+            
             /**
              * HTML files.
              */
